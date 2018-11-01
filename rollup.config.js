@@ -12,6 +12,6 @@ export default {
 	],
 	output: {
 		file: './src/index.js',
-		format: 'umd'
+		format: 'cjs'
 	}
 }
