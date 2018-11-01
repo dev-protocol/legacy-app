@@ -11,7 +11,7 @@ export default {
 		})
 	],
 	output: {
-		file: './src/index.js',
+		file: './dist/index.js',
 		format: 'cjs'
 	}
 }

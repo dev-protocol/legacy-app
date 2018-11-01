@@ -9,7 +9,7 @@ export default {
 		output: {
 			...rollupConfig.output,
 			...{
-				file: './src/test.js'
+				file: './dist/test.js'
 			}
 		}
 	}
