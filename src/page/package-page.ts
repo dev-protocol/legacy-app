@@ -2,6 +2,7 @@ import { amp as html } from '../lib/amp'
 import { DistributionTarget, AddressBalance } from 'dev-distribution/src/types'
 import { packageInfo } from '../template/package-widget'
 import { IncomingMessage } from 'http'
+import { style } from '../lib/style'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -20,9 +21,17 @@ export const packagePage = async ({
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 		<link rel="canonical" href="${request.url}">
+		${await style`
+			body {
+				background: black;
+				color: white;
+			}
+		`}
 	</head>
 	<body>
-		${await packageInfo(pkg, account)}
+		<main>
+			${await packageInfo(pkg, account)}
+		</main>
 	</body>
 </html>
 `
