@@ -21,10 +21,12 @@ export const packagePage = async ({
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 		<link rel="canonical" href="${request.url}">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700" rel="stylesheet">
 		${await style`
 			body {
 				background: black;
 				color: white;
+				font-family: 'Montserrat Alternates', sans-serif;
 			}
 		`}
 	</head>
