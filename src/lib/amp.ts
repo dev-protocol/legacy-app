@@ -14,8 +14,8 @@ export const amp = new Proxy(
 		}
 	}),
 	{
-		apply: async (target, _, args) => {
-			const doc = await target(args[0], args[1])
+		apply: async (target, thisArg, args) => {
+			const doc = await target.apply(thisArg, args)
 			const { styles, content } = cutOutStyle(doc)
 			const addedBoilerplate = beforeHead(content, boilerplate)
 			const addedAmpScript = beforeHead(

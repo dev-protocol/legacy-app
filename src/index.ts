@@ -8,8 +8,8 @@ import { packagePage } from './page/package-page'
 const error = (status = 404, body = '') => createError(status, body)
 
 // [GET] /package-name
-export default async (req: IncomingMessage) => {
-	const { url = '' } = req
+export default async (request: IncomingMessage) => {
+	const { url = '' } = request
 	const parsed = parse(url)
 	const { pathname = '' } = parsed
 	const pkg = pathname.replace(/^\//, '')
@@ -18,6 +18,6 @@ export default async (req: IncomingMessage) => {
 		packageInfo ? packageInfo.address : packageInfo
 	)
 	return packageInfo && account
-		? packagePage({ package: packageInfo, account })
+		? packagePage({ package: packageInfo, account, request })
 		: error()
 }
