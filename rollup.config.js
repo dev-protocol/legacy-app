@@ -7,7 +7,8 @@ export default {
 	plugins: [
 		typescript(),
 		postcss({
-			plugins: [postcssPresetEnv({ stage: 0 })]
+			plugins: [postcssPresetEnv({ stage: 0 })],
+			exclude: ['src/lib/amp.ts']
 		})
 	],
 	output: {

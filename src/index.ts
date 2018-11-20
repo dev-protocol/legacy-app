@@ -3,7 +3,7 @@ import { IncomingMessage } from 'http'
 import { parse } from 'url'
 import { getPackage } from './lib/get-package'
 import { getTokens } from './lib/get-tokens'
-import { app } from './template/app'
+import { packagePage } from './page/package-page'
 
 const error = (status = 404, body = '') => createError(status, body)
 
@@ -14,8 +14,10 @@ export default async (req: IncomingMessage) => {
 	const { pathname = '' } = parsed
 	const pkg = pathname.replace(/^\//, '')
 	const packageInfo = await getPackage(pkg)
-	const tokens = await getTokens(
+	const account = await getTokens(
 		packageInfo ? packageInfo.address : packageInfo
 	)
-	return packageInfo && tokens ? app(packageInfo, tokens) : error()
+	return packageInfo && account
+		? packagePage({ package: packageInfo, account })
+		: error()
 }

@@ -23,7 +23,6 @@
 	"homepage": "https://github.com/frame00/dev-app#readme",
 	"dependencies": {
 		"dev-distribution": "^0.1.1",
-		"lit-ntml": "^1.3.1",
 		"micro": "^9.3.3",
 		"qrcode": "^1.3.0",
 		"request": "^2.88.0",

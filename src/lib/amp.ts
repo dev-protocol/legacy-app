@@ -1,0 +1,28 @@
+import ntml from 'lit-ntml'
+import { cutOutStyle } from './cut-out-style'
+
+const boilerplate =
+	'<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>'
+const beforeHead = (html: string, content: string) =>
+	html.replace(/(<\/head>)/, `${content}$1`)
+
+export const amp = new Proxy(
+	ntml({
+		options: {
+			minify: true,
+			parse: 'html'
+		}
+	}),
+	{
+		apply: async (target, _, args) => {
+			const doc = await target(args[0], args[1])
+			const { styles, content } = cutOutStyle(doc)
+			const addedBoilerplate = beforeHead(content, boilerplate)
+			const addedAmpScript = beforeHead(
+				addedBoilerplate,
+				'<script async src="https://cdn.ampproject.org/v0.js"></script>'
+			)
+			return beforeHead(addedAmpScript, `<style amp-custom>${styles}</style>`)
+		}
+	}
+)
