@@ -4,7 +4,8 @@
 		"lib": ["esnext", "dom"],
 		"moduleResolution": "node",
 		"strictNullChecks": true,
-		"module": "esnext",
+		"module": "commonjs",
+		"outDir": "dist",
 		"plugins": [
 			{
 				"name": "typescript-lit-html-plugin"
