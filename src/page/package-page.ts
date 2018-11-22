@@ -10,6 +10,10 @@ interface Opts {
 	readonly account: AddressBalance
 }
 
+const classes = {
+	packageInfo: 'package-info'
+}
+
 export const packagePage = async ({
 	package: pkg,
 	account,
@@ -28,11 +32,14 @@ export const packagePage = async ({
 				color: white;
 				font-family: 'Montserrat Alternates', sans-serif;
 			}
+			.${classes.packageInfo} {
+				margin: 5rem;
+			}
 		`}
 	</head>
 	<body>
 		<main>
-			${await packageInfo(pkg, account)}
+			${await packageInfo({ package: pkg, account, className: classes.packageInfo })}
 		</main>
 	</body>
 </html>

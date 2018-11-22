@@ -3,19 +3,28 @@ import { html } from '../lib/html'
 import { style } from '../lib/style'
 import { toDataURL } from 'qrcode'
 
-const cls = 'package-info'
+interface Opts {
+	readonly package: DistributionTarget
+	readonly account: AddressBalance
+	readonly className?: string
+}
 
-export const packageInfo = async (
-	pkg: DistributionTarget,
-	account: AddressBalance
-) =>
+export const packageInfo = async ({
+	package: pkg,
+	account,
+	className = 'package-info'
+}: Opts) =>
 	html`
 		${await style`
-			.${cls} {
+			.${className} {
 				display: grid;
 				grid-gap: 1rem;
 				justify-content: center;
 				text-align: center;
+				& h1,
+				& p {
+					margin: 0;
+				}
 				& .balance {
 					font-weight: bold;
 					display: grid;
@@ -26,7 +35,7 @@ export const packageInfo = async (
 			}
 		`}
 
-		<div class='${cls}'>
+		<div class='${className}'>
 			<h1>${pkg.package}</h1>
 			<p class='balance'>
 				<span>has</span>
