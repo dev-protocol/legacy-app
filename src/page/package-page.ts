@@ -4,6 +4,7 @@ import { packageInfo } from '../template/package-widget'
 import { IncomingMessage } from 'http'
 import { style } from '../lib/style'
 import { large } from '../style/large'
+import { header } from '../template/header'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -11,7 +12,8 @@ interface Opts {
 	readonly account: AddressBalance
 }
 
-const classes = {
+const classNames = {
+	header: 'header',
 	packageInfo: 'package-info'
 }
 
@@ -33,7 +35,7 @@ export const packagePage = async ({
 				color: white;
 				font-family: 'Montserrat Alternates', sans-serif;
 			}
-			.${classes.packageInfo} {
+			.${classNames.packageInfo} {
 				margin: 2rem;
 				padding: 1rem;
 				${large(`
@@ -43,8 +45,13 @@ export const packagePage = async ({
 		`}
 	</head>
 	<body>
+		${await header({ className: classNames.header })}
 		<main>
-			${await packageInfo({ package: pkg, account, className: classes.packageInfo })}
+			${await packageInfo({
+				package: pkg,
+				account,
+				className: classNames.packageInfo
+			})}
 		</main>
 	</body>
 </html>
