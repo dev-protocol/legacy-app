@@ -3,6 +3,7 @@ import { DistributionTarget, AddressBalance } from 'dev-distribution/src/types'
 import { packageInfo } from '../template/package-widget'
 import { IncomingMessage } from 'http'
 import { style } from '../lib/style'
+import { large } from '../style/large'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -33,7 +34,11 @@ export const packagePage = async ({
 				font-family: 'Montserrat Alternates', sans-serif;
 			}
 			.${classes.packageInfo} {
-				margin: 5rem;
+				margin: 2rem;
+				padding: 1rem;
+				${large(`
+					margin: 5rem;
+				`)}
 			}
 		`}
 	</head>

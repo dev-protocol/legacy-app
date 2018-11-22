@@ -2,6 +2,7 @@ import { DistributionTarget, AddressBalance } from 'dev-distribution/src/types'
 import { html } from '../lib/html'
 import { style } from '../lib/style'
 import { toDataURL } from 'qrcode'
+import { large } from '../style/large'
 
 interface Opts {
 	readonly package: DistributionTarget
@@ -21,6 +22,7 @@ export const packageInfo = async ({
 				grid-gap: 1rem;
 				justify-content: center;
 				text-align: center;
+				word-break: break-all;
 				& h1,
 				& p {
 					margin: 0;
@@ -29,7 +31,10 @@ export const packageInfo = async ({
 					font-weight: bold;
 					display: grid;
 					& .tokens {
-						font-size: 1.4rem;
+						font-size: 1rem;
+						${large(`
+							font-size: 1.4rem;
+						`)}
 					}
 				}
 			}
