@@ -23,11 +23,17 @@ export const packageInfo = async ({
 				justify-content: center;
 				text-align: center;
 				word-break: break-all;
-				& h1,
-				& p {
+				&__heading {
+					font-size: 4rem;
+				}
+				&__qr {
+					max-width: 290px;
+				}
+				&__heading,
+				&__barance {
 					margin: 0;
 				}
-				& .balance {
+				&__barance {
 					font-weight: bold;
 					display: grid;
 					& .tokens {
@@ -41,13 +47,15 @@ export const packageInfo = async ({
 		`}
 
 		<div class='${className}'>
-			<h1>${pkg.package}</h1>
-			<p class='balance'>
+			<h1 class='${className}__heading'>${pkg.package}</h1>
+			<p class='${className}__barance'>
 				<span>has</span>
 				<span class=tokens>${account.balance}</span>
 				<span>Dev</span>
 			</p>
-			<amp-img alt='QR Code of ${pkg.package} address'
+			<amp-img
+				class='${className}__qr'
+				alt='QR Code of ${pkg.package} address'
 				src='${await toDataURL(pkg.address, {
 					width: 500,
 					rendererOpts: {
@@ -58,6 +66,6 @@ export const packageInfo = async ({
 				height=100
 				layout=responsive>
 			</amp-img>
-			<code>${account.address}</code>
+			<code class='${className}__address'>${account.address}</code>
 		</div>
 	`
