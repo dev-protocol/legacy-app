@@ -3,6 +3,8 @@ import * as preset from 'postcss-preset-env'
 import * as nested from 'postcss-nested'
 import { html } from './html'
 
+const cssSet = new Set<string>()
+
 export const style = createStyle({
 	plugins: [
 		nested(),
@@ -14,6 +16,12 @@ export const style = createStyle({
 	],
 	// tslint:disable-next-line:typedef
 	build(css) {
-		return html`<style>${css}</style>`
+		return cssSet.has(css)
+			? ''
+			: (() => {
+					// tslint:disable-next-line:no-expression-statement
+					cssSet.add(css)
+					return html`<style>${css}</style>`
+			  })()
 	}
 })
