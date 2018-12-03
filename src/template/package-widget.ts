@@ -3,6 +3,7 @@ import { html } from '../lib/html'
 import { style } from '../lib/style'
 import { toDataURL } from 'qrcode'
 import { large } from '../style/large'
+import { container } from './container'
 
 interface Opts {
 	readonly package: DistributionTarget
@@ -46,26 +47,30 @@ export const packageInfo = async ({
 			}
 		`}
 
-		<div class='${className}'>
-			<h1 class='${className}__heading'>${pkg.package}</h1>
-			<p class='${className}__barance'>
-				<span>has</span>
-				<span class=tokens>${account.balance}</span>
-				<span>Dev</span>
-			</p>
-			<amp-img
-				class='${className}__qr'
-				alt='QR Code of ${pkg.package} address'
-				src='${await toDataURL(pkg.address, {
-					width: 500,
-					rendererOpts: {
-						quality: 1
-					}
-				})}'
-				width=100
-				height=100
-				layout=responsive>
-			</amp-img>
-			<code class='${className}__address'>${account.address}</code>
-		</div>
+		${container(
+			await html`
+			<div class='${className}'>
+				<h1 class='${className}__heading'>${pkg.package}</h1>
+				<p class='${className}__barance'>
+					<span>has</span>
+					<span class=tokens>${account.balance}</span>
+					<span>Dev</span>
+				</p>
+				<amp-img
+					class='${className}__qr'
+					alt='QR Code of ${pkg.package} address'
+					src='${await toDataURL(pkg.address, {
+						width: 500,
+						rendererOpts: {
+							quality: 1
+						}
+					})}'
+					width=100
+					height=100
+					layout=responsive>
+				</amp-img>
+				<code class='${className}__address'>${account.address}</code>
+			</div>
+		`
+		)}
 	`

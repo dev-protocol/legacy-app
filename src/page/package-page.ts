@@ -3,8 +3,8 @@ import { DistributionTarget, AddressBalance } from 'dev-distribution/src/types'
 import { packageInfo } from '../template/package-widget'
 import { IncomingMessage } from 'http'
 import { style } from '../lib/style'
-import { large } from '../style/large'
 import { header } from '../template/header'
+import { whats } from '../template/whats'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -12,9 +12,11 @@ interface Opts {
 	readonly account: AddressBalance
 }
 
+const section = 'section__'
 const classNames = {
 	header: 'header',
-	packageInfo: 'package-info'
+	packageInfo: 'package-info',
+	whats: 'whats'
 }
 
 export const packagePage = async ({
@@ -35,23 +37,26 @@ export const packagePage = async ({
 				color: white;
 				font-family: 'Montserrat Alternates', sans-serif;
 			}
-			.${classNames.packageInfo} {
-				margin: 2rem;
-				padding: 1rem;
-				${large(`
-					margin: 5rem;
-				`)}
+			section {
+				&:not(:first-child) {
+					border-top: 0.5px solid #ffffff80;
+				}
 			}
 		`}
 	</head>
 	<body>
 		${await header({ className: classNames.header })}
 		<main>
-			${await packageInfo({
-				package: pkg,
-				account,
-				className: classNames.packageInfo
-			})}
+			<section class='${section}${classNames.packageInfo}'>
+				${await packageInfo({
+					package: pkg,
+					account,
+					className: classNames.packageInfo
+				})}
+			</section>
+			<section class='${section}${classNames.whats}'>
+				${await whats({ className: classNames.whats })}
+			</section>
 		</main>
 	</body>
 </html>
