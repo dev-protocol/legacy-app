@@ -7,12 +7,15 @@ import { header } from '../template/header'
 import { whats } from '../template/whats'
 import { footer } from '../template/footer'
 import { participation } from '../template/participation'
+import { large } from '../style/large'
 
 interface Opts {
 	readonly request: IncomingMessage
 	readonly package: DistributionTarget
 	readonly account: AddressBalance
 }
+
+const section = 'section'
 
 export const packagePage = async ({
 	package: pkg,
@@ -37,12 +40,22 @@ export const packagePage = async ({
 					border-top: 0.5px solid #ffffff80;
 				}
 			}
+			.${section} {
+				&__package {
+					display: grid;
+					min-height: 80vh;
+					${large(`
+						display: block;
+						min-height: auto;
+					`)}
+				}
+			}
 		`}
 	</head>
 	<body>
 		${await header()}
 		<main>
-			<section>
+			<section class='${section}__package'>
 				${await packageInfo({
 					package: pkg,
 					account
