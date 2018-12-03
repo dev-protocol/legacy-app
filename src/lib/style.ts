@@ -14,8 +14,5 @@ export const style = createStyle({
 		}),
 		cssnano()
 	],
-	// tslint:disable-next-line:typedef
-	build(css) {
-		return html`<style>${css}</style>`
-	}
+	build: css => html`<style>${css}</style>`
 })
