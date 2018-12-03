@@ -10,18 +10,13 @@ export const whats = async ({ className = 'whats' }: Opts) =>
 	html`
 		${await style`
 			.${className} {
-				&__heading {
-					font-size: 2rem;
-				}
 			}
 		`}
 
 		${container(
 			await html`
 			<div class='${className}'>
-				<div>
-				</div>
-				<h2 class='${className}__heading'>What’s Dev(Token)?</h2>
+				<h2>What’s Dev(Token)?</h2>
 				<p>"Dev" is an ERC20 token for open source software (OSS) sustainability.</p>
 				<p>After fairly evaluating OSS's influence, we will distribute a token proportionate to that value.</p>
 				<p>We will transform the development of OSS — viewed as having a sustainability problem due to the difficulty of monetization — into something sustainable.</p>
