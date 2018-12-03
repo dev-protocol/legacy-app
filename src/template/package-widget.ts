@@ -22,26 +22,46 @@ export const packageInfo = async ({
 				display: grid;
 				grid-gap: 1rem;
 				justify-content: center;
-				text-align: center;
 				word-break: break-all;
+				grid-template-areas:
+					'tokens tokens'
+					'address address';
+				${large(`
+					grid-template-areas: 'tokens address';
+					grid-template-columns: 1fr auto;
+				`)}
+				&__tokens {
+					grid-area: tokens;
+				}
+				&__address {
+					grid-area: address;
+					justify-self: center;
+					width: 250px;
+					text-align: center;
+				}
 				&__heading {
-					font-size: 4rem;
+					margin: 0;
+					font-size: 2rem;
+					text-align: center;
+					${large(`
+						font-size: 3rem;
+						text-align: left;
+					`)}
 				}
 				&__qr {
 					max-width: 290px;
+					border-radius: 20px;
 				}
-				&__heading,
-				&__barance {
-					margin: 0;
-				}
-				&__barance {
-					font-weight: bold;
+				&__definition-list {
 					display: grid;
-					& .tokens {
+					grid-gap: 1rem;
+					grid-template: auto / auto 1fr;
+					font-size: 0.8rem;
+					${large(`
 						font-size: 1rem;
-						${large(`
-							font-size: 1.4rem;
-						`)}
+					`)}
+					& dd {
+						margin: 0;
 					}
 				}
 			}
@@ -50,26 +70,34 @@ export const packageInfo = async ({
 		${container(
 			await html`
 			<div class='${className}'>
-				<h1 class='${className}__heading'>${pkg.package}</h1>
-				<p class='${className}__barance'>
-					<span>has</span>
-					<span class=tokens>${account.balance}</span>
-					<span>Dev</span>
-				</p>
-				<amp-img
-					class='${className}__qr'
-					alt='QR Code of ${pkg.package} address'
-					src='${await toDataURL(pkg.address, {
-						width: 500,
-						rendererOpts: {
-							quality: 1
-						}
-					})}'
-					width=100
-					height=100
-					layout=responsive>
-				</amp-img>
-				<code class='${className}__address'>${account.address}</code>
+				<div class='${className}__tokens'>
+					<h1 class='${className}__heading'>
+						${pkg.package} has Dev.
+					</h1>
+					<p>${pkg.package} welcomes your donation!</p>
+					<dl class='${className}__definition-list'>
+						<dt>Balance</dt>
+						<dd><code>${account.balance} DEV</code></dd>
+						<dt>Address</dt>
+						<dd><code>${account.address}</code></dd>
+					</dl>
+				</div>
+				<div class='${className}__address'>
+					<amp-img
+						class='${className}__qr'
+						alt='QR Code of ${pkg.package} address'
+						src='${await toDataURL(pkg.address, {
+							width: 500,
+							rendererOpts: {
+								quality: 1
+							}
+						})}'
+						width=1
+						height=1
+						layout=responsive>
+					</amp-img>
+					<p><small>Copy addresses with QR</small></p>
+				</div>
 			</div>
 		`
 		)}

@@ -1,6 +1,5 @@
 import { html } from '../lib/html'
 import { style } from '../lib/style'
-import { large } from '../style/large'
 import { imageLogo } from './image-logo'
 import { container } from './container'
 
