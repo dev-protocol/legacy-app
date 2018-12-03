@@ -5,6 +5,7 @@ import { IncomingMessage } from 'http'
 import { style } from '../lib/style'
 import { header } from '../template/header'
 import { whats } from '../template/whats'
+import { footer } from '../template/footer'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -16,7 +17,8 @@ const section = 'section__'
 const classNames = {
 	header: 'header',
 	packageInfo: 'package-info',
-	whats: 'whats'
+	whats: 'whats',
+	footer: 'footer'
 }
 
 export const packagePage = async ({
@@ -58,6 +60,7 @@ export const packagePage = async ({
 				${await whats({ className: classNames.whats })}
 			</section>
 		</main>
+		${await footer({ className: classNames.footer })}
 	</body>
 </html>
 `
