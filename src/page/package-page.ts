@@ -14,14 +14,6 @@ interface Opts {
 	readonly account: AddressBalance
 }
 
-const section = 'section__'
-const classNames = {
-	header: 'header',
-	packageInfo: 'package-info',
-	whats: 'whats',
-	footer: 'footer'
-}
-
 export const packagePage = async ({
 	package: pkg,
 	account,
@@ -48,23 +40,22 @@ export const packagePage = async ({
 		`}
 	</head>
 	<body>
-		${await header({ className: classNames.header })}
+		${await header()}
 		<main>
-			<section class='${section}${classNames.packageInfo}'>
+			<section>
 				${await packageInfo({
 					package: pkg,
-					account,
-					className: classNames.packageInfo
+					account
 				})}
 			</section>
-			<section class='${section}${classNames.whats}'>
-				${await whats({ className: classNames.whats })}
+			<section>
+				${await whats()}
 			</section>
 			<section>
 				${await participation()}
 			</section>
 		</main>
-		${await footer({ className: classNames.footer })}
+		${await footer()}
 	</body>
 </html>
 `

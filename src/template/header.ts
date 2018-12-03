@@ -7,7 +7,7 @@ interface Opts {
 	readonly className?: string
 }
 
-export const header = async ({ className = 'header' }: Opts) =>
+export const header = async ({ className = 'header' }: Opts = {}) =>
 	html`
 		${await style`
 			.${className} {

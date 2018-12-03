@@ -8,7 +8,7 @@ interface Opts {
 	readonly className?: string
 }
 
-export const footer = async ({ className = 'footer' }: Opts) =>
+export const footer = async ({ className = 'footer' }: Opts = {}) =>
 	html`
 		${await style`
 			.${className} {
