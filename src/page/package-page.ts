@@ -6,6 +6,7 @@ import { style } from '../lib/style'
 import { header } from '../template/header'
 import { whats } from '../template/whats'
 import { footer } from '../template/footer'
+import { participation } from '../template/participation'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -58,6 +59,9 @@ export const packagePage = async ({
 			</section>
 			<section class='${section}${classNames.whats}'>
 				${await whats({ className: classNames.whats })}
+			</section>
+			<section>
+				${await participation()}
 			</section>
 		</main>
 		${await footer({ className: classNames.footer })}
