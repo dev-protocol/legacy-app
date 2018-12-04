@@ -4,6 +4,7 @@ import { style } from '../lib/style'
 import { imageLogo } from '../template/image-logo'
 import { config } from '../config'
 import { head } from '../template/head'
+import { ampAnalytics } from '../template/amp-analytics'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -53,6 +54,7 @@ export const error = async ({
 			})
 		}
 		<body>
+			${await ampAnalytics()}
 			<main>
 				<h1>${status}</h1>
 				<p>${message}</p>

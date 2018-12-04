@@ -113,6 +113,11 @@ export const head = async ({
 		/>
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="//twitter.com/devtoken_rocks" />
+		<script
+			async
+			custom-element="amp-analytics"
+			src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
+		></script>
 		${injection}
 	</head>
 `
