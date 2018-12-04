@@ -59,10 +59,8 @@ export const packagePage = async ({
 			.${section} {
 				&__package {
 					display: grid;
-					min-height: 80vh;
 					${large(`
 						display: block;
-						min-height: auto;
 					`)}
 				}
 			}

@@ -10,7 +10,7 @@ export const container = async (content: string) => html`
 		.${className} {
 			max-width: 900px;
 			margin: auto;
-			padding: 2rem;
+			padding: 5rem 2rem;
 			${large(`
 				padding: 5rem;
 			`)}
