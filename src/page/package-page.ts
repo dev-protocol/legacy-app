@@ -30,6 +30,7 @@ export const packagePage = async ({
 		${
 			await head({
 				title: `${pkg.package} uses Dev`,
+				description: `${pkg.package} uses Dev`,
 				url: {
 					host: config.domain,
 					path: request.url

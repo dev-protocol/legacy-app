@@ -23,6 +23,7 @@ export const error = async ({
 		${
 			await head({
 				title: message,
+				description: message,
 				url: {
 					host: config.domain,
 					path: request.url
