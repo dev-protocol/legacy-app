@@ -6,7 +6,7 @@ import { style } from '../lib/style'
 import { header } from '../template/header'
 import { whats } from '../template/whats'
 import { footer } from '../template/footer'
-import { participation } from '../template/participation'
+import { join } from '../template/join'
 import { large } from '../style/large'
 
 interface Opts {
@@ -34,6 +34,9 @@ export const packagePage = async ({
 				background: black;
 				color: white;
 				font-family: 'Montserrat Alternates', sans-serif;
+			}
+			a {
+				color: white;
 			}
 			section {
 				&:not(:first-child) {
@@ -65,7 +68,7 @@ export const packagePage = async ({
 				${await whats()}
 			</section>
 			<section>
-				${await participation()}
+				${await join()}
 			</section>
 		</main>
 		${await footer()}

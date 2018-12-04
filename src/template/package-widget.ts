@@ -72,9 +72,9 @@ export const packageInfo = async ({
 			<div class='${className}'>
 				<div class='${className}__tokens'>
 					<h1 class='${className}__heading'>
-						${pkg.package} has Dev.
+						${pkg.package} uses Dev.
 					</h1>
-					<p>${pkg.package} welcomes your donation!</p>
+					<p>${pkg.package} welcomes your donation by Dev.</p>
 					<dl class='${className}__definition-list'>
 						<dt>Balance</dt>
 						<dd><code>${account.balance} DEV</code></dd>
