@@ -1,18 +1,10 @@
 import { DistributionTarget } from 'dev-distribution/src/types'
-import { get } from 'request'
+import { get } from './get'
 
 type DistributionTargets = ReadonlyArray<DistributionTarget>
 
-const proto = 'https'
-
-const fetchPackages = async (): Promise<DistributionTargets> =>
-	new Promise<DistributionTargets>(resolve =>
-		get(
-			`${proto}://dev-distribution.now.sh/config/packages`,
-			{ json: true },
-			(_, __, body) => resolve(body)
-		)
-	)
+const fetchPackages = async () =>
+	get<DistributionTargets>('//dev-distribution.now.sh/config/packages')
 
 export const getPackage = async (packageName?: string) => {
 	const pkgs = await fetchPackages()
