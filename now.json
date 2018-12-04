@@ -1,6 +1,6 @@
 {
 	"version": 2,
 	"alias": "dev-app",
-	"builds": [{ "src": "dist/index.js", "use": "@now/node" }],
-	"routes": [{ "src": "/(.*)", "dest": "/dist/index.js" }]
+	"builds": [{ "src": "src/index.js", "use": "@now/node" }],
+	"routes": [{ "src": "/(.*)", "dest": "/src/index.js" }]
 }

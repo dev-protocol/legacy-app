@@ -5,13 +5,10 @@
 		"moduleResolution": "node",
 		"strictNullChecks": true,
 		"module": "commonjs",
-		"outDir": "dist",
 		"plugins": [
 			{
 				"name": "typescript-lit-html-plugin"
 			}
 		]
-	},
-	"include": ["src/**/*"],
-	"exclude": []
+	}
 }
