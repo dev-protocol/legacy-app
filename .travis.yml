@@ -1,18 +1,18 @@
 language: node_js
 node_js:
-- node
+  - node
 branches:
   only:
-  - master
+    - master
 before_install:
-- npm install -g now
+  - npm install -g now
 before_deploy: npm run build
 deploy:
-- provider: script
-  script: now --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN
-  skip_cleanup: true
-  on:
-    branch: master
+  - provider: script
+    script: now --public --token $NOW_TOKEN && now alias --token $NOW_TOKEN
+    skip_cleanup: true
+    on:
+      branch: master
 env:
   global:
     secure: LPkCWxNXeuZd5tvKhmmqzWfF3SYBQdpRouQV5eoNw0PxcoMjAmVwetIB4Y45iCpBO+CQ6yAqlkUCO6nwJdGCEvy4nvMB1JwDf56jSR5XXWVe9xnttZGA1201DpEJdg6nyCJRdVGQlNxIwglVj5b0P4TOAfXbunZEzneZg1D7P3D5GAtt663ACwR7KGHx5nAuqoOguoCj3c8mqH2NldvcOGxbq8bxIb3Sy1skR6xUPJat941D9HRW6Hqoh7i5dhh+zAr4qQ9EJOhVsI5Y69MWRORnG7cW7VcoJFuAOlbewNl4+e0VwkCEotqmWoLNQg5J5GRsj6NCKjLRhIzHSLXEq6iFbP+TZeWQN9NlEIXy41sB3s7hpNXjuNoJqzO46WQYt3mR/4WYYAs/xdfNwyHVZ1XM/dCMVWgzPkNOb1IDuwsTkHZWZL0Sr6T8VlxryMEEyySH0uQ6w2gWOrl8Kb2W2Ed2F/IcUDIOFqGL8ZdAFqPne1HQw1H3n2cu5iSb6mtuQY2WWirqosZ8G3jF6yxDUsz41IToD6fVM8Pi0I54uk80UQGvY1mBsrEligt9+IRnE/uCCF856bwsXtAoEId21TGkEwfcHNmXss8p4cFqMQTXzYFD6Mpx8Aog30ZFkDNr8QDuTznyn/Q0+zWcjEGm4VhyccNTCTt2VCadyoYYbSM=
