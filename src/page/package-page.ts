@@ -8,6 +8,7 @@ import { whats } from '../template/whats'
 import { footer } from '../template/footer'
 import { join } from '../template/join'
 import { large } from '../style/large'
+import { trade } from '../template/trade'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -75,6 +76,9 @@ export const packagePage = async ({
 			</section>
 			<section>
 				${await join()}
+			</section>
+			<section>
+				${await trade()}
 			</section>
 		</main>
 		${await footer()}
