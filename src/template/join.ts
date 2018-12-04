@@ -14,12 +14,16 @@ export const join = async ({ className = 'join' }: Opts = {}) =>
 				display: grid;
 				grid-auto-flow: row;
 				justify-content: center;
+				grid-gap: 1rem;
 				${large(`
 					grid-auto-flow: column;
 					grid-template-columns: 1fr auto;
 					justify-content: baseline;
 					align-items: center;
 				`)}
+				& h2 {
+					margin: 0;
+				}
 				&__button {
 					text-decoration: none;
 					background-image: linear-gradient(135deg,#00fff5,#6100f2 35%,#ff0052);
