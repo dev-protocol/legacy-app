@@ -2,7 +2,7 @@ import { send } from 'micro'
 import { IncomingMessage, ServerResponse } from 'http'
 import { parse } from 'url'
 import { error } from './page/error'
-import { packages } from './route/packages'
+import { packageR } from './route/package-r'
 import { badge } from './route/badge'
 
 export default async (request: IncomingMessage, res: ServerResponse) => {
@@ -12,7 +12,7 @@ export default async (request: IncomingMessage, res: ServerResponse) => {
 	const [, route] = pathname.split('/')
 	const body =
 		route === 'package'
-			? await packages(pathname, request)
+			? await packageR(pathname, request)
 			: route === 'badge'
 				? await badge(pathname, res)
 				: false
