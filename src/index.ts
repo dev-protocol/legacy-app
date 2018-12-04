@@ -4,6 +4,7 @@ import { parse } from 'url'
 import { getPackage } from './lib/get-package'
 import { getTokens } from './lib/get-tokens'
 import { packagePage } from './page/package-page'
+import { error } from './page/error'
 
 // [GET] /package-name
 export default async (request: IncomingMessage, res: ServerResponse) => {
@@ -15,11 +16,11 @@ export default async (request: IncomingMessage, res: ServerResponse) => {
 	const account = await getTokens(
 		packageInfo ? packageInfo.address : packageInfo
 	)
+	const status = packageInfo && account ? 200 : 404
 	const body =
 		packageInfo && account
 			? await packagePage({ package: packageInfo, account, request })
-			: ''
-	const status = body ? 200 : 404
+			: await error({ status, message: 'page not found', request })
 	// tslint:disable-next-line:no-expression-statement
 	send(res, status, body)
 }
