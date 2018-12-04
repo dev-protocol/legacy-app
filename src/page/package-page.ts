@@ -39,8 +39,14 @@ export const packagePage = async ({
 				color: white;
 			}
 			section {
-				&:not(:first-child) {
-					border-top: 0.5px solid #ffffff80;
+				border: 0.5px solid #ffffff80;
+				border-left: 0;
+				border-right: 0;
+				&:not(:last-child) {
+					border-bottom: 0;
+				}
+				&:first-child {
+					border: 0;
 				}
 			}
 			.${section} {
