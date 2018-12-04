@@ -30,8 +30,8 @@ export const packagePage = async ({
 	<html ⚡>
 		${
 			await head({
-				title: `${pkg.package} uses Dev`,
-				description: `${pkg.package} uses Dev`,
+				title: `${pkg.package} is using Dev`,
+				description: `${pkg.package} has ${account.balance} DEV.`,
 				url: {
 					host: config.domain,
 					path: request.url

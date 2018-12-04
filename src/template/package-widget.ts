@@ -73,8 +73,10 @@ export const packageInfo = async ({
 				await html`
 					<div class="${className}">
 						<div class="${className}__tokens">
-							<h1 class="${className}__heading">${pkg.package} uses Dev.</h1>
-							<p>${pkg.package} welcomes your donation by Dev.</p>
+							<h1 class="${className}__heading">
+								${pkg.package} is using Dev.
+							</h1>
+							<p>${pkg.package} welcomes donation by the Dev!</p>
 							<dl class="${className}__definition-list">
 								<dt>Balance</dt>
 								<dd><code>${account.balance} DEV</code></dd>
