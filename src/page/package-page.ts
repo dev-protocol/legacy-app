@@ -9,6 +9,7 @@ import { footer } from '../template/footer'
 import { join } from '../template/join'
 import { large } from '../style/large'
 import { trade } from '../template/trade'
+import { config } from '../config'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -18,17 +19,16 @@ interface Opts {
 
 const section = 'section'
 
-export const packagePage = async ({
-	package: pkg,
-	account,
-	request
-}: Opts) => html`
+export const packagePage = async (
+	{ package: pkg, account, request }: Opts,
+	proto = 'https'
+) => html`
 <!doctype html>
 <html ⚡>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-		<link rel="canonical" href="${request.url}">
+		<link rel="canonical" href="${proto}://${config.domain}${request.url}">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700" rel="stylesheet">
 		<title>${pkg.package} uses Dev - Dev | Token for OSS sustainability</title>
 		${await style`

@@ -2,6 +2,7 @@ import { amp as html } from '../lib/amp'
 import { IncomingMessage } from 'http'
 import { style } from '../lib/style'
 import { imageLogo } from '../template/image-logo'
+import { config } from '../config'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -11,17 +12,16 @@ interface Opts {
 
 const defaultMessage = 'page not found'
 
-export const error = async ({
-	request,
-	status,
-	message = defaultMessage
-}: Opts) => html`
+export const error = async (
+	{ request, status, message = defaultMessage }: Opts,
+	proto = 'https'
+) => html`
 <!doctype html>
 <html ⚡>
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-		<link rel="canonical" href="${request.url}">
+		<link rel="canonical" href="${proto}://${config.domain}${request.url}">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700" rel="stylesheet">
 		<title>${message} - Dev | Token for OSS sustainability</title>
 		${await style`
