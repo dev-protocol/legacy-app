@@ -10,6 +10,7 @@ import { join } from '../template/join'
 import { large } from '../style/large'
 import { trade } from '../template/trade'
 import { config } from '../config'
+import { head } from '../template/head'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -19,27 +20,20 @@ interface Opts {
 
 const section = 'section'
 
-export const packagePage = async (
-	{ package: pkg, account, request }: Opts,
-	proto = 'https'
-) => html`
+export const packagePage = async ({
+	package: pkg,
+	account,
+	request
+}: Opts) => html`
 <!doctype html>
 <html ⚡>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-		<link rel="canonical" href="${proto}://${config.domain}${request.url}">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700" rel="stylesheet">
-		<title>${pkg.package} uses Dev - Dev | Token for OSS sustainability</title>
-		<link rel="icon" href="//asset.devtoken.rocks/favicon.ico">
-		<link rel="icon" type="image/png" sizes="32x32" href="//asset.devtoken.rocks/favicon-32x32.png">
-		<link rel="icon" type="image/png" sizes="16x16" href="//asset.devtoken.rocks/favicon-16x16.png">
-		<link rel="apple-touch-icon" sizes="180x180" href="//asset.devtoken.rocks/apple-touch-icon.png">
-		<link rel="manifest" href="//asset.devtoken.rocks/site.webmanifest">
-		<link rel="mask-icon" href="//asset.devtoken.rocks/safari-pinned-tab.svg" color="#5bbad5">
-		<meta name="msapplication-TileColor" content="#000000">
-		<meta name="theme-color" content="#000000">
-		${await style`
+	${await head({
+		title: `${pkg.package} uses Dev`,
+		url: {
+			host: config.domain,
+			path: request.url
+		},
+		injection: await style`
 			body {
 				background: black;
 				color: white;
@@ -69,8 +63,8 @@ export const packagePage = async (
 					`)}
 				}
 			}
-		`}
-	</head>
+		`
+	})}
 	<body>
 		${await header()}
 		<main>
