@@ -1,16 +1,21 @@
 import { amp as html } from '../lib/amp'
 import { IncomingMessage } from 'http'
 import { style } from '../lib/style'
-import { header } from '../template/header'
 import { imageLogo } from '../template/image-logo'
 
 interface Opts {
 	readonly request: IncomingMessage
 	readonly status: number
-	readonly message: string
+	readonly message?: string
 }
 
-export const error = async ({ request, status, message }: Opts) => html`
+const defaultMessage = 'page not found'
+
+export const error = async ({
+	request,
+	status,
+	message = defaultMessage
+}: Opts) => html`
 <!doctype html>
 <html ⚡>
 	<head>
