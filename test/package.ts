@@ -3,10 +3,10 @@
 import listen = require('test-listen')
 import test from 'ava'
 import micro from 'micro'
-import { app } from './src/app'
-import { get } from './src/lib/get'
+import { app } from '../src/app'
+import { get } from '../src/lib/get'
 import { getBalanceDev } from 'dev-distribution/src/libs'
-import { getPackage } from './src/lib/get-package'
+import { getPackage } from '../src/lib/get-package'
 import { DistributionTarget } from 'dev-distribution/src/types'
 import * as amphtmlValidator from 'amphtml-validator'
 
@@ -37,16 +37,12 @@ test('Valid AMP HTML', async t => {
 	t.is(result.status, 'PASS')
 })
 
-test('Request invalid routes, returns 404', async t => {
-	t.is((await get<string>(`${url}/package`, 'http')).statusCode, 404)
-
-	t.is((await get<string>(`${url}/x`, 'http')).statusCode, 404)
-
-	t.is((await get<string>(`${url}`, 'http')).statusCode, 404)
-})
-
 test('Request package names that do not exist, returns 404', async t => {
 	t.is((await get<string>(`${url}/package/x`, 'http')).statusCode, 404)
+})
+
+test('Request invalid routes, returns 404', async t => {
+	t.is((await get<string>(`${url}/package`, 'http')).statusCode, 404)
 })
 
 test.after(() => {
