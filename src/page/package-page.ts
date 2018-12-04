@@ -30,6 +30,7 @@ export const packagePage = async ({
 		<meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 		<link rel="canonical" href="${request.url}">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700" rel="stylesheet">
+		<title>${pkg.package} uses Dev - Dev | Token for OSS sustainability</title>
 		${await style`
 			body {
 				background: black;
