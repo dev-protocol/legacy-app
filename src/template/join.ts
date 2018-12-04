@@ -9,7 +9,8 @@ interface Opts {
 
 export const join = async ({ className = 'join' }: Opts = {}) =>
 	html`
-		${await style`
+		${
+			await style`
 			.${className} {
 				display: grid;
 				grid-auto-flow: row;
@@ -32,14 +33,16 @@ export const join = async ({ className = 'join' }: Opts = {}) =>
 					font-weight: 700;
 				}
 			}
-		`}
-
-		${container(
-			await html`
+		`
+		}
+		${
+			container(
+				await html`
 			<div class='${className}'>
 				<h2 class='${className}__heading'>Now join the Dev</h2>
 				<a class='${className}__button' href=//goo.gl/forms/1i0LrGHRId613bVp1 target=_blank rel=noopener>Register your OSS</a>
 			</div>
 		`
-		)}
+			)
+		}
 	`

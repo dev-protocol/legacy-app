@@ -17,7 +17,8 @@ export const packageInfo = async ({
 	className = 'package-info'
 }: Opts) =>
 	html`
-		${await style`
+		${
+			await style`
 			.${className} {
 				display: grid;
 				grid-gap: 1rem;
@@ -65,40 +66,43 @@ export const packageInfo = async ({
 					}
 				}
 			}
-		`}
-
-		${container(
-			await html`
-			<div class='${className}'>
-				<div class='${className}__tokens'>
-					<h1 class='${className}__heading'>
-						${pkg.package} uses Dev.
-					</h1>
-					<p>${pkg.package} welcomes your donation by Dev.</p>
-					<dl class='${className}__definition-list'>
-						<dt>Balance</dt>
-						<dd><code>${account.balance} DEV</code></dd>
-						<dt>Address</dt>
-						<dd><code>${account.address}</code></dd>
-					</dl>
-				</div>
-				<div class='${className}__address'>
-					<amp-img
-						class='${className}__qr'
-						alt='QR Code of ${pkg.package} address'
-						src='${await toDataURL(pkg.address, {
-							width: 500,
-							rendererOpts: {
-								quality: 1
-							}
-						})}'
-						width=1
-						height=1
-						layout=responsive>
-					</amp-img>
-					<p><small>Copy addresses with QR</small></p>
-				</div>
-			</div>
 		`
-		)}
+		}
+		${
+			container(
+				await html`
+					<div class="${className}">
+						<div class="${className}__tokens">
+							<h1 class="${className}__heading">${pkg.package} uses Dev.</h1>
+							<p>${pkg.package} welcomes your donation by Dev.</p>
+							<dl class="${className}__definition-list">
+								<dt>Balance</dt>
+								<dd><code>${account.balance} DEV</code></dd>
+								<dt>Address</dt>
+								<dd><code>${account.address}</code></dd>
+							</dl>
+						</div>
+						<div class="${className}__address">
+							<amp-img
+								class="${className}__qr"
+								alt="QR Code of ${pkg.package} address"
+								src="${
+									await toDataURL(pkg.address, {
+										width: 500,
+										rendererOpts: {
+											quality: 1
+										}
+									})
+								}"
+								width="1"
+								height="1"
+								layout="responsive"
+							>
+							</amp-img>
+							<p><small>Copy addresses with QR</small></p>
+						</div>
+					</div>
+				`
+			)
+		}
 	`

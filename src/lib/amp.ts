@@ -4,6 +4,7 @@ import * as cssnano from 'cssnano'
 import { html } from './html'
 
 export const style = createStyle({
+	// tslint:disable-next-line:readonly-array
 	plugins: [cssnano()],
 	build: css => css
 })

@@ -25,15 +25,16 @@ export const packagePage = async ({
 	account,
 	request
 }: Opts) => html`
-<!doctype html>
-<html ⚡>
-	${await head({
-		title: `${pkg.package} uses Dev`,
-		url: {
-			host: config.domain,
-			path: request.url
-		},
-		injection: await style`
+	<!DOCTYPE html>
+	<html ⚡>
+		${
+			await head({
+				title: `${pkg.package} uses Dev`,
+				url: {
+					host: config.domain,
+					path: request.url
+				},
+				injection: await style`
 			body {
 				background: black;
 				color: white;
@@ -64,27 +65,24 @@ export const packagePage = async ({
 				}
 			}
 		`
-	})}
-	<body>
-		${await header()}
-		<main>
-			<section class='${section}__package'>
-				${await packageInfo({
-					package: pkg,
-					account
-				})}
-			</section>
-			<section>
-				${await whats()}
-			</section>
-			<section>
-				${await join()}
-			</section>
-			<section>
-				${await trade()}
-			</section>
-		</main>
-		${await footer()}
-	</body>
-</html>
+			})
+		}
+		<body>
+			${await header()}
+			<main>
+				<section class="${section}__package">
+					${
+						await packageInfo({
+							package: pkg,
+							account
+						})
+					}
+				</section>
+				<section>${await whats()}</section>
+				<section>${await join()}</section>
+				<section>${await trade()}</section>
+			</main>
+			${await footer()}
+		</body>
+	</html>
 `

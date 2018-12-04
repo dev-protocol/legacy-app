@@ -5,7 +5,8 @@ import { large } from '../style/large'
 const className = 'container'
 
 export const container = async (content: string) => html`
-	${await style`
+	${
+		await style`
 		.${className} {
 			max-width: 900px;
 			margin: auto;
@@ -14,8 +15,7 @@ export const container = async (content: string) => html`
 				padding: 5rem;
 			`)}
 		}
-	`}
-	<div class='${className}'>
-		${content}
-	</div>
+	`
+	}
+	<div class="${className}">${content}</div>
 `

@@ -5,6 +5,7 @@ import * as cssnano from 'cssnano'
 import { html } from './html'
 
 export const style = createStyle({
+	// tslint:disable-next-line:readonly-array
 	plugins: [
 		nested(),
 		preset({
@@ -14,5 +15,10 @@ export const style = createStyle({
 		}),
 		cssnano()
 	],
-	build: css => html`<style>${css}</style>`
+	build: async css =>
+		html`
+			<style>
+				${css}
+			</style>
+		`
 })

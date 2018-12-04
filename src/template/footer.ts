@@ -9,7 +9,8 @@ interface Opts {
 
 export const footer = async ({ className = 'footer' }: Opts = {}) =>
 	html`
-		${await style`
+		${
+			await style`
 			.${className} {
 				display: grid;
 				grid-gap: 1rem;
@@ -18,14 +19,16 @@ export const footer = async ({ className = 'footer' }: Opts = {}) =>
 					margin: 0;
 				}
 			}
-		`}
-
-		${container(
-			await html`
-			<footer class='${className}'>
-				<p><a href='//devtoken.rocks/alpha/en'>${imageLogo()}</a></p>
-				<p>Token for OSS sustainability</p>
-			</footer>
 		`
-		)}
+		}
+		${
+			container(
+				await html`
+					<footer class="${className}">
+						<p><a href="//devtoken.rocks/alpha/en">${imageLogo()}</a></p>
+						<p>Token for OSS sustainability</p>
+					</footer>
+				`
+			)
+		}
 	`

@@ -7,7 +7,11 @@ interface Response<T> {
 	readonly statusCode: number
 }
 
-export const get = <T>(url: string, proto = 'https', opts = { json: true }) =>
+export const get = async <T>(
+	url: string,
+	proto = 'https',
+	opts = { json: true }
+) =>
 	new Promise<Response<T>>(resolve =>
 		_get(`${proto}:${url}`, opts, (_, res, body) =>
 			resolve({

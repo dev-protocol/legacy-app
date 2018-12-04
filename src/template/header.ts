@@ -9,7 +9,8 @@ interface Opts {
 
 export const header = async ({ className = 'header' }: Opts = {}) =>
 	html`
-		${await style`
+		${
+			await style`
 			.${className} {
 				padding: 1rem;
 				border-bottom: .5px solid #ffffff1f;
@@ -24,9 +25,10 @@ export const header = async ({ className = 'header' }: Opts = {}) =>
 					`)}
 				}
 			}
-		`}
+		`
+		}
 
-		<header class='${className}'>
-			<a href='//devtoken.rocks/alpha/en'>${imageLogo()}</a>
+		<header class="${className}">
+			<a href="//devtoken.rocks/alpha/en">${imageLogo()}</a>
 		</header>
 	`

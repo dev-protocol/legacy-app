@@ -1,10 +1,7 @@
 export const html = async (strings: TemplateStringsArray, ...values) => {
 	const resolved = await Promise.all<string>(
-		values.map(
-			async value =>
-				typeof value === 'function' || value instanceof Function
-					? value()
-					: value
+		values.map(async value =>
+			typeof value === 'function' || value instanceof Function ? value() : value
 		)
 	)
 	const resolvedLength = resolved.length

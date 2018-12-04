@@ -18,15 +18,16 @@ export const error = async ({
 	status,
 	message = defaultMessage
 }: Opts) => html`
-<!doctype html>
-<html ⚡>
-	${await head({
-		title: message,
-		url: {
-			host: config.domain,
-			path: request.url
-		},
-		injection: await style`
+	<!DOCTYPE html>
+	<html ⚡>
+		${
+			await head({
+				title: message,
+				url: {
+					host: config.domain,
+					path: request.url
+				},
+				injection: await style`
 			body {
 				background: black;
 				color: white;
@@ -48,13 +49,14 @@ export const error = async ({
 				margin: 0;
 			}
 		`
-	})}
-	<body>
-		<main>
-			<h1>${status}</h1>
-			<p>${message}</p>
-			<p><a href='//devtoken.rocks/alpha/en'>${imageLogo()}</a></p>
-		</main>
-	</body>
-</html>
+			})
+		}
+		<body>
+			<main>
+				<h1>${status}</h1>
+				<p>${message}</p>
+				<p><a href="//devtoken.rocks/alpha/en">${imageLogo()}</a></p>
+			</main>
+		</body>
+	</html>
 `
