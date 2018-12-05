@@ -64,10 +64,10 @@ export const sampleCode = async ({
 								escape(
 									await html`
 										<a href="https://devtoken.rocks/package/-"
-											><img
-												src="https://badge.devtoken.rocks/-"
-												alt="- Dev Token"
-										/></a>
+											>${
+												`<img src="https://badge.devtoken.rocks/-" alt="- Dev Token"/>`
+											}</a
+										>
 									`
 								)
 									.replace(/-/g, await placeholder)
