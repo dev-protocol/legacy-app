@@ -18,7 +18,7 @@ const ls = async (
 	token?: string | ReadonlyArray<string>
 ): Promise<LsPackagesResults | Error> =>
 	typeof username === 'string' && typeof token === 'string'
-		? lsPackages(username, { token })
+		? lsPackages(username, { token }).catch(err => err)
 		: new Error('invalid request')
 
 const handlers = {
