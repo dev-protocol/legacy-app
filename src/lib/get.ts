@@ -1,4 +1,4 @@
-import { get as _get } from 'request'
+import { get as _get, CoreOptions } from 'request'
 import { IncomingHttpHeaders } from 'http'
 
 interface Response<T> {
@@ -10,7 +10,7 @@ interface Response<T> {
 export const get = async <T>(
 	url: string,
 	proto = 'https',
-	opts = { json: true }
+	opts: CoreOptions = { json: true }
 ) =>
 	new Promise<Response<T>>(resolve =>
 		_get(`${proto}:${url}`, opts, (_, res, body) =>
