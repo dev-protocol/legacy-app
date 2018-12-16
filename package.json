@@ -24,6 +24,7 @@
 	"dependencies": {
 		"cssnano": "^4.1.7",
 		"dev-distribution": "^0.1.1",
+		"dotenv": "^6.2.0",
 		"escape-html": "^1.0.3",
 		"libnpmaccess": "^3.0.1",
 		"lit-style": "^0.1.1",
@@ -36,6 +37,7 @@
 	},
 	"devDependencies": {
 		"@types/amphtml-validator": "^1.0.0",
+		"@types/dotenv": "^6.1.0",
 		"@types/escape-html": "0.0.20",
 		"@types/micro": "^7.3.3",
 		"@types/qrcode": "^1.3.0",
