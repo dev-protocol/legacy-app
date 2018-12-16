@@ -7,6 +7,11 @@ import micro from 'micro'
 import { app } from '../../src/app'
 import { lsPackages } from 'libnpmaccess'
 import { get } from '../../src/lib/get'
+import { config } from 'dotenv'
+
+config()
+
+const { TEST_NPM_USER, TEST_NPM_READ_TOKEN } = process.env
 
 // tslint:disable-next-line:no-let
 let url = ''
@@ -18,13 +23,12 @@ test.before(async () => {
 })
 
 test('Get user owned packages', async t => {
-	const token = '46909224-b9c8-4cec-8193-986ae9b0f5c6'
-	const expected = await lsPackages('aggre', {
-		token
+	const expected = await lsPackages(TEST_NPM_USER, {
+		token: TEST_NPM_READ_TOKEN
 	})
-	const res = await get(`${url}/api/packages/aggre`, 'http', {
+	const res = await get(`${url}/api/packages/${TEST_NPM_USER}`, 'http', {
 		auth: {
-			bearer: token
+			bearer: TEST_NPM_READ_TOKEN
 		},
 		json: true
 	})
@@ -32,13 +36,12 @@ test('Get user owned packages', async t => {
 })
 
 test('Invalid user', async t => {
-	const token = '46909224-b9c8-4cec-8193-986ae9b0f5c6'
 	const res = await get<{ readonly message: string }>(
-		`${url}/api/packages/aggre____________`,
+		`${url}/api/packages/${TEST_NPM_USER}____________`,
 		'http',
 		{
 			auth: {
-				bearer: token
+				bearer: TEST_NPM_READ_TOKEN
 			},
 			json: true
 		}
@@ -50,7 +53,7 @@ test('Invalid user', async t => {
 test('Invalid token', async t => {
 	const token = '000000'
 	const res = await get<{ readonly message: string }>(
-		`${url}/api/packages/aggre`,
+		`${url}/api/packages/${TEST_NPM_USER}`,
 		'http',
 		{
 			auth: {
