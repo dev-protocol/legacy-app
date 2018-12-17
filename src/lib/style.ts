@@ -1,9 +1,9 @@
-import { createStyle } from 'lit-style'
+import { process, directive } from 'lit-style'
 import * as preset from 'postcss-preset-env'
 import * as nested from 'postcss-nested'
 import { html } from './html'
 
-export const style = createStyle({
+const processor = process({
 	// tslint:disable-next-line:readonly-array
 	plugins: [
 		nested(),
@@ -12,11 +12,15 @@ export const style = createStyle({
 			browsers: 'last 2 versions',
 			autoprefixer: { grid: true }
 		})
-	],
-	build: async css =>
+	]
+})
+
+export const style = directive(
+	processor,
+	async css =>
 		html`
 			<style>
-				${css}
+				${await css}
 			</style>
 		`
-})
+)

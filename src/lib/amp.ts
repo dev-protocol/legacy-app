@@ -1,12 +1,11 @@
-import { createStyle } from 'lit-style'
+import { process } from 'lit-style'
 import { cutOutStyle } from './cut-out-style'
 import * as cssnano from 'cssnano'
 import { html } from './html'
 
-export const style = createStyle({
+const style = process({
 	// tslint:disable-next-line:readonly-array
-	plugins: [cssnano()],
-	build: css => css
+	plugins: [cssnano()]
 })
 
 const boilerplate =
@@ -23,7 +22,7 @@ export const amp = new Proxy(html, {
 			addedBoilerplate,
 			'<script async src="https://cdn.ampproject.org/v0.js"></script>'
 		)
-		const ampCustom = await style`${styles}`
-		return beforeHead(addedAmpScript, `<style amp-custom>${ampCustom}</style>`)
+		const ampCustom = `<style amp-custom>${await style`${styles}`}</style>`
+		return beforeHead(addedAmpScript, ampCustom)
 	}
 })
