@@ -26,9 +26,9 @@ const handlers = {
 		ls(username, getToken(req))
 }
 
-export const packages = async ({ pathname, request }: Opts) => {
+export const npm = async ({ pathname, request }: Opts) => {
 	const { method = '' } = request
 	const m = method.toLowerCase()
-	const [, , , username] = pathname.split('/')
+	const [, , , , , username] = pathname.split('/')
 	return m === 'get' ? handlers[m](username, request) : false
 }
