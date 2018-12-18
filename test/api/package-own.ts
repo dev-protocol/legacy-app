@@ -16,9 +16,9 @@ test.before(async () => {
 })
 
 test('Request invalid routes, returns 404', async t => {
-	t.is((await get<string>(`${url}/api/package/x`, 'http')).statusCode, 404)
+	t.is((await get<string>(`${url}/api/package/own/x`, 'http')).statusCode, 404)
 
-	t.is((await get<string>(`${url}/api/package`, 'http')).statusCode, 404)
+	t.is((await get<string>(`${url}/api/package/own`, 'http')).statusCode, 404)
 })
 
 test.after(() => {

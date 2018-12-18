@@ -1,7 +1,7 @@
 import { IncomingMessage } from 'http'
-import { packages } from '../page/api/packages'
+import { pkg } from '../page/api/package'
 
 export const api = async (pathname: string, request: IncomingMessage) => {
 	const [, , feature] = pathname.split('/')
-	return feature === 'packages' ? packages({ pathname, request }) : false
+	return feature === 'packages' ? pkg({ pathname, request }) : false
 }
