@@ -5,6 +5,7 @@ import { error } from './page/error'
 import { packageR } from './route/package-r'
 import { doc } from './route/doc'
 import { api } from './route/api'
+import { root } from './route/root'
 
 export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const { url = '' } = request
@@ -18,6 +19,8 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			? await doc(pathname, request)
 			: route === 'api'
 			? await api(pathname, request)
+			: route === ''
+			? await root(pathname, request)
 			: false
 	const status = result instanceof Error ? 400 : result ? 200 : 404
 	const body =
