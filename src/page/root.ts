@@ -19,9 +19,7 @@ const classNames = {
 	downloads: 'downloads',
 	features: 'features',
 	exchange: 'exchange',
-	button: {
-		start: 'button__start'
-	}
+	button: 'button'
 }
 
 export const root = async ({ request }: Opts) => html`
@@ -67,8 +65,15 @@ export const root = async ({ request }: Opts) => html`
 					padding: 5rem;
 				`)}
 			}
-			.${classNames.button.start} {
+			.${classNames.button} {
 				place-self: center;
+			}
+			.${classNames.heading} {
+				h1 {
+					${large(`
+						font-size: 3rem;
+					`)}
+				}
 			}
 			.${classNames.exchange} {
 				a {
@@ -85,7 +90,7 @@ export const root = async ({ request }: Opts) => html`
 				}
 			}
 			.${classNames.features} {
-				div {
+				&__list {
 					display: grid;
 					grid-gap: 1rem;
 					grid-template-columns: repeat(2, 1fr);
@@ -97,8 +102,8 @@ export const root = async ({ request }: Opts) => html`
 		<body>
 			${await ampAnalytics()} ${await header()}
 			<main>
-				<section>
-					<div class="${classNames.content} ${classNames.heading}">
+				<section class="${classNames.heading}">
+					<div class="${classNames.content}">
 						<h1>Token for OSS Sustainability</h1>
 						<p>Dev monetizes open source right now.</p>
 						<p>
@@ -108,22 +113,23 @@ export const root = async ({ request }: Opts) => html`
 						${await button({
 							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
 							content: 'start now',
-							className: classNames.button.start
+							className: classNames.button
 						})}
 					</div>
 				</section>
-				<section>
-					<div class="${classNames.content} ${classNames.downloads}">
+				<section class="${classNames.downloads}">
+					<div class="${classNames.content}">
 						<h2>OSS Downloads</h2>
 						<p>Monthly<br />500M+</p>
 						${await button({
 							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
-							content: 'lean more'
+							content: 'lean more',
+							className: classNames.button
 						})}
 					</div>
 				</section>
-				<section>
-					<div class="${classNames.content} ${classNames.exchange}">
+				<section class="${classNames.exchange}">
+					<div class="${classNames.content}">
 						<h2>Exchange</h2>
 						<a href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH" target="_blank" rel="noopener">
 							<amp-img alt='EtherDelta'
@@ -136,10 +142,10 @@ export const root = async ({ request }: Opts) => html`
 						</a>
 					</div>
 				</section>
-				<section>
-					<div class="${classNames.content} ${classNames.features}">
+				<section class="${classNames.features}">
+					<div class="${classNames.content}">
 						<h2>Features</h2>
-						<div>
+						<div class="${classNames.features}__list">
 							<p>Support open source project</p>
 							<amp-img alt='image: Support open source project'
 								src=//dummyimage.com/600x400/ccc/0011ff
