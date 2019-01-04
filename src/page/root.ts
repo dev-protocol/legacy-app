@@ -85,7 +85,7 @@ export const root = async ({ request }: Opts) => html`
 					grid-template-areas: 'content figure';
 					grid-template-columns: auto 1fr;
 					`)}
-				& ${classNames.content} {
+				& .${classNames.content} {
 					grid-area: content;
 				}
 				& figure {
