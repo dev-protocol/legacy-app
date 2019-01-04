@@ -91,6 +91,12 @@ export const root = async ({ request }: Opts) => html`
 				& figure {
 					grid-area: figure;
 				}
+				& .${classNames.button} {
+					justify-self: normal;
+					text-align: center;
+					font-weight: bold;
+					background-image: linear-gradient(120deg, #00ebff, #f200df 35%, #ff4700);
+				}
 				h1 {
 					font-size: 2rem;
 					${large(`
