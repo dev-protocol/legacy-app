@@ -5,9 +5,9 @@ import { config } from '../config'
 import { head } from '../template/head'
 import { ampAnalytics } from '../template/amp-analytics'
 import { header } from '../template/header'
-import { container } from '../template/container'
 import { button } from '../template/button'
 import { footer } from '../template/footer'
+import { large } from '../style/large'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -27,15 +27,14 @@ const classNames = {
 export const root = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡>
-		${
-			await head({
-				title: '',
-				description: '',
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: await style`
+		${await head({
+			title: '',
+			description: '',
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: await style`
 			body {
 				background: black;
 				color: white;
@@ -47,7 +46,7 @@ export const root = async ({ request }: Opts) => html`
 				align-content: center;
 				grid-gap: 2rem;
 				text-transform: capitalize;
-				min-height: 100vh;
+				justify-content: stretch;
 			}
 			a {
 				color: white;
@@ -61,6 +60,12 @@ export const root = async ({ request }: Opts) => html`
 				display: grid;
 				grid-gap: 1rem;
 				text-align: center;
+				margin: auto;
+				padding: 5rem 2rem;
+				box-sizing: border-box;
+				${large(`
+					padding: 5rem;
+				`)}
 			}
 			.${classNames.button.start} {
 				place-self: center;
@@ -88,106 +93,76 @@ export const root = async ({ request }: Opts) => html`
 				}
 			}
 		`
-			})
-		}
+		})}
 		<body>
 			${await ampAnalytics()} ${await header()}
 			<main>
 				<section>
-					${
-						await container(
-							await html`
-								<div class="${classNames.content} ${classNames.heading}">
-									<h1>Token for OSS Sustainability</h1>
-									<p>Dev monetizes open source right now.</p>
-									<p>
-										Anyone can start without changing licenses, codes, and
-										support.
-									</p>
-									<p>Just publish your open source to npm.</p>
-									${
-										await button({
-											link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
-											content: 'start now',
-											className: classNames.button.start
-										})
-									}
-								</div>
-							`
-						)
-					}
+					<div class="${classNames.content} ${classNames.heading}">
+						<h1>Token for OSS Sustainability</h1>
+						<p>Dev monetizes open source right now.</p>
+						<p>
+							Anyone can start without changing licenses, codes, and support.
+						</p>
+						<p>Just publish your open source to npm.</p>
+						${await button({
+							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
+							content: 'start now',
+							className: classNames.button.start
+						})}
+					</div>
 				</section>
 				<section>
-					${
-						await container(
-							await html`
-								<div class="${classNames.content} ${classNames.downloads}">
-									<h2>OSS Downloads</h2>
-									<p>Monthly<br />500M+</p>
-									${
-										await button({
-											link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
-											content: 'lean more'
-										})
-									}
-								</div>
-							`
-						)
-					}
+					<div class="${classNames.content} ${classNames.downloads}">
+						<h2>OSS Downloads</h2>
+						<p>Monthly<br />500M+</p>
+						${await button({
+							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
+							content: 'lean more'
+						})}
+					</div>
 				</section>
 				<section>
-					${
-						await container(
-							await html`
-								<div class="${classNames.content} ${classNames.exchange}">
-									<h2>Exchange</h2>
-									<a href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH" target="_blank" rel="noopener">
-										<amp-img alt='EtherDelta'
-											src=//asset.devtoken.rocks/etherdelta.svg
-											width=2500
-											height=2232
-											layout=responsive>
-										</amp-img>
-										<span>EtherDelta</span>
-									</a>
-								</div>
-							`
-						)
-					}
+					<div class="${classNames.content} ${classNames.exchange}">
+						<h2>Exchange</h2>
+						<a href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH" target="_blank" rel="noopener">
+							<amp-img alt='EtherDelta'
+								src=//asset.devtoken.rocks/etherdelta.svg
+								width=2500
+								height=2232
+								layout=responsive>
+							</amp-img>
+							<span>EtherDelta</span>
+						</a>
+					</div>
 				</section>
 				<section>
-					${
-						await container(
-							await html`
-								<div class="${classNames.content} ${classNames.features}">
-									<h2>Features</h2>
-									<div>
-										<p>Support open source project</p>
-										<amp-img alt='image: Support open source project'
-											src=//dummyimage.com/600x400/ccc/0011ff
-											width=600
-											height=400
-											layout=responsive>
-										</amp-img>
-										<amp-img alt='image: Find an influential open source project'
-											src=//dummyimage.com/600x400/ccc/0011ff
-											width=600
-											height=400
-											layout=responsive>
-										</amp-img>
-										<p>Find an influential open source project</p>
-										<p>Receive rewards for contributions and activities</p>
-										<amp-img alt='image: Receive rewards for contributions and activities'
-											src=//dummyimage.com/600x400/ccc/0011ff
-											width=600
-											height=400
-											layout=responsive>
-										</amp-img>
-									</div>
-								</div>
-							`
-						)
-					}
+					<div class="${classNames.content} ${classNames.features}">
+						<h2>Features</h2>
+						<div>
+							<p>Support open source project</p>
+							<amp-img alt='image: Support open source project'
+								src=//dummyimage.com/600x400/ccc/0011ff
+								width=600
+								height=400
+								layout=responsive>
+							</amp-img>
+							<amp-img alt='image: Find an influential open source project'
+								src=//dummyimage.com/600x400/ccc/0011ff
+								width=600
+								height=400
+								layout=responsive>
+							</amp-img>
+							<p>Find an influential open source project</p>
+							<p>Receive rewards for contributions and activities</p>
+							<amp-img alt='image: Receive rewards for contributions and activities'
+								src=//dummyimage.com/600x400/ccc/0011ff
+								width=600
+								height=400
+								layout=responsive>
+							</amp-img>
+						</div>
+					</div>
 				</section>
 			</main>
 			${await footer()}
