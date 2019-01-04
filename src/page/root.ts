@@ -38,14 +38,6 @@ export const root = async ({ request }: Opts) => html`
 				color: white;
 				font-family: 'Montserrat Alternates', sans-serif;
 			}
-			main {
-				display: grid;
-				justify-content: center;
-				align-content: center;
-				grid-gap: 2rem;
-				text-transform: capitalize;
-				justify-content: stretch;
-			}
 			a {
 				color: white;
 			}
@@ -54,48 +46,91 @@ export const root = async ({ request }: Opts) => html`
 			p {
 				margin: 0;
 			}
+			section {
+				display: grid;
+				width: 100%;
+				max-width: 1600px;
+				margin: auto;
+				padding: 3rem 0;
+				align-items: start;
+				${large(`
+					grid-auto-flow: column;
+				`)}
+			}
+			figure {
+				margin: 0;
+			}
 			.${classNames.content} {
 				display: grid;
 				grid-gap: 1rem;
-				text-align: center;
-				margin: auto;
-				padding: 5rem 2rem;
+				padding: 2rem;
 				box-sizing: border-box;
+				max-width: 450px;
+				justify-items: center;
 				${large(`
-					padding: 5rem;
+					justify-items: start;
 				`)}
 			}
 			.${classNames.button} {
-				place-self: center;
+				margin-top: 2rem;
+				${large(`
+					margin-top: 3rem;
+				`)}
 			}
 			.${classNames.heading} {
+				grid-template-areas:
+					'figure'
+					'content';
+				${large(`
+					grid-template-areas: 'content figure';
+					grid-template-columns: auto 1fr;
+					`)}
+				& ${classNames.content} {
+					grid-area: content;
+				}
+				& figure {
+					grid-area: figure;
+				}
 				h1 {
+					font-size: 2rem;
 					${large(`
 						font-size: 3rem;
 					`)}
 				}
 			}
+			.${classNames.downloads} {
+				justify-content: center;
+				${large(`
+					grid-template-columns: 1fr 50%;
+				`)}
+			}
 			.${classNames.exchange} {
+				align-items: center;
+				grid-gap: 5rem;
+				justify-content: center;
+				justify-items: center;
+				${large(`
+					grid-gap: 10rem;
+				`)}
 				a {
+					display: grid;
+					grid-gap: 1rem;
+					grid-auto-flow: column;
+					align-items: center;
 					text-decoration: none;
 					amp-img {
 						width: 100px;
-						display: inline-block;
-						vertical-align: middle;
 					}
 					span {
-						margin-left: 1rem;
 						font-size: 2rem;
 					}
 				}
 			}
 			.${classNames.features} {
-				&__list {
-					display: grid;
-					grid-gap: 1rem;
-					grid-template-columns: repeat(2, 1fr);
-					align-items: center;
-				}
+				align-items: center;
+				${large(`
+					grid-template-columns: 1fr 50%;
+				`)}
 			}
 		`
 		})}
@@ -104,7 +139,8 @@ export const root = async ({ request }: Opts) => html`
 			<main>
 				<section class="${classNames.heading}">
 					<div class="${classNames.content}">
-						<h1>Token for OSS Sustainability</h1>
+						<h1>Code as Life</h1>
+						<p>Dev is a token for OSS sustainability.</p>
 						<p>Dev monetizes open source right now.</p>
 						<p>
 							Anyone can start without changing licenses, codes, and support.
@@ -112,62 +148,64 @@ export const root = async ({ request }: Opts) => html`
 						<p>Just publish your open source to npm.</p>
 						${await button({
 							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
-							content: 'start now',
+							content: 'Start Now',
 							className: classNames.button
 						})}
 					</div>
+					<figure>
+						<amp-img alt='image'
+							src=//dummyimage.com/1000x600/000/0011ff
+							width=1000
+							height=600
+							layout=responsive>
+						</amp-img>
+					</figure>
 				</section>
 				<section class="${classNames.downloads}">
+					<figure>
+						<amp-img alt='image'
+							src=//dummyimage.com/1000x600/000/0011ff
+							width=1000
+							height=600
+							layout=responsive>
+						</amp-img>
+					</figure>
 					<div class="${classNames.content}">
 						<h2>OSS Downloads</h2>
 						<p>Monthly<br />500M+</p>
 						${await button({
 							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
-							content: 'lean more',
+							content: 'Lean More',
 							className: classNames.button
 						})}
 					</div>
 				</section>
 				<section class="${classNames.exchange}">
-					<div class="${classNames.content}">
-						<h2>Exchange</h2>
-						<a href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH" target="_blank" rel="noopener">
-							<amp-img alt='EtherDelta'
-								src=//asset.devtoken.rocks/etherdelta.svg
-								width=2500
-								height=2232
-								layout=responsive>
-							</amp-img>
-							<span>EtherDelta</span>
-						</a>
-					</div>
+					<h2>Exchange</h2>
+					<a href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH" target="_blank" rel="noopener">
+						<amp-img alt='EtherDelta'
+							src=//asset.devtoken.rocks/etherdelta.svg
+							width=2500
+							height=2232
+							layout=responsive>
+						</amp-img>
+						<span>EtherDelta</span>
+					</a>
 				</section>
 				<section class="${classNames.features}">
+					<figure>
+						<amp-img alt='image'
+							src=//dummyimage.com/1000x600/000/0011ff
+							width=1000
+							height=600
+							layout=responsive>
+						</amp-img>
+					</figure>
 					<div class="${classNames.content}">
 						<h2>Features</h2>
-						<div class="${classNames.features}__list">
-							<p>Support open source project</p>
-							<amp-img alt='image: Support open source project'
-								src=//dummyimage.com/600x400/ccc/0011ff
-								width=600
-								height=400
-								layout=responsive>
-							</amp-img>
-							<amp-img alt='image: Find an influential open source project'
-								src=//dummyimage.com/600x400/ccc/0011ff
-								width=600
-								height=400
-								layout=responsive>
-							</amp-img>
-							<p>Find an influential open source project</p>
-							<p>Receive rewards for contributions and activities</p>
-							<amp-img alt='image: Receive rewards for contributions and activities'
-								src=//dummyimage.com/600x400/ccc/0011ff
-								width=600
-								height=400
-								layout=responsive>
-							</amp-img>
-						</div>
+						<p>Support open source project</p>
+						<p>Find an influential open source project</p>
+						<p>Receive rewards for contributions and activities</p>
 					</div>
 				</section>
 			</main>
