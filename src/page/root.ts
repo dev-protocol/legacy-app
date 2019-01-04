@@ -46,6 +46,13 @@ export const root = async ({ request }: Opts) => html`
 			p {
 				margin: 0;
 			}
+			h1,
+			h2 {
+				margin-bottom: 3rem;
+			}
+			h2 {
+				font-weight: normal
+			}
 			section {
 				display: grid;
 				width: 100%;
@@ -133,6 +140,7 @@ export const root = async ({ request }: Opts) => html`
 				}
 			}
 			.${classNames.features} {
+				justify-items: baseline;
 				align-items: center;
 				${large(`
 					grid-template-columns: 1fr 50%;
