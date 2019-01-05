@@ -53,11 +53,19 @@ export const root = async ({ request }: Opts) => html`
 			h2 {
 				font-weight: normal
 			}
+			main {
+				display: grid;
+				grid-gap: 2rem;
+				justify-content: stretch;
+				justify-items: center;
+				${large(`
+					grid-gap: 5rem;
+				`)}
+			}
 			section {
 				display: grid;
 				width: 100%;
 				max-width: 1600px;
-				margin: auto;
 				padding: 3rem 0;
 				align-items: start;
 				${large(`
@@ -134,7 +142,11 @@ export const root = async ({ request }: Opts) => html`
 				justify-items: center;
 				${large(`
 					grid-gap: 10rem;
+					padding: 10rem 0;
 				`)}
+				h2 {
+					margin: 0;
+				}
 				a {
 					display: grid;
 					grid-gap: 1rem;
@@ -150,11 +162,27 @@ export const root = async ({ request }: Opts) => html`
 				}
 			}
 			.${classNames.features} {
-				justify-items: baseline;
-				align-items: center;
-				${large(`
-					grid-template-columns: 1fr 50%;
-				`)}
+				justify-content: center;
+				p {
+					font-size: 1.2rem;
+					${large(`
+						font-size: 1.6rem;
+					`)}
+					&::before {
+						content: '';
+						display: inline-block;
+						width: 0.6em;
+						height: 0.6em;
+						background: #E91E63;
+						border-radius: 50%;
+						margin-right: 1rem;
+					}
+				}
+				& .${classNames.content} {
+					max-width: inherit;
+					justify-items: baseline;
+
+				}
 			}
 		`
 		})}
@@ -206,6 +234,14 @@ export const root = async ({ request }: Opts) => html`
 						})}
 					</div>
 				</section>
+				<section class="${classNames.features}">
+					<div class="${classNames.content}">
+						<h2>Features</h2>
+						<p>Support open source project</p>
+						<p>Find an influential open source project</p>
+						<p>Receive rewards for contributions and activities</p>
+					</div>
+				</section>
 				<section class="${classNames.exchange}">
 					<h2>Exchange</h2>
 					<a href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH" target="_blank" rel="noopener">
@@ -217,22 +253,6 @@ export const root = async ({ request }: Opts) => html`
 						</amp-img>
 						<span>EtherDelta</span>
 					</a>
-				</section>
-				<section class="${classNames.features}">
-					<figure>
-						<amp-img alt='image'
-							src=//dummyimage.com/1000x600/000/0011ff
-							width=1000
-							height=600
-							layout=responsive>
-						</amp-img>
-					</figure>
-					<div class="${classNames.content}">
-						<h2>Features</h2>
-						<p>Support open source project</p>
-						<p>Find an influential open source project</p>
-						<p>Receive rewards for contributions and activities</p>
-					</div>
 				</section>
 			</main>
 			${await footer()}
