@@ -16,6 +16,7 @@ interface Opts {
 const classNames = {
 	content: 'content',
 	heading: 'heading',
+	howItWorks: 'how-it-works',
 	downloads: 'downloads',
 	features: 'features',
 	exchange: 'exchange',
@@ -161,6 +162,85 @@ export const root = async ({ request }: Opts) => html`
 					}
 				}
 			}
+			.${classNames.howItWorks} {
+				justify-content: center;
+				& .${classNames.content} {
+					margin: auto;
+					max-width: 580px;
+					justify-items: baseline;
+				}
+				ul {
+					display: grid;
+					justify-items: center;
+					margin: 0;
+					padding: 0;
+					list-style: none;
+					font-size: 0.8rem;
+					${large(`
+						font-size: 1rem;
+					`)}
+					li {
+						span {
+							display: inline-block;
+							padding: 0.2rem 0.4rem;
+							background: #FFC107;
+							border-radius: 5px;
+							color: black;
+						}
+					}
+				}
+				&__start {
+					&::after {
+						content: '';
+						display: block;
+						margin: 1rem;
+						height: 60px;
+						background-image: url(//asset.devtoken.rocks/lp/arrow.svg);
+						background-position: center;
+						background-repeat: no-repeat;
+					}
+				}
+				&__cycle {
+					align-items: center;
+					text-align: center;
+					grid-template-columns: repeat(2, 1fr);
+					grid-template-areas:
+						'top top'
+						'first second'
+						'bottom bottom';
+					background-image: url(//asset.devtoken.rocks/lp/cycle.svg);
+					background-position: center;
+					background-repeat: no-repeat;
+					background-size: 70%;
+					${large(`
+						background-size: contain;
+					`)}
+					li {
+						background: black;
+						padding: 0.5rem;
+						&:first-child {
+							grid-area: first;
+						}
+						&:last-child {
+							grid-area: second;
+						}
+					}
+					&::before,
+					&::after {
+						content: '';
+						display: block;
+						height: 100px;
+						width: 100%;
+					}
+					&::before {
+						grid-area: top;
+					}
+					&::after {
+						grid-area: bottom;
+						transform: scaleX(-1) scaleY(-1);
+					}
+				}
+			}
 			.${classNames.features} {
 				justify-content: center;
 				p {
@@ -181,7 +261,6 @@ export const root = async ({ request }: Opts) => html`
 				& .${classNames.content} {
 					max-width: inherit;
 					justify-items: baseline;
-
 				}
 			}
 		`
@@ -212,6 +291,24 @@ export const root = async ({ request }: Opts) => html`
 							layout=responsive>
 						</amp-img>
 					</figure>
+				</section>
+				<section class="${classNames.howItWorks}">
+					<div>
+						<ul>
+							<li class="${classNames.howItWorks}__start">Register OSS</li>
+							<ul class="${classNames.howItWorks}__cycle">
+								<li>
+									<p><span>20th of every month</span></p>
+									<p>"Dev" is automatically added to your wallet.</p></li>
+								<li>Exchange to another token</li>
+							</ul>
+						</ul>
+						<div class="${classNames.content}">
+							<p>"Dev" works to achieve fair monetization of your OSS.</p>
+							<p>Neither commission fees nor usage fees are required.</p>
+							<p>For details, please see the <a href="https://medium.com/devtoken/dev-tokens-for-oss-a63e55c60e6b" target="_blank">blog story</a>.</p>
+						</div>
+					</div>
 				</section>
 				<section class="${classNames.downloads}">
 					<figure>
