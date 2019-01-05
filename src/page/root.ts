@@ -168,9 +168,9 @@ export const root = async ({ request }: Opts) => html`
 					</div>
 					<figure>
 						<amp-img alt='image'
-							src=//dummyimage.com/1000x600/000/0011ff
-							width=1000
-							height=600
+							src=//asset.devtoken.rocks/lp/cover.svg
+							width=255
+							height=150
 							layout=responsive>
 						</amp-img>
 					</figure>
