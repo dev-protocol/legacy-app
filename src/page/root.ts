@@ -116,6 +116,16 @@ export const root = async ({ request }: Opts) => html`
 				${large(`
 					grid-template-columns: 1fr 50%;
 				`)}
+				&__strong {
+					font-weight: bolder;
+					color: #FFC107;
+				}
+				figure {
+					padding: 2rem;
+					${large(`
+						padding: 5rem;
+					`)}
+				}
 			}
 			.${classNames.exchange} {
 				align-items: center;
@@ -178,15 +188,17 @@ export const root = async ({ request }: Opts) => html`
 				<section class="${classNames.downloads}">
 					<figure>
 						<amp-img alt='image'
-							src=//dummyimage.com/1000x600/000/0011ff
-							width=1000
-							height=600
+							src=//asset.devtoken.rocks/lp/chart/2018-12.png
+							width=2212
+							height=1296
 							layout=responsive>
 						</amp-img>
 					</figure>
 					<div class="${classNames.content}">
 						<h2>OSS Downloads</h2>
-						<p>Monthly<br />500M+</p>
+						<p>OSS registered to Dev is downloaded over an average of <span class="${
+							classNames.downloads
+						}__strong">428 million</span> on average every month.</p>
 						${await button({
 							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
 							content: 'Lean More',
