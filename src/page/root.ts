@@ -191,7 +191,7 @@ export const root = async ({ request }: Opts) => html`
 						}
 					}
 				}
-				&__start {
+				& &__start {
 					&::after {
 						content: '';
 						display: block;
@@ -202,44 +202,18 @@ export const root = async ({ request }: Opts) => html`
 						background-repeat: no-repeat;
 					}
 				}
-				&__cycle {
+				& &__cycle {
 					align-items: center;
 					text-align: center;
+					padding: 6rem 0;
 					grid-template-columns: repeat(2, 1fr);
-					grid-template-areas:
-						'top top'
-						'first second'
-						'bottom bottom';
 					background-image: url(//asset.devtoken.rocks/lp/cycle.svg);
 					background-position: center;
 					background-repeat: no-repeat;
-					background-size: 70%;
-					${large(`
-						background-size: contain;
-					`)}
+					background-size: contain;
 					li {
 						background: black;
 						padding: 0.5rem;
-						&:first-child {
-							grid-area: first;
-						}
-						&:last-child {
-							grid-area: second;
-						}
-					}
-					&::before,
-					&::after {
-						content: '';
-						display: block;
-						height: 100px;
-						width: 100%;
-					}
-					&::before {
-						grid-area: top;
-					}
-					&::after {
-						grid-area: bottom;
-						transform: scaleX(-1) scaleY(-1);
 					}
 				}
 			}
