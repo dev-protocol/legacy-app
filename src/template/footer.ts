@@ -26,7 +26,7 @@ export const footer = async ({ className = 'footer' }: Opts = {}) =>
 				await html`
 					<footer class="${className}">
 						<p><a href="//devtoken.rocks/alpha/en">${imageLogo()}</a></p>
-						<p>Token for OSS sustainability</p>
+						<p>Tokens for OSS sustainability</p>
 					</footer>
 				`
 			)

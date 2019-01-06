@@ -271,7 +271,7 @@ export const root = async ({ request }: Opts) => html`
 				<section class="${classNames.heading}">
 					<div class="${classNames.content}">
 						<h1>Code as Life</h1>
-						<p>Dev is a token for OSS sustainability.</p>
+						<p>Dev is a tokens for OSS sustainability.</p>
 						<p>Dev monetizes open source right now.</p>
 						<p>
 							Anyone can start without changing licenses, codes, and support.
@@ -321,9 +321,9 @@ export const root = async ({ request }: Opts) => html`
 					</figure>
 					<div class="${classNames.content}">
 						<h2>OSS Downloads</h2>
-						<p>OSS registered to Dev is downloaded over an average of <span class="${
+						<p>OSS registered to Dev is <span class="${
 							classNames.downloads
-						}__strong">428 million</span> on average every month.</p>
+						}__strong">428 million</span> average downloaded every month.</p>
 						${await button({
 							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
 							content: 'Lean More',
