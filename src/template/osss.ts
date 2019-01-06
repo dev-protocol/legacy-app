@@ -27,11 +27,7 @@ export const osss = async ({ className = 'oss-list' }: Opts = {}) =>
 				await asyncMap(
 					sortBy(pkgs.body, o => o.package.replace('@', '')).map(
 						async pkg => html`
-							<a
-								class="${className}__pkg"
-								href="//www.npmjs.com/package/${pkg.package}"
-								target="_blank"
-								rel="noopener"
+							<a class="${className}__pkg" href="/package/${pkg.package}"
 								>${pkg.package}</a
 							>
 						`

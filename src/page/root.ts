@@ -117,6 +117,7 @@ export const root = async ({ request }: Opts) => html`
 				}
 				h1 {
 					font-size: 2rem;
+					text-align: center;
 					${large(`
 						font-size: 3rem;
 					`)}
@@ -166,6 +167,9 @@ export const root = async ({ request }: Opts) => html`
 			}
 			.${classNames.howItWorks} {
 				justify-content: center;
+				h2 {
+					text-align: center;
+				}
 				& .${classNames.content} {
 					margin: auto;
 					max-width: 580px;
@@ -270,6 +274,7 @@ export const root = async ({ request }: Opts) => html`
 				</section>
 				<section class="${classNames.howItWorks}">
 					<div>
+						<h2>How it works</h2>
 						<ul>
 							<li class="${classNames.howItWorks}__start">Register OSS</li>
 							<ul class="${classNames.howItWorks}__cycle">
@@ -301,7 +306,7 @@ export const root = async ({ request }: Opts) => html`
 							classNames.downloads
 						}__strong">428 million</span> average downloaded every month.</p>
 						${await button({
-							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
+							link: '/oss',
 							content: 'Lean More',
 							className: classNames.button
 						})}

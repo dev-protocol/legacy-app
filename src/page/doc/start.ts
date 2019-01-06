@@ -101,7 +101,7 @@ export const start = async ({ request }: Opts) => html`
 									sandbox="allow-scripts allow-same-origin">
 										<amp-img
 											layout="fill"
-											src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAJUlEQVQYV2NkQAP/////z4gsBhYAAZggTADEBwsiC4AF0QVAggAaRhQC9fJaWAAAAABJRU5ErkJggg=="
+											src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
 											placeholder>
 										</amp-img>
 									</amp-iframe>
