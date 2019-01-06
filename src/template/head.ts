@@ -21,7 +21,7 @@ export const head = async ({
 	title,
 	description,
 	url,
-	injection
+	injection = ''
 }: Opts) => html`
 	<head>
 		<meta charset="utf-8" />
