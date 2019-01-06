@@ -8,7 +8,7 @@ import { header } from '../template/header'
 import { button } from '../template/button'
 import { footer } from '../template/footer'
 import { large } from '../style/large'
-import { orange } from '../style/color'
+import { orange, gradientDev } from '../style/color'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -112,7 +112,7 @@ export const root = async ({ request }: Opts) => html`
 					justify-self: normal;
 					text-align: center;
 					font-weight: bold;
-					background-image: linear-gradient(120deg, #00ebff, #f200df 35%, #ff4700);
+					background-image: ${gradientDev};
 				}
 				h1 {
 					font-size: 2rem;
@@ -279,7 +279,7 @@ export const root = async ({ request }: Opts) => html`
 						</p>
 						<p>Just publish your open source to npm.</p>
 						${await button({
-							link: 'https://goo.gl/forms/1i0LrGHRId613bVp1',
+							link: '/doc/start',
 							content: 'Start Now',
 							className: classNames.button
 						})}
