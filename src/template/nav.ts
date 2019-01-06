@@ -14,8 +14,7 @@ export const navId = 'nav'
 
 export const nav = async ({ className = 'nav' }: Opts = {}) =>
 	html`
-		${
-			await style`
+		${await style`
 			#${navId} {
 				display: grid;
 				width: 100%;
@@ -56,6 +55,19 @@ export const nav = async ({ className = 'nav' }: Opts = {}) =>
 					margin: 0;
 					padding: 0;
 					list-style: none;
+					display: grid;
+					grid-auto-flow: row;
+					grid-gap: 2rem;
+					justify-content: center;
+					align-items: center;
+					${large(`
+						grid-auto-flow: column;
+					`)}
+					li {
+						a {
+							text-decoration: none;
+						}
+					}
 				}
 				& &__start {
 					padding: 0.5rem 1rem;
@@ -63,8 +75,7 @@ export const nav = async ({ className = 'nav' }: Opts = {}) =>
 					font-weight: bolder;
 				}
 			}
-	`
-		}
+	`}
 
 		<amp-sidebar id="${navId}" layout="nodisplay" side="right">
 			<button on="tap:${navId}.close"><span></span> <span></span></button>
@@ -75,13 +86,14 @@ export const nav = async ({ className = 'nav' }: Opts = {}) =>
 			>
 				<ul>
 					<li>
-						${
-							await button({
-								link: '/doc/start',
-								content: 'Start Now',
-								className: `${className}__start`
-							})
-						}
+						<a href=/oss>OSSs</a>
+					</li>
+					<li>
+						${await button({
+							link: '/doc/start',
+							content: 'Start Now',
+							className: `${className}__start`
+						})}
 					</li>
 				</ul>
 			</nav>
