@@ -114,6 +114,7 @@ export const head = async ({
 		/>
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="//twitter.com/devtoken_rocks" />
-		${await ampComponent('amp-analytics')} ${injection}
+		${await ampComponent('amp-sidebar')} ${await ampComponent('amp-analytics')}
+		${injection}
 	</head>
 `

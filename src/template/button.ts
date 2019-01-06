@@ -17,6 +17,7 @@ export const button = async ({
 	${
 		await style`
 		.${className} {
+			display: inline-block;
 			padding: 1rem 2rem;
 			border-radius: 99px;
 			background: #607D8B;

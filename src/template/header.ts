@@ -2,12 +2,14 @@ import { html } from '../lib/html'
 import { style } from '../lib/style'
 import { imageLogo } from './image-logo'
 import { large } from '../style/large'
-import { button } from './button'
-import { gradientDev } from '../style/color'
+import { navId } from './nav'
+import { button } from '../style/reset'
 
 interface Opts {
 	readonly className?: string
 }
+
+export const toolbarTarget = 'toolbarTargetNav'
 
 export const header = async ({ className = 'header' }: Opts = {}) =>
 	html`
@@ -23,8 +25,29 @@ export const header = async ({ className = 'header' }: Opts = {}) =>
 				${large(`
 					padding: 2rem;
 				`)}
-				nav {
-
+				#${toolbarTarget} {
+					& > * {
+						display: grid;
+						grid-auto-flow: column;
+						align-items: center;
+						grid-gap: 2rem;
+					}
+				}
+				button {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					align-self: stretch;
+					${button}
+					span {
+						display: block;
+						width: 30px;
+						height: 1px;
+						background: white;
+					}
+					${large(`
+						display: none;
+					`)}
 				}
 				&__brand {
 					display: inline-block;
@@ -33,24 +56,13 @@ export const header = async ({ className = 'header' }: Opts = {}) =>
 						width: 70px;
 					`)}
 				}
-				& &__start {
-					padding: 0.5rem 1rem;
-					background-image: ${gradientDev};
-				}
 			}
 		`
 		}
 
 		<header class="${className}">
 			<a class="${className}__brand" href="/">${imageLogo()}</a>
-			<nav>
-				${
-					await button({
-						link: '/doc/start',
-						content: 'Start Now',
-						className: `${className}__start`
-					})
-				}
-			</nav>
+			<div id="${toolbarTarget}"></div>
+			<button on="tap:${navId}.toggle"><span></span> <span></span></button>
 		</header>
 	`

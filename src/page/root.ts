@@ -9,6 +9,7 @@ import { button } from '../template/button'
 import { footer } from '../template/footer'
 import { large } from '../style/large'
 import { orange, gradientDev } from '../style/color'
+import { nav } from '../template/nav'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -267,7 +268,7 @@ export const root = async ({ request }: Opts) => html`
 		`
 		})}
 		<body>
-			${await ampAnalytics()} ${await header()}
+			${await ampAnalytics()} ${await header()} ${await nav()}
 			<main>
 				<section class="${classNames.heading}">
 					<div class="${classNames.content}">
