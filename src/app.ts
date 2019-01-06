@@ -6,7 +6,7 @@ import { packageR } from './route/package-r'
 import { doc } from './route/doc'
 import { api } from './route/api'
 import { root } from './route/root'
-import { oss } from './page/oss'
+import { oss } from './route/oss'
 
 export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const { url = '' } = request
@@ -21,7 +21,7 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			: route === 'api'
 			? await api(pathname, request)
 			: route === 'oss'
-			? await oss({ request })
+			? await oss(pathname, request)
 			: route === ''
 			? await root(pathname, request)
 			: false
