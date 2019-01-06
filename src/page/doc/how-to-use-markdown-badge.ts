@@ -10,6 +10,7 @@ import { ampComponent } from '../../lib/amp-component'
 import { sampleCode } from '../../template/sample-code'
 import { docHeading } from '../../template/doc-heading'
 import { docContent } from '../../template/doc-content'
+import { nav } from '../../template/nav'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -48,7 +49,7 @@ export const howToUseMarkdownBadge = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()}
+			${await ampAnalytics()} ${await header()} ${await nav()}
 			<main>
 				${await docHeading({ title: 'How To Use Markdown Badge' })}
 				${

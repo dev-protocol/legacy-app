@@ -10,6 +10,7 @@ import { ampComponent } from '../../lib/amp-component'
 import { docHeading } from '../../template/doc-heading'
 import { docContent } from '../../template/doc-content'
 import { orange } from '../../style/color'
+import { nav } from '../../template/nav'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -83,7 +84,7 @@ export const start = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()}
+			${await ampAnalytics()} ${await header()} ${await nav()}
 			<main>
 				${await docHeading({ title: 'Register Your OSS and Start Dev' })}
 				${

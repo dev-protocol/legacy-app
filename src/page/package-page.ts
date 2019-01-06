@@ -12,6 +12,7 @@ import { trade } from '../template/trade'
 import { config } from '../config'
 import { head } from '../template/head'
 import { ampAnalytics } from '../template/amp-analytics'
+import { nav } from '../template/nav'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -68,7 +69,7 @@ export const packagePage = async ({
 			})
 		}
 		<body>
-			${await ampAnalytics()} ${await header()}
+			${await ampAnalytics()} ${await header()} ${await nav()}
 			<main>
 				<section class="${section}__package">
 					${
