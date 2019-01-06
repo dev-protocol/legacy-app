@@ -8,6 +8,7 @@ import { header } from '../template/header'
 import { button } from '../template/button'
 import { footer } from '../template/footer'
 import { large } from '../style/large'
+import { orange } from '../style/color'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -127,7 +128,7 @@ export const root = async ({ request }: Opts) => html`
 				`)}
 				&__strong {
 					font-weight: bolder;
-					color: #FFC107;
+					color: ${orange};
 				}
 				figure {
 					padding: 2rem;
@@ -183,7 +184,7 @@ export const root = async ({ request }: Opts) => html`
 						span {
 							display: inline-block;
 							padding: 0.2rem 0.4rem;
-							background: #FFC107;
+							background: ${orange};
 							border-radius: 5px;
 							color: black;
 						}

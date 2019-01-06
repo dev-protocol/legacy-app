@@ -9,6 +9,7 @@ import { header } from '../../template/header'
 import { ampComponent } from '../../lib/amp-component'
 import { docHeading } from '../../template/doc-heading'
 import { docContent } from '../../template/doc-content'
+import { orange } from '../../style/color'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -66,7 +67,7 @@ export const start = async ({ request }: Opts) => html`
 							left: 0;
 							counter-increment: count;
 							font-weight: bolder;
-							color: #FFC107;
+							color: ${orange};
 						}
 					}
 				}
