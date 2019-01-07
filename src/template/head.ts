@@ -109,6 +109,8 @@ export const head = async ({
 		<meta property="og:title" content="${escapeHTML(title)}" />
 		<meta name="description" content="${escapeHTML(description)}" />
 		<meta property="og:description" content="${escapeHTML(description)}" />
+		<meta name="twitter:title" content="${escapeHTML(title)}" />
+		<meta name="twitter:description" content="${escapeHTML(description)}" />
 		<meta
 			property="og:image"
 			content="${
@@ -127,7 +129,7 @@ export const head = async ({
 				})
 			}"
 		/>
-		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="//twitter.com/devtoken_rocks" />
 		${await ampComponent('amp-sidebar')} ${await ampComponent('amp-analytics')}
 		${injection}
