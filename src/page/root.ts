@@ -307,7 +307,7 @@ export const root = async ({ request }: Opts) => html`
 						}__strong">428 million</span> average downloaded every month.</p>
 						${await button({
 							link: '/oss',
-							content: 'Lean More',
+							content: 'Learn More',
 							className: classNames.button
 						})}
 					</div>

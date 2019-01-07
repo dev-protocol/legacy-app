@@ -40,7 +40,7 @@ export const join = async ({ className = 'join' }: Opts = {}) =>
 				await html`
 			<div class='${className}'>
 				<h2 class='${className}__heading'>Now join the Dev</h2>
-				<a class='${className}__button' href=//goo.gl/forms/1i0LrGHRId613bVp1 target=_blank rel=noopener>Register your OSS</a>
+				<a class='${className}__button' href=/doc/start>Register your OSS</a>
 			</div>
 		`
 			)
