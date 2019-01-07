@@ -58,7 +58,7 @@ export const error = async ({
 			<main>
 				<h1>${status}</h1>
 				<p>${message}</p>
-				<p><a href="//devtoken.rocks/alpha/en">${imageLogo()}</a></p>
+				<p><a href="/">${imageLogo()}</a></p>
 			</main>
 		</body>
 	</html>
