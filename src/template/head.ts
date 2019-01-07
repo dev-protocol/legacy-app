@@ -111,7 +111,7 @@ export const head = async ({
 			content="${
 				absolutePath({
 					host: 'asset.devtoken.rocks',
-					path: image ? image : '/icon.png'
+					path: image ? image : '/og.png'
 				})
 			}"
 		/>
@@ -120,7 +120,7 @@ export const head = async ({
 			content="${
 				absolutePath({
 					host: 'asset.devtoken.rocks',
-					path: image ? image : '/icon.png'
+					path: image ? image : '/og.png'
 				})
 			}"
 		/>
