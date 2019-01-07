@@ -105,7 +105,7 @@ export const footer = async ({ className = 'footer' }: Opts = {}) =>
 									${
 										asyncMap(
 											navs.map(
-												nav => html`
+												async nav => html`
 													<li>
 														<a
 															href="${nav.link}"
