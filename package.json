@@ -5,6 +5,7 @@
 	"main": "src/index.js",
 	"scripts": {
 		"start": "micro",
+		"prestart": "npm run build",
 		"build": "tsc -p ./",
 		"test": "ava",
 		"pretest": "npm run build",
