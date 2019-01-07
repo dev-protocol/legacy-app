@@ -34,7 +34,9 @@ export const head = async ({
 			href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700"
 			rel="stylesheet"
 		/>
-		<title>${title} - Dev | Tokens for OSS sustainability</title>
+		<title>
+			${title ? `${title} - ` : ''}Dev | Tokens for OSS sustainability
+		</title>
 		<link
 			rel="icon"
 			href="${

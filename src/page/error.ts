@@ -20,7 +20,7 @@ export const error = async ({
 	message = defaultMessage
 }: Opts) => html`
 	<!DOCTYPE html>
-	<html ⚡>
+	<html ⚡ lang="en">
 		${
 			await head({
 				title: message,

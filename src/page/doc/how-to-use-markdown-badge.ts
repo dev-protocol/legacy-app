@@ -18,7 +18,7 @@ interface Opts {
 
 export const howToUseMarkdownBadge = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
-	<html ⚡>
+	<html ⚡ lang="en">
 		${
 			await head({
 				title: 'How To Use Markdown Badge',

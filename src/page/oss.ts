@@ -26,7 +26,7 @@ const classNames = {
 
 export const oss = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
-	<html ⚡>
+	<html ⚡ lang="en">
 		${
 			await head({
 				title: 'OSSs',

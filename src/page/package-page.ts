@@ -28,7 +28,7 @@ export const packagePage = async ({
 	request
 }: Opts) => html`
 	<!DOCTYPE html>
-	<html ⚡>
+	<html ⚡ lang="en">
 		${
 			await head({
 				title: `${pkg.package} is using Dev`,

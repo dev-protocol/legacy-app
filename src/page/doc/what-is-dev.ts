@@ -30,11 +30,12 @@ const classNames = {
 
 export const whatIsDev = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
-	<html ⚡>
+	<html ⚡ lang="en">
 		${
 			await head({
-				title: 'What’s Dev?',
-				description: 'What’s Dev?',
+				title: 'What is Dev?',
+				description:
+					'"Dev" is an ERC20 token for open source software (OSS) sustainability.',
 				url: {
 					host: config.domain,
 					path: request.url
@@ -116,7 +117,7 @@ export const whatIsDev = async ({ request }: Opts) => html`
 		<body>
 			${await ampAnalytics()} ${await header()} ${await nav()}
 			<main>
-				${await docHeading({ title: 'What’s Dev?' })}
+				${await docHeading({ title: 'What is Dev?' })}
 				${
 					await docContent({
 						content: await raw`

@@ -27,10 +27,10 @@ const classNames = {
 
 export const root = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
-	<html ⚡>
+	<html ⚡ lang="en">
 		${await head({
 			title: '',
-			description: '',
+			description: 'Code as Life',
 			url: {
 				host: config.domain,
 				path: request.url
@@ -251,7 +251,7 @@ export const root = async ({ request }: Opts) => html`
 				<section class="${classNames.heading}">
 					<div class="${classNames.content}">
 						<h1>Code as Life</h1>
-						<p>Dev is tokens for OSS sustainability.</p>
+						<p>Dev is an ERC20 token for open source sustainability.</p>
 						<p>Dev will monetize open source.</p>
 						<p>
 							Anyone can start without changing licenses, codes, and support.

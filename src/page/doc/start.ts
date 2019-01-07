@@ -22,7 +22,7 @@ const classNames = {
 
 export const start = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
-	<html ⚡>
+	<html ⚡ lang="en">
 		${
 			await head({
 				title: 'Start Dev',
