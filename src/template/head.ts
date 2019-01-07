@@ -1,3 +1,4 @@
+import * as escapeHTML from 'escape-html'
 import { html } from '../lib/html'
 import { ampComponent } from '../lib/amp-component'
 
@@ -37,7 +38,11 @@ export const head = async ({
 			rel="stylesheet"
 		/>
 		<title>
-			${title ? `${title} - ` : ''}Dev | Tokens for OSS sustainability
+			${
+				escapeHTML(
+					`${title ? `${title} - ` : ''}Dev | Tokens for OSS sustainability`
+				)
+			}
 		</title>
 		<link
 			rel="icon"
@@ -101,9 +106,9 @@ export const head = async ({
 		<meta property="og:site_name" content="Dev" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="${absolutePath(url)}" />
-		<meta property="og:title" content="${title}" />
-		<meta name="description" content="${description}" />
-		<meta property="og:description" content="${description}" />
+		<meta property="og:title" content="${escapeHTML(title)}" />
+		<meta name="description" content="${escapeHTML(description)}" />
+		<meta property="og:description" content="${escapeHTML(description)}" />
 		<meta
 			property="og:image"
 			content="${
