@@ -7,6 +7,7 @@ import { doc } from './route/doc'
 import { api } from './route/api'
 import { root } from './route/root'
 import { oss } from './route/oss'
+import { setHeader } from './lib/set-header'
 
 export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const { url = '' } = request
@@ -32,5 +33,5 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			: result
 			? result
 			: await error({ status, request })
-	return send(res, status, body)
+	return send(setHeader(res), status, body)
 }
