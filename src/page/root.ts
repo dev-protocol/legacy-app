@@ -31,6 +31,7 @@ export const root = async ({ request }: Opts) => html`
 		${await head({
 			title: '',
 			description: 'Code as Life',
+			image: '/lp/og.png',
 			url: {
 				host: config.domain,
 				path: request.url

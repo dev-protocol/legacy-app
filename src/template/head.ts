@@ -12,6 +12,7 @@ interface Opts {
 	readonly url: URL
 	readonly description: string
 	readonly injection?: string
+	readonly image?: string
 }
 
 const absolutePath = ({ protocol = 'https', host, path = '' }: URL) =>
@@ -21,7 +22,8 @@ export const head = async ({
 	title,
 	description,
 	url,
-	injection = ''
+	injection = '',
+	image
 }: Opts) => html`
 	<head>
 		<meta charset="utf-8" />
@@ -105,13 +107,19 @@ export const head = async ({
 		<meta
 			property="og:image"
 			content="${
-				absolutePath({ host: 'asset.devtoken.rocks', path: '/icon.png' })
+				absolutePath({
+					host: 'asset.devtoken.rocks',
+					path: image ? image : '/icon.png'
+				})
 			}"
 		/>
 		<meta
 			name="twitter:image"
 			content="${
-				absolutePath({ host: 'asset.devtoken.rocks', path: '/icon.png' })
+				absolutePath({
+					host: 'asset.devtoken.rocks',
+					path: image ? image : '/icon.png'
+				})
 			}"
 		/>
 		<meta name="twitter:card" content="summary" />
