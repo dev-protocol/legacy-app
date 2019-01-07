@@ -71,6 +71,7 @@ export const root = async ({ request }: Opts) => html`
 				width: 100%;
 				max-width: 1600px;
 				padding: 3rem 0;
+				justify-content: center;
 				align-items: start;
 				${large(`
 					grid-auto-flow: column;
@@ -106,6 +107,7 @@ export const root = async ({ request }: Opts) => html`
 					`)}
 				& .${classNames.content} {
 					grid-area: content;
+					justify-items: baseline;
 				}
 				& figure {
 					grid-area: figure;
@@ -118,9 +120,10 @@ export const root = async ({ request }: Opts) => html`
 				}
 				h1 {
 					font-size: 2rem;
-					text-align: center;
+					justify-self: center;
 					${large(`
 						font-size: 3rem;
+						justify-self: baseline;
 					`)}
 				}
 			}
