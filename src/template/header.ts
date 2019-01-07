@@ -2,22 +2,55 @@ import { html } from '../lib/html'
 import { style } from '../lib/style'
 import { imageLogo } from './image-logo'
 import { large } from '../style/large'
+import { navId } from './nav'
+import { button } from '../style/reset'
+import { lightWhite } from '../style/color'
 
 interface Opts {
 	readonly className?: string
 }
+
+export const toolbarTarget = 'toolbarTargetNav'
 
 export const header = async ({ className = 'header' }: Opts = {}) =>
 	html`
 		${
 			await style`
 			.${className} {
+				display: grid;
+				grid-auto-flow: column;
+				align-items: center;
+				justify-content: space-between;
 				padding: 1rem;
-				border-bottom: .5px solid #ffffff1f;
+				border-bottom: .5px solid ${lightWhite};
 				${large(`
 					padding: 2rem;
 				`)}
-				& a {
+				#${toolbarTarget} {
+					& > * {
+						display: grid;
+						grid-auto-flow: column;
+						align-items: center;
+						grid-gap: 2rem;
+					}
+				}
+				button {
+					display: flex;
+					flex-direction: column;
+					justify-content: space-around;
+					align-self: stretch;
+					${button}
+					span {
+						display: block;
+						width: 30px;
+						height: 1px;
+						background: white;
+					}
+					${large(`
+						display: none;
+					`)}
+				}
+				&__brand {
 					display: inline-block;
 					width: 50px;
 					${large(`
@@ -29,6 +62,8 @@ export const header = async ({ className = 'header' }: Opts = {}) =>
 		}
 
 		<header class="${className}">
-			<a href="//devtoken.rocks/alpha/en">${imageLogo()}</a>
+			<a class="${className}__brand" href="/">${imageLogo()}</a>
+			<div id="${toolbarTarget}"></div>
+			<button on="tap:${navId}.toggle"><span></span> <span></span></button>
 		</header>
 	`

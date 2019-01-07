@@ -1,3 +1,4 @@
+import * as escapeHTML from 'escape-html'
 import { html } from '../lib/html'
 import { ampComponent } from '../lib/amp-component'
 
@@ -12,6 +13,7 @@ interface Opts {
 	readonly url: URL
 	readonly description: string
 	readonly injection?: string
+	readonly image?: string
 }
 
 const absolutePath = ({ protocol = 'https', host, path = '' }: URL) =>
@@ -21,7 +23,8 @@ export const head = async ({
 	title,
 	description,
 	url,
-	injection
+	injection = '',
+	image
 }: Opts) => html`
 	<head>
 		<meta charset="utf-8" />
@@ -34,7 +37,13 @@ export const head = async ({
 			href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700"
 			rel="stylesheet"
 		/>
-		<title>${title} - Dev | Token for OSS sustainability</title>
+		<title>
+			${
+				escapeHTML(
+					`${title ? `${title} - ` : ''}Dev | Tokens for OSS sustainability`
+				)
+			}
+		</title>
 		<link
 			rel="icon"
 			href="${
@@ -97,23 +106,30 @@ export const head = async ({
 		<meta property="og:site_name" content="Dev" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="${absolutePath(url)}" />
-		<meta property="og:title" content="${title}" />
-		<meta name="description" content="${description}" />
-		<meta property="og:description" content="${description}" />
+		<meta property="og:title" content="${escapeHTML(title)}" />
+		<meta name="description" content="${escapeHTML(description)}" />
+		<meta property="og:description" content="${escapeHTML(description)}" />
 		<meta
 			property="og:image"
 			content="${
-				absolutePath({ host: 'asset.devtoken.rocks', path: '/icon.png' })
+				absolutePath({
+					host: 'asset.devtoken.rocks',
+					path: image ? image : '/icon.png'
+				})
 			}"
 		/>
 		<meta
 			name="twitter:image"
 			content="${
-				absolutePath({ host: 'asset.devtoken.rocks', path: '/icon.png' })
+				absolutePath({
+					host: 'asset.devtoken.rocks',
+					path: image ? image : '/icon.png'
+				})
 			}"
 		/>
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:site" content="//twitter.com/devtoken_rocks" />
-		${await ampComponent('amp-analytics')} ${injection}
+		${await ampComponent('amp-sidebar')} ${await ampComponent('amp-analytics')}
+		${injection}
 	</head>
 `
