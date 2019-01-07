@@ -4,6 +4,7 @@ import { imageLogo } from './image-logo'
 import { large } from '../style/large'
 import { navId } from './nav'
 import { button } from '../style/reset'
+import { lightWhite } from '../style/color'
 
 interface Opts {
 	readonly className?: string
@@ -21,7 +22,7 @@ export const header = async ({ className = 'header' }: Opts = {}) =>
 				align-items: center;
 				justify-content: space-between;
 				padding: 1rem;
-				border-bottom: .5px solid #ffffff1f;
+				border-bottom: .5px solid ${lightWhite};
 				${large(`
 					padding: 2rem;
 				`)}

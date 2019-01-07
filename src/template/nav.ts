@@ -86,6 +86,9 @@ export const nav = async ({ className = 'nav' }: Opts = {}) =>
 			>
 				<ul>
 					<li>
+						<a href=/doc/what-is-dev>What is Dev?</a>
+					</li>
+					<li>
 						<a href=/oss>OSSs</a>
 					</li>
 					<li>

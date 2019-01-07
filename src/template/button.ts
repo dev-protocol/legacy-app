@@ -11,7 +11,7 @@ interface Opts {
 export const button = async ({
 	content,
 	link,
-	target = '_self',
+	target,
 	className = 'button'
 }: Opts) => html`
 	${
@@ -22,7 +22,11 @@ export const button = async ({
 			border-radius: 99px;
 			background: #607D8B;
 			text-decoration: none;
+			text-align: center;
 		}
 	`
-	} <a class="${className}" href="${link}" target="${target}">${content}</a>
+	}
+	<a class="${className}" href="${link}" ${target ? `target="${target}"` : ''}
+		>${content}</a
+	>
 `
