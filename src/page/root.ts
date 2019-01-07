@@ -251,8 +251,8 @@ export const root = async ({ request }: Opts) => html`
 				<section class="${classNames.heading}">
 					<div class="${classNames.content}">
 						<h1>Code as Life</h1>
-						<p>Dev is a tokens for OSS sustainability.</p>
-						<p>Dev monetizes open source right now.</p>
+						<p>Dev is tokens for OSS sustainability.</p>
+						<p>Dev will monetize open source.</p>
 						<p>
 							Anyone can start without changing licenses, codes, and support.
 						</p>
