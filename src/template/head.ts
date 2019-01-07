@@ -16,6 +16,7 @@ interface Opts {
 	readonly image?: string
 }
 
+const defaultTitle = 'Dev - Tokens for OSS sustainability'
 const absolutePath = ({ protocol = 'https', host, path = '' }: URL) =>
 	`${protocol}://${host}${path}`
 
@@ -37,13 +38,7 @@ export const head = async ({
 			href="https://fonts.googleapis.com/css?family=Montserrat+Alternates:400,700"
 			rel="stylesheet"
 		/>
-		<title>
-			${
-				escapeHTML(
-					`${title ? `${title} - ` : ''}Dev - Tokens for OSS sustainability`
-				)
-			}
-		</title>
+		<title>${escapeHTML(`${title ? `${title} - ` : ''}${defaultTitle}`)}</title>
 		<link
 			rel="icon"
 			href="${
@@ -106,10 +101,10 @@ export const head = async ({
 		<meta property="og:site_name" content="Dev" />
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="${absolutePath(url)}" />
-		<meta property="og:title" content="${escapeHTML(title)}" />
+		<meta property="og:title" content="${escapeHTML(title || defaultTitle)}" />
 		<meta name="description" content="${escapeHTML(description)}" />
 		<meta property="og:description" content="${escapeHTML(description)}" />
-		<meta name="twitter:title" content="${escapeHTML(title)}" />
+		<meta name="twitter:title" content="${escapeHTML(title || defaultTitle)}" />
 		<meta name="twitter:description" content="${escapeHTML(description)}" />
 		<meta
 			property="og:image"
