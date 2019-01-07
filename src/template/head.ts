@@ -40,7 +40,7 @@ export const head = async ({
 		<title>
 			${
 				escapeHTML(
-					`${title ? `${title} - ` : ''}Dev | Tokens for OSS sustainability`
+					`${title ? `${title} - ` : ''}Dev - Tokens for OSS sustainability`
 				)
 			}
 		</title>

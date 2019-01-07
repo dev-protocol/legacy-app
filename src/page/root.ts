@@ -30,7 +30,8 @@ export const root = async ({ request }: Opts) => html`
 	<html ⚡ lang="en">
 		${await head({
 			title: '',
-			description: 'Code as Life',
+			description:
+				'Dev is an ERC20 token for open source sustainability. Dev will monetize open source.',
 			image: '/lp/og.png',
 			url: {
 				host: config.domain,
