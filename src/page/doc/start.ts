@@ -17,8 +17,25 @@ interface Opts {
 }
 
 const classNames = {
-	badge: 'badge'
+	badge: 'badge',
+	sectionTitle: 'section-title'
 }
+
+const badge = async () => html`
+	<li class="${classNames.badge}">
+		<p>Please add a markdown badge to your README.md.</p>
+		<div class="${classNames.badge}__how">
+			<p>You can use the badge, such as the following.</p>
+			<amp-img alt='Dev'
+				src=//asset.devtoken.rocks/doc/markdown-badge.svg
+				width=88.63
+				height=20
+				layout=fixed>
+			</amp-img>
+			<p>💡 <a href="/doc/how-to-use-markdown-badge">How to use markdown badge</a>.</p>
+		</div>
+	</li>
+`
 
 export const start = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
@@ -31,7 +48,9 @@ export const start = async ({ request }: Opts) => html`
 					host: config.domain,
 					path: request.url
 				},
-				injection: await ampComponent('amp-iframe')
+				injection: await html`
+					${ampComponent('amp-iframe')} ${ampComponent('amp-accordion')}
+				`
 			})
 		}
 		${
@@ -49,6 +68,18 @@ export const start = async ({ request }: Opts) => html`
 				h1,
 				p {
 					margin: 0;
+				}
+				amp-accordion {
+					section {
+						.${classNames.sectionTitle} {
+							background: transparent;
+							border: 0;
+							padding: 1rem 0;
+						}
+						&:last-child {
+							margin-top: 3rem;
+						}
+					}
 				}
 				ol {
 					margin: 0;
@@ -90,42 +121,73 @@ export const start = async ({ request }: Opts) => html`
 				${
 					await docContent({
 						content: await raw`
-							<ol>
-								<li>
-									Please entry and submit the following form.
-									<amp-iframe
-									src="https://docs.google.com/forms/d/e/1FAIpQLSct3glMzEebDeqgCKNCLxyAY0xxcJNoPWoK2awFNQS5a-s9rA/viewform?embedded=true"
-									width=640
-									height=640
-									layout="responsive"
-									sandbox="allow-scripts allow-same-origin">
-										<amp-img
-											layout="fill"
-											src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-											placeholder>
-										</amp-img>
-									</amp-iframe>
-								</li>
-								<li>
-									Confirmation email is sent to email address. Once you click the link, confirmation is complete.
-								</li>
-								<li class="${classNames.badge}">
-									<p>Please add a markdown badge to your README.md.</p>
-									<div class="${classNames.badge}__how">
-										<p>You can use the badge, such as the following.</p>
-										<amp-img alt='Dev'
-											src=//asset.devtoken.rocks/doc/markdown-badge.svg
-											width=88.63
-											height=20
-											layout=fixed>
-										</amp-img>
-										<p>💡 <a href="/doc/how-to-use-markdown-badge">How to use markdown badge</a>.</p>
+							<amp-accordion>
+								<section expanded>
+									<h2 class="${
+										classNames.sectionTitle
+									}">a. Bulk register all OSSs using npm read-only token.</h2>
+									<div>
+										<ol>
+											<li>
+												Please entry and submit the following form.
+												<amp-iframe
+													src="https://docs.google.com/forms/d/e/1FAIpQLSdwDVAgKdrmNosAsdPit2CTiX3z7kPP6komWqFB5TJN__9WeQ/viewform?embedded=true"
+													width="640"
+													height="640"
+													layout="responsive"
+													sandbox="allow-scripts allow-same-origin"
+												>
+													<amp-img
+														layout="fill"
+														src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+														placeholder
+													>
+													</amp-img>
+												</amp-iframe>
+												<p>When OSSs registration is completed, we will contact you by email. Then please delete the read-only token.</p>
+											</li>
+											${await badge()}
+											<li>
+												Congratulations!🎉 You can get Dev on the 20th of every month.
+											</li>
+										</ol>
 									</div>
-								</li>
-								<li>
-									Congratulations!🎉 You can get Dev on the 20th of every month.
-								</li>
-							</ol>
+								</section>
+								<section>
+									<h2 class="${
+										classNames.sectionTitle
+									}">b. Register your specified OSSs using email authentication.</h2>
+									<div>
+										<ol>
+											<li>
+												Please entry and submit the following form.
+												<amp-iframe
+													src="https://docs.google.com/forms/d/e/1FAIpQLSct3glMzEebDeqgCKNCLxyAY0xxcJNoPWoK2awFNQS5a-s9rA/viewform?embedded=true"
+													width="640"
+													height="640"
+													layout="responsive"
+													sandbox="allow-scripts allow-same-origin"
+												>
+													<amp-img
+														layout="fill"
+														src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+														placeholder
+													>
+													</amp-img>
+												</amp-iframe>
+											</li>
+											<li>
+												Confirmation email is sent to email address. Once you click the
+												link, confirmation is complete.
+											</li>
+											${await badge()}
+											<li>
+												Congratulations!🎉 You can get Dev on the 20th of every month.
+											</li>
+										</ol>
+									</div>
+								</section>
+							</amp-accordion>
 						`
 					})
 				}
