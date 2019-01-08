@@ -32,7 +32,7 @@ export const root = async ({ request }: Opts) => html`
 			title: '',
 			description:
 				'Dev is an ERC20 token for open source sustainability. Dev will monetize open source.',
-			image: '/lp/og.png',
+			image: '/lp/code-as-life.png',
 			url: {
 				host: config.domain,
 				path: request.url
