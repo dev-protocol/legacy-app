@@ -5,6 +5,8 @@
 		"moduleResolution": "node",
 		"strictNullChecks": true,
 		"module": "commonjs",
+		"outDir": "build",
+		"rootDir": ".",
 		"plugins": [
 			{
 				"name": "typescript-lit-html-plugin"

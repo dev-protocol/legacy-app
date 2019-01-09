@@ -2,7 +2,7 @@
 	"name": "dev-app",
 	"version": "1.0.0",
 	"description": "",
-	"main": "src/index.js",
+	"main": "build/src/index.js",
 	"scripts": {
 		"start": "micro",
 		"prestart": "npm run build",

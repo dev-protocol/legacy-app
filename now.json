@@ -1,7 +1,7 @@
 {
 	"version": 2,
 	"alias": "dev-app",
-	"builds": [{ "src": "src/index.js", "use": "@now/node" }],
+	"builds": [{ "src": "build/src/index.js", "use": "@now/node" }],
 	"routes": [
 		{
 			"src": "/alpha/.*",
@@ -12,7 +12,7 @@
 		},
 		{
 			"src": ".*",
-			"dest": "src/index.js"
+			"dest": "build/src/index.js"
 		}
 	]
 }
