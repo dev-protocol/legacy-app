@@ -1,6 +1,6 @@
 {
 	"version": 2,
-	"alias": "dev-app",
+	"alias": "devtoken.rocks",
 	"builds": [{ "src": "build/src/index.js", "use": "@now/node" }],
 	"routes": [
 		{
