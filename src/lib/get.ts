@@ -1,7 +1,7 @@
 import { get as _get, CoreOptions } from 'request'
 import { IncomingHttpHeaders } from 'http'
 
-interface Response<T> {
+export interface Response<T> {
 	readonly body: T
 	readonly headers: IncomingHttpHeaders
 	readonly statusCode: number
@@ -13,11 +13,11 @@ export const get = async <T>(
 	opts: CoreOptions = { json: true }
 ) =>
 	new Promise<Response<T>>(resolve =>
-		_get(`${proto}:${url}`, opts, (_, res, body) =>
+		_get(`${proto}:${url}`, opts, (_, { headers, statusCode }, body) =>
 			resolve({
 				body,
-				headers: res.headers,
-				statusCode: res.statusCode
+				headers,
+				statusCode
 			})
 		)
 	)
