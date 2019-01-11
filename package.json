@@ -58,7 +58,7 @@
 	},
 	"ava": {
 		"files": [
-			"build/test/**/*.js"
+			"build/src/**/*.test.js"
 		]
 	}
 }

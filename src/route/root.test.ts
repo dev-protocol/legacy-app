@@ -3,8 +3,8 @@
 import listen = require('test-listen')
 import test from 'ava'
 import micro from 'micro'
-import { app } from '../src/app'
-import { get } from '../src/lib/get'
+import { app } from '../app'
+import { get } from '../lib/get'
 import * as amphtmlValidator from 'amphtml-validator'
 
 // tslint:disable-next-line:no-let
@@ -23,7 +23,7 @@ test('Valid AMP HTML', async t => {
 	t.is(result.status, 'PASS')
 })
 
-test('Request invalid routes, returns 404', async t => {
+test('Request invalid routes returns 404', async t => {
 	t.is((await get<string>(`${url}/x`, 'http')).statusCode, 404)
 })
 

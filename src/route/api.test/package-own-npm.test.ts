@@ -4,9 +4,9 @@
 import listen = require('test-listen')
 import test from 'ava'
 import micro from 'micro'
-import { app } from '../../src/app'
+import { app } from '../../app'
 import { lsPackages } from 'libnpmaccess'
-import { get } from '../../src/lib/get'
+import { get } from '../../lib/get'
 import { config } from 'dotenv'
 
 config()
