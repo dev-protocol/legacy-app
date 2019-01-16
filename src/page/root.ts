@@ -320,9 +320,9 @@ export const root = async ({ request }: Opts) => html`
 				<section class="${classNames.features}">
 					<div class="${classNames.content}">
 						<h2>Features</h2>
-						<p>Support open source project</p>
-						<p>Find an influential open source project</p>
-						<p>Receive rewards for contributions and activities</p>
+						<p>Most easiest & fairly way to monetize open source projects.</p>
+						<p>Find influential open source projects.</p>
+						<p>Sponsors accelerate OSS support.</p>
 					</div>
 				</section>
 				<section class="${classNames.exchange}">
