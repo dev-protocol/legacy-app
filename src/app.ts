@@ -10,12 +10,17 @@ import { oss } from './route/oss'
 import { setHeader } from './lib/set-header'
 import { badge } from './route/badge'
 
+interface Result {
+	readonly body?: string | Error | false
+	readonly status: number
+}
+
 export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const { url = '' } = request
 	const parsed = parse(url)
 	const { pathname = '' } = parsed
 	const [, route] = pathname.split('/')
-	const result =
+	const { body: originalBody = false, status }: Result =
 		route === 'package'
 			? await packageR(pathname, request)
 			: route === 'doc'
@@ -28,13 +33,7 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			? await badge(pathname, res)
 			: route === ''
 			? await root(pathname, request)
-			: false
-	const status = result instanceof Error ? 400 : result ? 200 : 404
-	const body =
-		result instanceof Error
-			? { message: result.message }
-			: result
-			? result
-			: await error({ status, request })
+			: { status: 404 }
+	const body = originalBody ? originalBody : await error({ status, request })
 	return send(setHeader(res), status, body)
 }

@@ -9,7 +9,16 @@ export const packageR = async (pathname: string, request: IncomingMessage) => {
 	const account = await getTokens(
 		packageInfo ? packageInfo.address : packageInfo
 	)
-	return packageInfo && account
-		? packagePage({ package: packageInfo, account, request })
-		: false
+	const body =
+		packageInfo && account
+			? await packagePage({ package: packageInfo, account, request })
+			: false
+	return body
+		? {
+				body,
+				status: 200
+		  }
+		: {
+				status: 404
+		  }
 }

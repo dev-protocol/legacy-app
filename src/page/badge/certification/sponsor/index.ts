@@ -1,6 +1,5 @@
 import { sponsors as _sponsors, Sponsors } from '../../../../store/sponsors'
 import { svg } from './svg'
-import { empty } from './empty'
 
 interface Opts {
 	readonly pathname: string
@@ -15,7 +14,7 @@ export const sponsor = async ({ pathname }: Opts, sponsors = _sponsors) => {
 		? (identity => {
 				const getSponsor = verifier(new Date())
 				const data = getSponsor(identity, sponsors)
-				return data ? svg(data) : empty()
+				return data ? svg(data) : false
 		  })(id)
 		: false
 }
