@@ -5,6 +5,6 @@ interface Opts {
 }
 
 export const certification = async ({ pathname }: Opts) => {
-	const [, , , feature] = pathname.split('/')
-	return feature === 'sponsor' ? sponsor({ pathname }) : false
+	const [, , , feature, name] = pathname.split('/')
+	return feature === 'sponsor' ? sponsor({ id: name }) : false
 }
