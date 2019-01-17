@@ -8,6 +8,7 @@ import { api } from './route/api'
 import { root } from './route/root'
 import { oss } from './route/oss'
 import { setHeader } from './lib/set-header'
+import { badge } from './route/badge'
 
 export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const { url = '' } = request
@@ -23,6 +24,8 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			? await api(pathname, request)
 			: route === 'oss'
 			? await oss(pathname, request)
+			: route === 'badge'
+			? await badge(pathname, res)
 			: route === ''
 			? await root(pathname, request)
 			: false
