@@ -9,7 +9,7 @@ test('Create HTML strings with a template literals ', async t => {
 		<p>The content</p>
 	`
 	t.is(
-		collapseWhitespace(htm),
+		htm,
 		collapseWhitespace(`
 			<h1>The title</h1>
 			<p>The content</p>
@@ -23,7 +23,7 @@ test('Template including asynchronous part', async t => {
 		<p>${Promise.resolve('The content')}</p>
 	`
 	t.is(
-		collapseWhitespace(htm),
+		htm,
 		collapseWhitespace(`
 			<h1>The title</h1>
 			<p>The content</p>
@@ -38,7 +38,7 @@ test('Template including function part', async t => {
 		<p>${fn}</p>
 	`
 	t.is(
-		collapseWhitespace(htm),
+		htm,
 		collapseWhitespace(`
 			<h1>The title</h1>
 			<p>The content</p>
@@ -53,7 +53,7 @@ test('Template including asynchronous function part', async t => {
 		<p>${fn}</p>
 	`
 	t.is(
-		collapseWhitespace(htm),
+		htm,
 		collapseWhitespace(`
 			<h1>The title</h1>
 			<p>The content</p>
