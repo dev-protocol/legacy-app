@@ -1,3 +1,5 @@
+import { collapseWhitespace } from './collapse-whitespace'
+
 export const html = async (strings: TemplateStringsArray, ...values) => {
 	const resolved = await Promise.all<string>(
 		values.map(async value =>
@@ -11,5 +13,5 @@ export const html = async (strings: TemplateStringsArray, ...values) => {
 			return i >= resolvedLength ? n : `${n}${dn}`
 		})
 	)
-	return uni.join('')
+	return collapseWhitespace(uni.join(''))
 }
