@@ -6,10 +6,14 @@ import { sponsors as spons } from '../store/sponsors'
 import * as escapeHTML from 'escape-html'
 import { Marked } from 'marked-ts'
 import { container } from './container'
+import { verifier } from '../lib/verifier'
 
 interface Opts {
 	readonly className?: string
 }
+
+const verify = verifier(new Date(), spons)
+const validSponsors = spons.filter(s => verify(s.id))
 
 export const sponsors = async ({ className = 'sponsors' }: Opts = {}) =>
 	html`
@@ -28,14 +32,14 @@ export const sponsors = async ({ className = 'sponsors' }: Opts = {}) =>
 					<div class="${className}">
 						${
 							await asyncMap(
-								sortBy(spons, 'start_date').map(
+								sortBy(validSponsors, 'start_date').map(
 									async s => html`
 										<div class="${className}__item">
 											<amp-img
-												alt=${escapeHTML(s.name)}
-												src=${s.image.url}
-												width=${s.image.width}
-												height=${s.image.height}
+												alt="${escapeHTML(s.name)}"
+												src="${s.image.url}"
+												width="${s.image.width}"
+												height="${s.image.height}"
 												layout="responsive"
 											>
 											</amp-img>
