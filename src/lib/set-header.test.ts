@@ -18,8 +18,13 @@ const headersToBeAdded: Headers = {
 
 // tslint:disable-next-line:no-let
 let url = ''
-const server = micro((_, res) => {
-	const response = setHeader(res)
+const server = micro((req, res) => {
+	const response =
+		req.url === '/'
+			? setHeader(res)
+			: setHeader(res, {
+					'add-property': 'test'
+			  })
 	send(response, 200, '')
 })
 
@@ -27,7 +32,7 @@ test.before(async () => {
 	url = await listen(server)
 })
 
-test('Set the specified value in the response header', async t => {
+test('Set the default value in the response header', async t => {
 	const { headers: result } = await new Promise(resolve =>
 		get(
 			{
@@ -39,6 +44,18 @@ test('Set the specified value in the response header', async t => {
 	for (const key in headersToBeAdded) {
 		t.is(result[key], headersToBeAdded[key])
 	}
+})
+
+test('Set the specified value in the response header', async t => {
+	const { headers: result } = await new Promise(resolve =>
+		get(
+			{
+				url: `${url}/test`
+			},
+			(_, { headers }) => resolve({ headers })
+		)
+	)
+	t.is(result['add-property'], 'test')
 })
 
 test.after(() => {
