@@ -5,11 +5,20 @@ import { whatIsDev } from '../page/doc/what-is-dev'
 
 export const doc = async (pathname: string, request: IncomingMessage) => {
 	const [, , name] = pathname.split('/')
-	return name === 'how-to-use-markdown-badge'
-		? howToUseMarkdownBadge({ request })
-		: name === 'start'
-		? start({ request })
-		: name === 'what-is-dev'
-		? whatIsDev({ request })
-		: false
+	const body =
+		name === 'how-to-use-markdown-badge'
+			? await howToUseMarkdownBadge({ request })
+			: name === 'start'
+			? await start({ request })
+			: name === 'what-is-dev'
+			? await whatIsDev({ request })
+			: false
+	return body
+		? {
+				body,
+				status: 200
+		  }
+		: {
+				status: 404
+		  }
 }
