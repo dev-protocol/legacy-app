@@ -30,6 +30,7 @@
 		"libnpmaccess": "^3.0.1",
 		"lit-style": "^1.1.1",
 		"lodash": "^4.17.11",
+		"marked-ts": "^1.0.0-beta.4",
 		"micro": "^9.3.3",
 		"postcss-nested": "^4.1.1",
 		"postcss-preset-env": "^6.5.0",

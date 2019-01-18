@@ -22,7 +22,14 @@ test('Returns false if before the sponsorship start date', async t => {
 			expiry_date: new Date(
 				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
 			),
-			name: 'example'
+			name: 'example',
+			message: 'Lorem ipsum',
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
 		}
 	]
 	t.is(await sponsor({ id }, sponsors), false)
@@ -41,7 +48,14 @@ test('Returns false if after the sponsorship expiry date', async t => {
 			expiry_date: new Date(
 				Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate())
 			),
-			name: 'example'
+			name: 'example',
+			message: 'Lorem ipsum',
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
 		}
 	]
 	t.is(await sponsor({ id }, sponsors), false)
@@ -59,7 +73,14 @@ test('When all the conditions are satisfied, the SVG badge is returned', async t
 			expiry_date: new Date(
 				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
 			),
-			name: 'example'
+			name: 'example',
+			message: 'Lorem ipsum',
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
 		}
 	]
 	t.is(await sponsor({ id }, sponsors), await svg(sponsors[0]))

@@ -13,6 +13,7 @@ import { config } from '../config'
 import { head } from '../template/head'
 import { ampAnalytics } from '../template/amp-analytics'
 import { nav } from '../template/nav'
+import { sponsors } from '../template/sponsors'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -79,6 +80,7 @@ export const packagePage = async ({
 						})
 					}
 				</section>
+				<section>${await sponsors()}</section>
 				<section>${await whats()}</section>
 				<section>${await join()}</section>
 				<section>${await trade()}</section>
