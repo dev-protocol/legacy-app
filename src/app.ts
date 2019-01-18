@@ -7,12 +7,14 @@ import { doc } from './route/doc'
 import { api } from './route/api'
 import { root } from './route/root'
 import { oss } from './route/oss'
-import { setHeader } from './lib/set-header'
 import { badge } from './route/badge'
+import { cacheControl, CacheControl } from './lib/cache-control'
+import { setHeader } from './lib/set-header'
 
-interface Result {
+export interface Result {
 	readonly body?: string | Error | false
 	readonly status: number
+	readonly cache?: CacheControl
 }
 
 export const app = async (request: IncomingMessage, res: ServerResponse) => {
@@ -20,7 +22,11 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const parsed = parse(url)
 	const { pathname = '' } = parsed
 	const [, route] = pathname.split('/')
-	const { body: originalBody = false, status }: Result =
+	const {
+		status,
+		body: originalBody = false,
+		cache = { public: true, sMaxage: 86400 }
+	}: Result =
 		route === 'package'
 			? await packageR(pathname, request)
 			: route === 'doc'
@@ -35,5 +41,5 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			? await root(pathname, request)
 			: { status: 404 }
 	const body = originalBody ? originalBody : await error({ status, request })
-	return send(setHeader(res), status, body)
+	return send(setHeader(res, cacheControl(cache)), status, body)
 }

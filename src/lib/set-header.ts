@@ -6,13 +6,7 @@ interface Headers {
 	readonly [key: string]: string
 }
 
-const defaultHeaders: Headers = {
-	'cache-control':
-		'public, s-maxage=86400, stale-while-revalidate=3600, must-revalidate'
-}
-
-export const setHeader = (res: ServerResponse, headers?: Headers) => {
-	const properties = { ...defaultHeaders, ...(headers || {}) }
+export const setHeader = (res: ServerResponse, properties?: Headers) => {
 	for (const key in properties) {
 		res.setHeader(key, properties[key])
 	}
