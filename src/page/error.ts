@@ -4,7 +4,7 @@ import { style } from '../lib/style'
 import { imageLogo } from '../template/image-logo'
 import { config } from '../config'
 import { head } from '../template/head'
-import { ampAnalytics } from '../template/amp-analytics'
+import { ampAnalytics } from '../template/amp/amp-analytics'
 
 interface Opts {
 	readonly request: IncomingMessage

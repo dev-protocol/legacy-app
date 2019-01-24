@@ -4,7 +4,7 @@ import { html as raw } from '../../lib/html'
 import { head } from '../../template/head'
 import { config } from '../../config'
 import { style } from '../../lib/style'
-import { ampAnalytics } from '../../template/amp-analytics'
+import { ampAnalytics } from '../../template/amp/amp-analytics'
 import { header } from '../../template/header'
 import { ampComponent } from '../../lib/amp-component'
 import { docHeading } from '../../template/doc-heading'
@@ -13,6 +13,7 @@ import { nav } from '../../template/nav'
 import { orange } from '../../style/color'
 import { button } from '../../template/button'
 import { footer } from '../../template/footer'
+import { ampImage } from '../../template/amp/amp-image'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -170,12 +171,13 @@ export const whatIsDev = async ({ request }: Opts) => html`
 						content: await raw`
 							<section>
 								<h2>How it works</h2>
-								<amp-img alt='Dev'
-									src=//asset.devtoken.rocks/doc/dev-schema--white.png
-									width=3971
-									height=3013
-									layout=responsive>
-								</amp-img>
+								${ampImage({
+									alt: 'Dev',
+									src: '//asset.devtoken.rocks/doc/dev-schema--white.png',
+									width: 3971,
+									height: 3013,
+									layout: 'responsive'
+								})}
 							</section>
 						`
 					})

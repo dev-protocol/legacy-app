@@ -3,13 +3,14 @@ import { IncomingMessage } from 'http'
 import { style } from '../lib/style'
 import { config } from '../config'
 import { head } from '../template/head'
-import { ampAnalytics } from '../template/amp-analytics'
+import { ampAnalytics } from '../template/amp/amp-analytics'
 import { header } from '../template/header'
 import { button } from '../template/button'
 import { footer } from '../template/footer'
 import { large } from '../style/large'
 import { orange, gradientDev } from '../style/color'
 import { nav } from '../template/nav'
+import { ampImage } from '../template/amp/amp-image'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -28,16 +29,17 @@ const classNames = {
 export const root = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${await head({
-			title: '',
-			description:
-				'Dev is an ERC20 token for open source sustainability. Dev will monetize open source.',
-			image: '/lp/code-as-life.png',
-			url: {
-				host: config.domain,
-				path: request.url
-			},
-			injection: await style`
+		${
+			await head({
+				title: '',
+				description:
+					'Dev is an ERC20 token for open source sustainability. Dev will monetize open source.',
+				image: '/lp/code-as-life.png',
+				url: {
+					host: config.domain,
+					path: request.url
+				},
+				injection: await style`
 			body {
 				background: black;
 				color: white;
@@ -249,7 +251,8 @@ export const root = async ({ request }: Opts) => html`
 				}
 			}
 		`
-		})}
+			})
+		}
 		<body>
 			${await ampAnalytics()} ${await header()} ${await nav()}
 			<main>
@@ -262,19 +265,24 @@ export const root = async ({ request }: Opts) => html`
 							Anyone can start without changing licenses, codes, and support.
 						</p>
 						<p>Just publish your open source to npm.</p>
-						${await button({
-							link: '/doc/start',
-							content: 'Start Now',
-							className: classNames.button
-						})}
+						${
+							await button({
+								link: '/doc/start',
+								content: 'Start Now',
+								className: classNames.button
+							})
+						}
 					</div>
 					<figure>
-						<amp-img alt='image'
-							src=//asset.devtoken.rocks/lp/cover.png
-							width=2000
-							height=1177
-							layout=responsive>
-						</amp-img>
+						${
+							ampImage({
+								alt: 'image',
+								src: '//asset.devtoken.rocks/lp/cover.png',
+								width: 2000,
+								height: 1177,
+								layout: 'responsive'
+							})
+						}
 					</figure>
 				</section>
 				<section class="${classNames.howItWorks}">
@@ -285,36 +293,51 @@ export const root = async ({ request }: Opts) => html`
 							<ul class="${classNames.howItWorks}__cycle">
 								<li>
 									<p><span>20th of every month</span></p>
-									<p>"Dev" is automatically added to your wallet.</p></li>
+									<p>"Dev" is automatically added to your wallet.</p>
+								</li>
 								<li>Exchange to another token</li>
 							</ul>
 						</ul>
 						<div class="${classNames.content}">
 							<p>"Dev" works to achieve fair monetization of your OSS.</p>
 							<p>Neither commission fees nor usage fees are required.</p>
-							<p>For details, please see the <a href="https://medium.com/devtoken/dev-tokens-for-oss-a63e55c60e6b" target="_blank">blog story</a>.</p>
+							<p>
+								For details, please see the
+								<a
+									href="https://medium.com/devtoken/dev-tokens-for-oss-a63e55c60e6b"
+									target="_blank"
+									>blog story</a
+								>.
+							</p>
 						</div>
 					</div>
 				</section>
 				<section class="${classNames.downloads}">
 					<figure>
-						<amp-img alt='image'
-							src=//asset.devtoken.rocks/lp/chart/2018-12.png
-							width=2212
-							height=1296
-							layout=responsive>
-						</amp-img>
+						${
+							ampImage({
+								alt: 'image',
+								src: '//asset.devtoken.rocks/lp/chart/2018-12.png',
+								width: 2212,
+								height: 1296,
+								layout: 'responsive'
+							})
+						}
 					</figure>
 					<div class="${classNames.content}">
 						<h2>OSS Downloads</h2>
-						<p>OSS registered to Dev is <span class="${
-							classNames.downloads
-						}__strong">428 million</span> average downloaded every month.</p>
-						${await button({
-							link: '/oss',
-							content: 'Learn More',
-							className: classNames.button
-						})}
+						<p>
+							OSS registered to Dev is
+							<span class="${classNames.downloads}__strong">428 million</span>
+							average downloaded every month.
+						</p>
+						${
+							await button({
+								link: '/oss',
+								content: 'Learn More',
+								className: classNames.button
+							})
+						}
 					</div>
 				</section>
 				<section class="${classNames.features}">
@@ -327,14 +350,20 @@ export const root = async ({ request }: Opts) => html`
 				</section>
 				<section class="${classNames.exchange}">
 					<h2>Exchange</h2>
-					<a href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH" target="_blank" rel="noopener">
-						<amp-img alt='EtherDelta'
-							src=//asset.devtoken.rocks/etherdelta.svg
-							width=2500
-							height=2232
-							layout=responsive>
-						</amp-img>
-						<span>EtherDelta</span>
+					<a
+						href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH"
+						target="_blank"
+						rel="noopener"
+					>
+						${
+							ampImage({
+								alt: 'EtherDelta',
+								src: '//asset.devtoken.rocks/etherdelta.svg',
+								width: 2500,
+								height: 2232,
+								layout: 'responsive'
+							})
+						} <span>EtherDelta</span>
 					</a>
 				</section>
 			</main>

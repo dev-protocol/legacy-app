@@ -4,13 +4,14 @@ import { html as raw } from '../../lib/html'
 import { head } from '../../template/head'
 import { config } from '../../config'
 import { style } from '../../lib/style'
-import { ampAnalytics } from '../../template/amp-analytics'
+import { ampAnalytics } from '../../template/amp/amp-analytics'
 import { header } from '../../template/header'
 import { ampComponent } from '../../lib/amp-component'
 import { docHeading } from '../../template/doc-heading'
 import { docContent } from '../../template/doc-content'
 import { orange } from '../../style/color'
 import { nav } from '../../template/nav'
+import { ampImage } from '../../template/amp/amp-image'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -26,16 +27,30 @@ const badge = async () => html`
 		<p>Please add a markdown badge to your README.md.</p>
 		<div class="${classNames.badge}__how">
 			<p>You can use the badge, such as the following.</p>
-			<amp-img alt='Dev'
-				src=//asset.devtoken.rocks/doc/markdown-badge.svg
-				width=88.63
-				height=20
-				layout=fixed>
-			</amp-img>
-			<p>💡 <a href="/doc/how-to-use-markdown-badge">How to use markdown badge</a>.</p>
+			${
+				ampImage({
+					alt: 'Dev',
+					src: '//asset.devtoken.rocks/doc/markdown-badge.svg',
+					width: 88.63,
+					height: 20,
+					layout: 'fixed'
+				})
+			}
+			<p>
+				💡
+				<a href="/doc/how-to-use-markdown-badge">How to use markdown badge</a>.
+			</p>
 		</div>
 	</li>
 `
+
+const placeholder = ampImage({
+	alt: 'placeholder',
+	layout: 'fill',
+	src:
+		'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+	attributes: ['placeholder']
+})
 
 export const start = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
@@ -137,12 +152,7 @@ export const start = async ({ request }: Opts) => html`
 													layout="responsive"
 													sandbox="allow-scripts allow-same-origin"
 												>
-													<amp-img
-														layout="fill"
-														src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-														placeholder
-													>
-													</amp-img>
+												${placeholder}
 												</amp-iframe>
 												<p>When OSSs registration is completed, we will contact you by email. Then please delete the read-only token.</p>
 											</li>
@@ -168,12 +178,7 @@ export const start = async ({ request }: Opts) => html`
 													layout="responsive"
 													sandbox="allow-scripts allow-same-origin"
 												>
-													<amp-img
-														layout="fill"
-														src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-														placeholder
-													>
-													</amp-img>
+												${placeholder}
 												</amp-iframe>
 											</li>
 											<li>

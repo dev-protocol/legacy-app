@@ -4,6 +4,7 @@ import { style } from '../lib/style'
 import { toDataURL } from 'qrcode'
 import { large } from '../style/large'
 import { container } from './container'
+import { ampImage } from './amp/amp-image'
 
 interface Opts {
 	readonly package: DistributionTarget
@@ -85,22 +86,21 @@ export const packageInfo = async ({
 							</dl>
 						</div>
 						<div class="${className}__address">
-							<amp-img
-								class="${className}__qr"
-								alt="QR Code of ${pkg.package} address"
-								src="${
-									await toDataURL(pkg.address, {
+							${
+								ampImage({
+									alt: `QR Code of ${pkg.package} address`,
+									src: `${await toDataURL(pkg.address, {
 										width: 500,
 										rendererOpts: {
 											quality: 1
 										}
-									})
-								}"
-								width="1"
-								height="1"
-								layout="responsive"
-							>
-							</amp-img>
+									})}`,
+									width: 1,
+									height: 1,
+									layout: 'responsive',
+									attributes: [`class="${className}__qr"`]
+								})
+							}
 							<p><small>Copy addresses with QR</small></p>
 						</div>
 					</div>

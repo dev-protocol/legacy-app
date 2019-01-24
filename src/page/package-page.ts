@@ -11,7 +11,7 @@ import { large } from '../style/large'
 import { trade } from '../template/trade'
 import { config } from '../config'
 import { head } from '../template/head'
-import { ampAnalytics } from '../template/amp-analytics'
+import { ampAnalytics } from '../template/amp/amp-analytics'
 import { nav } from '../template/nav'
 import { sponsors } from '../template/sponsors'
 

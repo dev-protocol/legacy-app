@@ -7,6 +7,7 @@ import * as escapeHTML from 'escape-html'
 import { Marked } from 'marked-ts'
 import { container } from './container'
 import { verifier } from '../lib/verifier'
+import { ampImage } from './amp/amp-image'
 
 interface Opts {
 	readonly className?: string
@@ -30,34 +31,38 @@ export const sponsors = async ({ className = 'sponsors' }: Opts = {}) =>
 			container(
 				await html`
 					<div class="${className}">
-						${
-							await asyncMap(
-								sortBy(validSponsors, 'start_date').map(
-									async s => html`
-										<div class="${className}__item">
-											<amp-img
-												alt="${escapeHTML(s.name)}"
-												src="${s.image.url}"
-												width="${s.image.width}"
-												height="${s.image.height}"
-												layout="responsive"
-											>
-											</amp-img>
-											<div class="${className}__message">
-												${Marked.parse(s.message)}
+						<h2>Sponsors</h2>
+						<div class="${className}__list">
+							${
+								await asyncMap(
+									sortBy(validSponsors, 'start_date').map(
+										async s => html`
+											<div class="${className}__item">
+												${
+													ampImage({
+														alt: escapeHTML(s.name),
+														src: s.image.url,
+														width: s.image.width,
+														height: s.image.height,
+														layout: 'responsive'
+													})
+												}
+												<div class="${className}__message">
+													${Marked.parse(s.message)}
+												</div>
+												<a
+													class="${className}__link"
+													href="${s.link}"
+													target="_blank"
+													rel="noopener"
+													>${s.name}</a
+												>
 											</div>
-											<a
-												class="${className}__link"
-												href="${s.link}"
-												target="_blank"
-												rel="noopener"
-												>${s.name}</a
-											>
-										</div>
-									`
+										`
+									)
 								)
-							)
-						}
+							}
+						</div>
 					</div>
 				`
 			)

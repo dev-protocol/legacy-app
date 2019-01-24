@@ -4,7 +4,7 @@ import { html as raw } from '../lib/html'
 import { head } from '../template/head'
 import { config } from '../config'
 import { style } from '../lib/style'
-import { ampAnalytics } from '../template/amp-analytics'
+import { ampAnalytics } from '../template/amp/amp-analytics'
 import { header } from '../template/header'
 import { docHeading } from '../template/doc-heading'
 import { docContent } from '../template/doc-content'
@@ -13,6 +13,7 @@ import { footer } from '../template/footer'
 import { osss } from '../template/osss'
 import { button } from '../template/button'
 import { gradientDev } from '../style/color'
+import { ampImage } from '../template/amp/amp-image'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -84,12 +85,13 @@ export const oss = async ({ request }: Opts) => html`
 						content: await raw`
 							<section class="${classNames.downloads}">
 								<h2>Downloads chart</h2>
-								<amp-img alt='image'
-									src=//asset.devtoken.rocks/lp/chart/2018-12.png
-									width=2212
-									height=1296
-									layout=responsive>
-								</amp-img>
+								${ampImage({
+									alt: 'image',
+									src: '//asset.devtoken.rocks/lp/chart/2018-12.png',
+									width: 2212,
+									height: 1296,
+									layout: 'responsive'
+								})}
 							</section>
 						`
 					})
