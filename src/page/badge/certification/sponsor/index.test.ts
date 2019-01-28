@@ -23,7 +23,7 @@ test('Returns false if before the sponsorship start date', async t => {
 				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
 			),
 			name: 'example',
-			message: 'Lorem ipsum',
+			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
 				url: 'https://asset.devtoken.rocks/og.png',
@@ -49,7 +49,7 @@ test('Returns false if after the sponsorship expiry date', async t => {
 				Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate())
 			),
 			name: 'example',
-			message: 'Lorem ipsum',
+			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
 				url: 'https://asset.devtoken.rocks/og.png',
@@ -74,7 +74,7 @@ test('When all the conditions are satisfied, the SVG badge is returned', async t
 				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
 			),
 			name: 'example',
-			message: 'Lorem ipsum',
+			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
 				url: 'https://asset.devtoken.rocks/og.png',

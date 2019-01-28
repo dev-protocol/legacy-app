@@ -22,6 +22,8 @@ interface Opts {
 }
 
 const section = 'section'
+const acceptLanguages = (al: string | ReadonlyArray<string> | undefined) =>
+	al ? (typeof al === 'string' ? al.split(',').map(l => l.trim()) : al) : []
 
 export const packagePage = async ({
 	package: pkg,
@@ -80,7 +82,13 @@ export const packagePage = async ({
 						})
 					}
 				</section>
-				<section>${await sponsors()}</section>
+				<section>
+					${
+						await sponsors({
+							locales: acceptLanguages(request.headers['accept-language'])
+						})
+					}
+				</section>
 				<section>${await whats()}</section>
 				<section>${await join()}</section>
 				<section>${await trade()}</section>
