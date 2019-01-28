@@ -4,7 +4,7 @@ interface SponsorImage {
 	readonly height: number
 }
 export type MessageLocale = 'en-US' | 'ja-JP'
-interface SponsorMessage {
+export interface SponsorMessage {
 	readonly locale: MessageLocale
 	readonly text: string
 }
