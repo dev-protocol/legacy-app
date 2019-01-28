@@ -1,3 +1,4 @@
+import { parse } from 'accept-language-parser'
 import { amp as html } from '../lib/amp'
 import { DistributionTarget, AddressBalance } from 'dev-distribution/src/types'
 import { packageInfo } from '../template/package-widget'
@@ -22,8 +23,8 @@ interface Opts {
 }
 
 const section = 'section'
-const acceptLanguages = (al: string | ReadonlyArray<string> | undefined) =>
-	al ? (typeof al === 'string' ? al.split(',').map(l => l.trim()) : al) : []
+const acceptLanguages = (al: string | undefined) =>
+	al ? parse(al).map(({ code }) => code) : []
 
 export const packagePage = async ({
 	package: pkg,
@@ -85,7 +86,9 @@ export const packagePage = async ({
 				<section>
 					${
 						await sponsors({
-							locales: acceptLanguages(request.headers['accept-language'])
+							locales: acceptLanguages(request.headers[
+								'accept-language'
+							] as string)
 						})
 					}
 				</section>

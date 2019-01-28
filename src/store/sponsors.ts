@@ -3,7 +3,7 @@ interface SponsorImage {
 	readonly width: number
 	readonly height: number
 }
-export type MessageLocale = 'en-US' | 'ja-JP'
+export type MessageLocale = 'en' | 'ja'
 export interface SponsorMessage {
 	readonly locale: MessageLocale
 	readonly text: string
@@ -32,11 +32,11 @@ const example: Sponsors = [
 		name: 'Your Name',
 		messages: [
 			{
-				locale: 'en-US',
+				locale: 'en',
 				text: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.`
 			},
 			{
-				locale: 'ja-JP',
+				locale: 'ja',
 				text: `親譲りの無鉄砲で小供の時から損ばかりしている。小学校に居る時分学校の二階から飛び降りて一週間ほど腰を抜かした事がある。なぜそんな無闇をしたと聞く人があるかも知れぬ。別段深い理由でもない。`
 			}
 		],

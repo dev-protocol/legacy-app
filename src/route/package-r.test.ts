@@ -44,28 +44,24 @@ test('When "en-US" is the highest priority in the "Accept-Language" header, the 
 	})
 	const en = (sponsors.find(
 		({ id }) => id === 'example'
-	) as Sponsor).messages.find(
-		({ locale }) => locale === 'en-US'
-	) as SponsorMessage
+	) as Sponsor).messages.find(({ locale }) => locale === 'en') as SponsorMessage
 	t.true(res.body.includes(en.text))
 })
 
 test('When "ja-JP" is the highest priority in the "Accept-Language" header, the sponsor message is in Japanese', async t => {
 	const res = await get<string>(`${url}/package/chalk`, 'http', {
-		headers: { 'Accept-Language': 'ja-JP,en;q=0.9,en-US;q=0.8,ja;q=0.7' }
+		headers: { 'Accept-Language': 'ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7' }
 	})
 	const ja = (sponsors.find(
 		({ id }) => id === 'example'
-	) as Sponsor).messages.find(
-		({ locale }) => locale === 'ja-JP'
-	) as SponsorMessage
+	) as Sponsor).messages.find(({ locale }) => locale === 'ja') as SponsorMessage
 	t.true(res.body.includes(ja.text))
 })
 
 test('When not found matches "Accept-Language" header and sponsor message locale, the first language of sponsor messages as text', async t => {
 	const res = await get<string>(`${url}/package/chalk`, 'http', {
 		headers: {
-			'Accept-Language': 'fr-CH,fr;q=0.9,en;q=0.8,de;q=0.7,*;q=0.5'
+			'Accept-Language': 'fr-CH,fr;q=0.9,de;q=0.8,*;q=0.7'
 		}
 	})
 	const first = (sponsors.find(({ id }) => id === 'example') as Sponsor)
