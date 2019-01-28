@@ -46,6 +46,8 @@ const badge = async () => html`
 
 const placeholder = ampImage({
 	alt: 'placeholder',
+	width: 1,
+	height: 1,
 	layout: 'fill',
 	src:
 		'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
