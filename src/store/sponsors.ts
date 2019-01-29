@@ -9,6 +9,7 @@ export interface SponsorMessage {
 	readonly text: string
 }
 export type SponsorMessages = ReadonlyArray<SponsorMessage>
+export type SponsorTier = 10 | 20 | 30
 export interface Sponsor {
 	readonly id: string
 	readonly start_date: Date
@@ -17,6 +18,7 @@ export interface Sponsor {
 	readonly messages: SponsorMessages
 	readonly link: string
 	readonly image: SponsorImage
+	readonly tier: SponsorTier
 }
 export type Sponsors = ReadonlyArray<Sponsor>
 
@@ -27,6 +29,7 @@ const s: Sponsors = []
 const example: Sponsors = [
 	{
 		id: 'example',
+		tier: 10,
 		start_date: utc(2019, 1, 1),
 		expiry_date: utc(9999, 12, 31),
 		name: 'Your Name',

@@ -16,6 +16,7 @@ test('Returns false if before the sponsorship start date', async t => {
 	const sponsors: Sponsors = [
 		{
 			id,
+			tier: 10,
 			start_date: new Date(
 				Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
 			),
@@ -42,6 +43,7 @@ test('Returns false if after the sponsorship expiry date', async t => {
 	const sponsors: Sponsors = [
 		{
 			id,
+			tier: 10,
 			start_date: new Date(
 				Date.UTC(date.getFullYear() - 1, date.getMonth() - 1, date.getDate())
 			),
@@ -67,6 +69,7 @@ test('When all the conditions are satisfied, the SVG badge is returned', async t
 	const sponsors: Sponsors = [
 		{
 			id,
+			tier: 10,
 			start_date: new Date(
 				Date.UTC(date.getFullYear() - 1, date.getMonth() - 1, date.getDate())
 			),
