@@ -1,7 +1,7 @@
 import { html } from '../../../../lib/html'
 import { Sponsor } from '../../../../store/sponsors'
 
-export const svg = (data: Sponsor) => html`
+export const svg = async (data: Sponsor) => html`
 	<svg
 		version="1.1"
 		xmlns="http://www.w3.org/2000/svg"

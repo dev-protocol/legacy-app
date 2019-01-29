@@ -13,7 +13,7 @@ const server = micro((_, res) => {
 	const response = setHeader(res, {
 		'add-property': 'test'
 	})
-	send(response, 200, '')
+	send(response, 200, '').catch()
 })
 
 test.before(async () => {
@@ -21,7 +21,7 @@ test.before(async () => {
 })
 
 test('Set the specified value in the response header', async t => {
-	const { headers: result } = await new Promise(resolve =>
+	const { headers: result } = await new Promise(async resolve =>
 		get(
 			{
 				url

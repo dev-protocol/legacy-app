@@ -10,7 +10,6 @@ import { docHeading } from '../template/doc-heading'
 import { docContent } from '../template/doc-content'
 import { nav } from '../template/nav'
 import { footer } from '../template/footer'
-import { gradientDev } from '../style/color'
 import { sponsors } from '../template/sponsors'
 import { acceptLanguages } from '../lib/accept-languages'
 

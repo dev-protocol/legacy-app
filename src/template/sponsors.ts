@@ -2,12 +2,7 @@ import { html } from '../lib/html'
 import { style } from '../lib/style'
 import { asyncMap } from '../lib/async-map'
 import { sortBy } from 'lodash'
-import {
-	sponsors as spons,
-	SponsorMessages,
-	SponsorTier,
-	Sponsors
-} from '../store/sponsors'
+import { sponsors as spons, SponsorMessages } from '../store/sponsors'
 import * as escapeHTML from 'escape-html'
 import { Marked } from 'marked-ts'
 import { container } from './container'

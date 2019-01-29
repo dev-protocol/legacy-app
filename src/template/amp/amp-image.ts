@@ -10,7 +10,7 @@ interface Opts {
 	readonly attributes?: ReadonlyArray<string>
 }
 
-export const ampImage = ({
+export const ampImage = async ({
 	alt,
 	src,
 	width,
@@ -28,7 +28,7 @@ export const ampImage = ({
 			attributes
 				? asyncMap(
 						attributes.map(
-							attr =>
+							async attr =>
 								html`
 									${attr}
 								`
