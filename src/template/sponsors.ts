@@ -96,7 +96,6 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 			container(
 				await html`
 					<div class="${className}">
-						<h2>Sponsors</h2>
 						<div class="${className}__tiers">
 							${
 								asyncMap(
