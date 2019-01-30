@@ -9,11 +9,15 @@ import { get } from 'request'
 
 // tslint:disable-next-line:no-let
 let url = ''
-const server = micro((_, res) => {
+const server = micro(async (_, res) => {
 	const response = setHeader(res, {
 		'add-property': 'test'
 	})
-	send(response, 200, '').catch()
+	try {
+		await send(response, 200, '')
+	} catch (error) {
+		console.log(error)
+	}
 })
 
 test.before(async () => {
