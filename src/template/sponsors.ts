@@ -9,6 +9,7 @@ import { verifier } from '../lib/verifier'
 import { ampImage } from './amp/amp-image'
 import { tierToSymbol } from '../lib/tier-to-symbol'
 import { large } from '../style/large'
+import { bronze } from '../style/color'
 
 interface Opts {
 	readonly locales: ReadonlyArray<string>
@@ -55,7 +56,7 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 						color: silver;
 					}
 					&--bronze {
-						color: #a5472a;
+						color: ${bronze};
 					}
 				}
 				&__list {
