@@ -12,7 +12,7 @@ interface Opts {
 	readonly title: string
 	readonly url: URL
 	readonly description: string
-	readonly injection?: string
+	readonly injection?: string | Promise<string>
 	readonly image?: string
 }
 

@@ -58,20 +58,20 @@ export const start = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: 'Start Dev',
 				description: 'Start Dev',
 				url: {
 					host: config.domain,
 					path: request.url
 				},
-				injection: await html`
+				injection: html`
 					${ampComponent('amp-iframe')} ${ampComponent('amp-accordion')}
 				`
 			})
 		}
 		${
-			await style`
+			style`
 				body {
 					background: black;
 					color: white;
@@ -132,12 +132,12 @@ export const start = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
-				${await docHeading({ title: 'Register Your OSS and Start Dev' })}
+				${docHeading({ title: 'Register Your OSS and Start Dev' })}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<amp-accordion>
 								<section expanded>
 									<h2 class="${
@@ -158,7 +158,7 @@ export const start = async ({ request }: Opts) => html`
 												</amp-iframe>
 												<p>When OSSs registration is completed, we will contact you by email. Then please delete the read-only token.</p>
 											</li>
-											${await badge()}
+											${badge()}
 											<li>
 												Congratulations!🎉 You can get Dev on the 20th of every month.
 											</li>
@@ -187,7 +187,7 @@ export const start = async ({ request }: Opts) => html`
 												Confirmation email is sent to email address. Once you click the
 												link, confirmation is complete.
 											</li>
-											${await badge()}
+											${badge()}
 											<li>
 												Congratulations!🎉 You can get Dev on the 20th of every month.
 											</li>

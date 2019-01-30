@@ -30,7 +30,7 @@ export const root = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: '',
 				description:
 					'Dev is an ERC20 token for open source sustainability. Dev will monetize open source.',
@@ -39,7 +39,7 @@ export const root = async ({ request }: Opts) => html`
 					host: config.domain,
 					path: request.url
 				},
-				injection: await style`
+				injection: style`
 			body {
 				background: black;
 				color: white;
@@ -254,7 +254,7 @@ export const root = async ({ request }: Opts) => html`
 			})
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				<section class="${classNames.heading}">
 					<div class="${classNames.content}">
@@ -266,7 +266,7 @@ export const root = async ({ request }: Opts) => html`
 						</p>
 						<p>Just publish your open source to npm.</p>
 						${
-							await button({
+							button({
 								link: '/doc/start',
 								content: 'Start Now',
 								className: classNames.button
@@ -332,7 +332,7 @@ export const root = async ({ request }: Opts) => html`
 							average downloaded every month.
 						</p>
 						${
-							await button({
+							button({
 								link: '/oss',
 								content: 'Learn More',
 								className: classNames.button
@@ -367,7 +367,7 @@ export const root = async ({ request }: Opts) => html`
 					</a>
 				</section>
 			</main>
-			${await footer()}
+			${footer()}
 		</body>
 	</html>
 `

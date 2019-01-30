@@ -15,7 +15,7 @@ export const toolbarTarget = 'toolbarTargetNav'
 export const header = async ({ className = 'header' }: Opts = {}) =>
 	html`
 		${
-			await style`
+			style`
 			.${className} {
 				display: grid;
 				grid-auto-flow: column;

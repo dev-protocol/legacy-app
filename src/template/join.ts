@@ -10,7 +10,7 @@ interface Opts {
 export const join = async ({ className = 'join' }: Opts = {}) =>
 	html`
 		${
-			await style`
+			style`
 			.${className} {
 				display: grid;
 				grid-auto-flow: row;
@@ -37,7 +37,7 @@ export const join = async ({ className = 'join' }: Opts = {}) =>
 		}
 		${
 			container(
-				await html`
+				html`
 			<div class='${className}'>
 				<h2 class='${className}__heading'>Now join the Dev</h2>
 				<a class='${className}__button' href=/doc/start>Register your OSS</a>

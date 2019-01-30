@@ -14,7 +14,7 @@ export const navId = 'nav'
 
 export const nav = async ({ className = 'nav' }: Opts = {}) =>
 	html`
-		${await style`
+		${style`
 			#${navId} {
 				display: grid;
 				width: 100%;
@@ -92,7 +92,7 @@ export const nav = async ({ className = 'nav' }: Opts = {}) =>
 						<a href=/oss>OSSs</a>
 					</li>
 					<li>
-						${await button({
+						${button({
 							link: '/doc/start',
 							content: 'Start Now',
 							className: `${className}__start`

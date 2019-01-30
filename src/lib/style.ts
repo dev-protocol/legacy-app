@@ -20,7 +20,7 @@ export const style = directive(
 	async css =>
 		html`
 			<style>
-				${await css}
+				${css}
 			</style>
 		`
 )

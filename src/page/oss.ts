@@ -29,7 +29,7 @@ export const oss = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: 'OSSs',
 				description: 'Many OSSs are participating',
 				url: {
@@ -39,7 +39,7 @@ export const oss = async ({ request }: Opts) => html`
 			})
 		}
 		${
-			await style`
+			style`
 				body {
 					background: black;
 					color: white;
@@ -77,12 +77,12 @@ export const oss = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
-				${await docHeading({ title: 'Many OSSs are participating' })}
+				${docHeading({ title: 'Many OSSs are participating' })}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<section class="${classNames.downloads}">
 								<h2>Downloads chart</h2>
 								${ampImage({
@@ -97,12 +97,12 @@ export const oss = async ({ request }: Opts) => html`
 					})
 				}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<section class="${classNames.osss}">
 								<h2>OSSs</h2>
-								${await osss()}
-								${await button({
+								${osss()}
+								${button({
 									link: '/doc/start',
 									content: 'Add Your OSS(s)',
 									className: classNames.button
@@ -113,7 +113,7 @@ export const oss = async ({ request }: Opts) => html`
 					})
 				}
 			</main>
-			${await footer()}
+			${footer()}
 		</body>
 	</html>
 `

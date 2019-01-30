@@ -25,7 +25,7 @@ export const sponsor = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: 'Sponsor',
 				description: '',
 				url: {
@@ -35,7 +35,7 @@ export const sponsor = async ({ request }: Opts) => html`
 			})
 		}
 		${
-			await style`
+			style`
 				body {
 					background: black;
 					color: white;
@@ -60,14 +60,14 @@ export const sponsor = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
-				${await docHeading({ title: 'Sponsors' })}
+				${docHeading({ title: 'Sponsors' })}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<section class="${classNames.sponsors}">
-								${await sponsors({
+								${sponsors({
 									locales: acceptLanguages(request.headers[
 										'accept-language'
 									] as string)
@@ -77,7 +77,7 @@ export const sponsor = async ({ request }: Opts) => html`
 					})
 				}
 			</main>
-			${await footer()}
+			${footer()}
 		</body>
 	</html>
 `

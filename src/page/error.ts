@@ -22,14 +22,14 @@ export const error = async ({
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: message,
 				description: message,
 				url: {
 					host: config.domain,
 					path: request.url
 				},
-				injection: await style`
+				injection: style`
 			body {
 				background: black;
 				color: white;
@@ -54,7 +54,7 @@ export const error = async ({
 			})
 		}
 		<body>
-			${await ampAnalytics()}
+			${ampAnalytics()}
 			<main>
 				<h1>${status}</h1>
 				<p>${message}</p>

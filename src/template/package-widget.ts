@@ -19,7 +19,7 @@ export const packageInfo = async ({
 }: Opts) =>
 	html`
 		${
-			await style`
+			style`
 			.${className} {
 				display: grid;
 				grid-gap: 1rem;
@@ -71,7 +71,7 @@ export const packageInfo = async ({
 		}
 		${
 			container(
-				await html`
+				html`
 					<div class="${className}">
 						<div class="${className}__tokens">
 							<h1 class="${className}__heading">
