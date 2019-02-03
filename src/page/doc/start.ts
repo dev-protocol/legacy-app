@@ -82,8 +82,7 @@ export const start = async ({ request }: Opts) => html`
 				a {
 					color: white;
 				}
-				h1,
-				p {
+				h1 {
 					margin: 0;
 				}
 				amp-accordion {
@@ -144,6 +143,8 @@ export const start = async ({ request }: Opts) => html`
 										classNames.sectionTitle
 									}">a. Bulk register all OSSs using npm read-only token.</h2>
 									<div>
+										<p><small>You don't want to send npm read-only token? We are developing a web GUI. Please <a href="https://medium.com/devtoken">follow us</a> and wait.</small></p>
+										<p><small>In alternatively, as a method (b), you can register with email authentication.</small></p>
 										<ol>
 											<li>
 												Please entry and submit the following form.
