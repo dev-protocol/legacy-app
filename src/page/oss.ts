@@ -13,7 +13,7 @@ import { footer } from '../template/footer'
 import { osss } from '../template/osss'
 import { button } from '../template/button'
 import { gradientDev } from '../style/color'
-import { ampImage } from '../template/amp/amp-image'
+import { chart } from '../template/chart'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -85,13 +85,7 @@ export const oss = async ({ request }: Opts) => html`
 						content: raw`
 							<section class="${classNames.downloads}">
 								<h2>Downloads chart</h2>
-								${ampImage({
-									alt: 'image',
-									src: '//asset.devtoken.rocks/lp/chart/2018-12.png',
-									width: 2212,
-									height: 1296,
-									layout: 'responsive'
-								})}
+								${chart()}
 							</section>
 						`
 					})

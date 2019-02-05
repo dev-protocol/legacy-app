@@ -11,6 +11,7 @@ import { large } from '../style/large'
 import { orange, gradientDev } from '../style/color'
 import { nav } from '../template/nav'
 import { ampImage } from '../template/amp/amp-image'
+import { chart } from '../template/chart'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -313,17 +314,7 @@ export const root = async ({ request }: Opts) => html`
 					</div>
 				</section>
 				<section class="${classNames.downloads}">
-					<figure>
-						${
-							ampImage({
-								alt: 'image',
-								src: '//asset.devtoken.rocks/lp/chart/2018-12.png',
-								width: 2212,
-								height: 1296,
-								layout: 'responsive'
-							})
-						}
-					</figure>
+					<figure>${chart()}</figure>
 					<div class="${classNames.content}">
 						<h2>OSS Downloads</h2>
 						<p>
