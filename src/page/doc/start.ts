@@ -135,7 +135,7 @@ export const start = async ({ request }: Opts) => html`
 													width="640"
 													height="640"
 													layout="responsive"
-													sandbox="allow-scripts allow-same-origin"
+													sandbox="allow-scripts allow-same-origin allow-forms"
 												>
 													<amp-img
 														layout="fill"
@@ -166,7 +166,7 @@ export const start = async ({ request }: Opts) => html`
 													width="640"
 													height="640"
 													layout="responsive"
-													sandbox="allow-scripts allow-same-origin"
+													sandbox="allow-scripts allow-same-origin allow-forms"
 												>
 													<amp-img
 														layout="fill"
