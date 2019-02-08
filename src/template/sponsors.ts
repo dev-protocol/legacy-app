@@ -17,7 +17,7 @@ interface Opts {
 }
 
 const verify = verifier(new Date(), spons)
-const valid = spons.filter(s => verify(s.id))
+const valid = spons.filter(s => verify(s.id) && !s.unlisted)
 const finder = (locales: ReadonlyArray<string>) => (
 	messages: SponsorMessages
 ) =>
@@ -84,6 +84,16 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 						}
 					}
 				}
+				&__item {
+					display: grid;
+					justify-content: stretch;
+					grid-gap: 1rem;
+					justify-items: center;
+				}
+				&__image {
+					width: 100%;
+					max-width: 320px;
+				}
 			}
 			`
 		}
@@ -106,15 +116,17 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 											sortBy(items, 'start_date').map(
 												async ({ image, messages, link, name }) => html`
 													<div class="${className}__item">
-														${
-															ampImage({
-																alt: escapeHTML(name),
-																src: image.url,
-																width: image.width,
-																height: image.height,
-																layout: 'responsive'
-															})
-														}
+														<div class="${className}__image">
+															${
+																ampImage({
+																	alt: escapeHTML(name),
+																	src: image.url,
+																	width: image.width,
+																	height: image.height,
+																	layout: 'responsive'
+																})
+															}
+														</div>
 														<div class="${className}__message">
 															${
 																Marked.parse(
