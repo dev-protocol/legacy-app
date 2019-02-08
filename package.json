@@ -23,6 +23,7 @@
 	},
 	"homepage": "https://github.com/frame00/dev-app#readme",
 	"dependencies": {
+		"accept-language-parser": "^1.5.0",
 		"cssnano": "^4.1.8",
 		"dev-distribution": "^0.1.1",
 		"dotenv": "^6.2.0",
@@ -30,6 +31,7 @@
 		"libnpmaccess": "^3.0.1",
 		"lit-style": "^1.1.1",
 		"lodash": "^4.17.11",
+		"marked-ts": "^1.0.0-beta.4",
 		"micro": "^9.3.3",
 		"postcss-nested": "^4.1.1",
 		"postcss-preset-env": "^6.5.0",
@@ -38,6 +40,7 @@
 		"typescript": "^3.2.2"
 	},
 	"devDependencies": {
+		"@types/accept-language-parser": "^1.5.1",
 		"@types/amphtml-validator": "^1.0.0",
 		"@types/dotenv": "^6.1.0",
 		"@types/escape-html": "0.0.20",

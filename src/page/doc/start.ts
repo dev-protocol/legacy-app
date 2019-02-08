@@ -4,13 +4,14 @@ import { html as raw } from '../../lib/html'
 import { head } from '../../template/head'
 import { config } from '../../config'
 import { style } from '../../lib/style'
-import { ampAnalytics } from '../../template/amp-analytics'
+import { ampAnalytics } from '../../template/amp/amp-analytics'
 import { header } from '../../template/header'
 import { ampComponent } from '../../lib/amp-component'
 import { docHeading } from '../../template/doc-heading'
 import { docContent } from '../../template/doc-content'
 import { orange } from '../../style/color'
 import { nav } from '../../template/nav'
+import { ampImage } from '../../template/amp/amp-image'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -26,35 +27,51 @@ const badge = async () => html`
 		<p>Please add a markdown badge to your README.md.</p>
 		<div class="${classNames.badge}__how">
 			<p>You can use the badge, such as the following.</p>
-			<amp-img alt='Dev'
-				src=//asset.devtoken.rocks/doc/markdown-badge.svg
-				width=88.63
-				height=20
-				layout=fixed>
-			</amp-img>
-			<p>💡 <a href="/doc/how-to-use-markdown-badge">How to use markdown badge</a>.</p>
+			${
+				ampImage({
+					alt: 'Dev',
+					src: '//asset.devtoken.rocks/doc/markdown-badge.svg',
+					width: 88.63,
+					height: 20,
+					layout: 'fixed'
+				})
+			}
+			<p>
+				💡
+				<a href="/doc/how-to-use-markdown-badge">How to use markdown badge</a>.
+			</p>
 		</div>
 	</li>
 `
+
+const placeholder = ampImage({
+	alt: 'placeholder',
+	width: 1,
+	height: 1,
+	layout: 'fill',
+	src:
+		'data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==',
+	attributes: ['placeholder']
+})
 
 export const start = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: 'Start Dev',
 				description: 'Start Dev',
 				url: {
 					host: config.domain,
 					path: request.url
 				},
-				injection: await html`
+				injection: html`
 					${ampComponent('amp-iframe')} ${ampComponent('amp-accordion')}
 				`
 			})
 		}
 		${
-			await style`
+			style`
 				body {
 					background: black;
 					color: white;
@@ -65,8 +82,7 @@ export const start = async ({ request }: Opts) => html`
 				a {
 					color: white;
 				}
-				h1,
-				p {
+				h1 {
 					margin: 0;
 				}
 				amp-accordion {
@@ -115,18 +131,20 @@ export const start = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
-				${await docHeading({ title: 'Register Your OSS and Start Dev' })}
+				${docHeading({ title: 'Register Your OSS and Start Dev' })}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<amp-accordion>
 								<section expanded>
 									<h2 class="${
 										classNames.sectionTitle
 									}">a. Bulk register all OSSs using npm read-only token.</h2>
 									<div>
+										<p><small>You don't want to send npm read-only token? We are developing a web GUI. Please <a href="https://medium.com/devtoken">follow us</a> and wait.</small></p>
+										<p><small>In alternatively, as a method (b), you can register with email authentication.</small></p>
 										<ol>
 											<li>
 												Please entry and submit the following form.
@@ -137,16 +155,11 @@ export const start = async ({ request }: Opts) => html`
 													layout="responsive"
 													sandbox="allow-scripts allow-same-origin allow-forms"
 												>
-													<amp-img
-														layout="fill"
-														src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-														placeholder
-													>
-													</amp-img>
+												${placeholder}
 												</amp-iframe>
 												<p>When OSSs registration is completed, we will contact you by email. Then please delete the read-only token.</p>
 											</li>
-											${await badge()}
+											${badge()}
 											<li>
 												Congratulations!🎉 You can get Dev on the 20th of every month.
 											</li>
@@ -168,19 +181,14 @@ export const start = async ({ request }: Opts) => html`
 													layout="responsive"
 													sandbox="allow-scripts allow-same-origin allow-forms"
 												>
-													<amp-img
-														layout="fill"
-														src="data:image/gif;base64,R0lGODlhAQABAIABAP///wAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
-														placeholder
-													>
-													</amp-img>
+												${placeholder}
 												</amp-iframe>
 											</li>
 											<li>
 												Confirmation email is sent to email address. Once you click the
 												link, confirmation is complete.
 											</li>
-											${await badge()}
+											${badge()}
 											<li>
 												Congratulations!🎉 You can get Dev on the 20th of every month.
 											</li>

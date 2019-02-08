@@ -4,7 +4,7 @@ import { html as raw } from '../../lib/html'
 import { head } from '../../template/head'
 import { config } from '../../config'
 import { style } from '../../lib/style'
-import { ampAnalytics } from '../../template/amp-analytics'
+import { ampAnalytics } from '../../template/amp/amp-analytics'
 import { header } from '../../template/header'
 import { ampComponent } from '../../lib/amp-component'
 import { docHeading } from '../../template/doc-heading'
@@ -13,6 +13,7 @@ import { nav } from '../../template/nav'
 import { orange } from '../../style/color'
 import { button } from '../../template/button'
 import { footer } from '../../template/footer'
+import { ampImage } from '../../template/amp/amp-image'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -32,7 +33,7 @@ export const whatIsDev = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: 'What is Dev?',
 				description:
 					'"Dev" is an ERC20 token for open source software (OSS) sustainability.',
@@ -40,11 +41,11 @@ export const whatIsDev = async ({ request }: Opts) => html`
 					host: config.domain,
 					path: request.url
 				},
-				injection: await ampComponent('amp-iframe')
+				injection: ampComponent('amp-iframe')
 			})
 		}
 		${
-			await style`
+			style`
 				body {
 					background: black;
 					color: white;
@@ -115,12 +116,12 @@ export const whatIsDev = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
-				${await docHeading({ title: 'What is Dev?' })}
+				${docHeading({ title: 'What is Dev?' })}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<section>
 								<p>"Dev" is an ERC20 token for open source software (OSS) sustainability.</p>
 								<p>After fairly evaluating OSS's influence, we will distribute a token proportionate to that value.</p>
@@ -166,23 +167,24 @@ export const whatIsDev = async ({ request }: Opts) => html`
 					})
 				}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<section>
 								<h2>How it works</h2>
-								<amp-img alt='Dev'
-									src=//asset.devtoken.rocks/doc/dev-schema--white.png
-									width=3971
-									height=3013
-									layout=responsive>
-								</amp-img>
+								${ampImage({
+									alt: 'Dev',
+									src: '//asset.devtoken.rocks/doc/dev-schema--white.png',
+									width: 3971,
+									height: 3013,
+									layout: 'responsive'
+								})}
 							</section>
 						`
 					})
 				}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<section>
 								<h2>What does Dev resolve?</h2>
 								<p>Ethereum and Bitcoin were also developed as OSS.</p>
@@ -197,8 +199,8 @@ export const whatIsDev = async ({ request }: Opts) => html`
 					})
 				}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<section>
 								<h2>Token details</h2>
 								<div role="grid" class="${classNames.table.token}">
@@ -251,7 +253,7 @@ export const whatIsDev = async ({ request }: Opts) => html`
 					})
 				}
 			</main>
-			${await footer()}
+			${footer()}
 		</body>
 	</html>
 `

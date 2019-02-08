@@ -9,14 +9,14 @@ interface Opts {
 export const whats = async ({ className = 'whats' }: Opts = {}) =>
 	html`
 		${
-			await style`
+			style`
 			.${className} {
 			}
 		`
 		}
 		${
 			container(
-				await html`
+				html`
 			<div class='${className}'>
 				<h2>What’s Dev(Token)?</h2>
 				<p>"Dev" is an ERC20 token for open source software (OSS) sustainability.</p>

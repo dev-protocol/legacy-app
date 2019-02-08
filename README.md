@@ -19,7 +19,7 @@ npm i
 Build TypeScript and run the local server.
 
 ```bash
-npm run build && npm start
+npm start
 ```
 
 Please check your code with TSLint.

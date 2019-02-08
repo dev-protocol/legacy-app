@@ -10,28 +10,25 @@ import { docHeading } from '../template/doc-heading'
 import { docContent } from '../template/doc-content'
 import { nav } from '../template/nav'
 import { footer } from '../template/footer'
-import { osss } from '../template/osss'
-import { button } from '../template/button'
-import { gradientDev } from '../style/color'
-import { chart } from '../template/chart'
+import { sponsors } from '../template/sponsors'
+import { acceptLanguages } from '../lib/accept-languages'
+import { whatsSponsors } from '../template/whats-sponsors'
 
 interface Opts {
 	readonly request: IncomingMessage
 }
 
 const classNames = {
-	downloads: 'downloads',
-	osss: 'osss',
-	button: 'button'
+	sponsors: 'sponsors'
 }
 
-export const oss = async ({ request }: Opts) => html`
+export const sponsor = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
 			head({
-				title: 'OSSs',
-				description: 'Many OSSs are participating',
+				title: 'Sponsor',
+				description: '',
 				url: {
 					host: config.domain,
 					path: request.url
@@ -59,33 +56,23 @@ export const oss = async ({ request }: Opts) => html`
 					text-align: center;
 					margin-bottom: 4rem;
 				}
-				.${classNames.downloads} {
-					amp-img {
-						max-width: 640px;
-						margin: auto;
-					}
-				}
-				.${classNames.osss} {
-					display: grid;
-					grid-gap: 2rem;
-					& .${classNames.button} {
-						font-weight: bolder;
-						justify-self: center;
-						background-image: ${gradientDev};
-					}
+				.${classNames.sponsors} {
 				}
 			`
 		}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
-				${docHeading({ title: 'Many OSSs are participating' })}
+				${docHeading({ title: 'Sponsors' })}
 				${
 					docContent({
 						content: raw`
-							<section class="${classNames.downloads}">
-								<h2>Downloads chart</h2>
-								${chart()}
+							<section class="${classNames.sponsors}">
+								${sponsors({
+									locales: acceptLanguages(request.headers[
+										'accept-language'
+									] as string)
+								})}
 							</section>
 						`
 					})
@@ -93,15 +80,8 @@ export const oss = async ({ request }: Opts) => html`
 				${
 					docContent({
 						content: raw`
-							<section class="${classNames.osss}">
-								<h2>OSSs</h2>
-								${osss()}
-								${button({
-									link: '/doc/start',
-									content: 'Add Your OSS(s)',
-									className: classNames.button
-								})}
-
+							<section>
+								${whatsSponsors()}
 							</section>
 						`
 					})

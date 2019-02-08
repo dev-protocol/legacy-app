@@ -16,13 +16,21 @@ test('Returns false if before the sponsorship start date', async t => {
 	const sponsors: Sponsors = [
 		{
 			id,
+			tier: 10,
 			start_date: new Date(
 				Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
 			),
 			expiry_date: new Date(
 				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
 			),
-			name: 'example'
+			name: 'example',
+			messages: [],
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
 		}
 	]
 	t.is(await sponsor({ id }, sponsors), false)
@@ -35,13 +43,21 @@ test('Returns false if after the sponsorship expiry date', async t => {
 	const sponsors: Sponsors = [
 		{
 			id,
+			tier: 10,
 			start_date: new Date(
 				Date.UTC(date.getFullYear() - 1, date.getMonth() - 1, date.getDate())
 			),
 			expiry_date: new Date(
 				Date.UTC(date.getFullYear(), date.getMonth() - 1, date.getDate())
 			),
-			name: 'example'
+			name: 'example',
+			messages: [],
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
 		}
 	]
 	t.is(await sponsor({ id }, sponsors), false)
@@ -53,14 +69,100 @@ test('When all the conditions are satisfied, the SVG badge is returned', async t
 	const sponsors: Sponsors = [
 		{
 			id,
+			tier: 10,
 			start_date: new Date(
 				Date.UTC(date.getFullYear() - 1, date.getMonth() - 1, date.getDate())
 			),
 			expiry_date: new Date(
 				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
 			),
-			name: 'example'
+			name: 'example',
+			messages: [],
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
 		}
 	]
 	t.is(await sponsor({ id }, sponsors), await svg(sponsors[0]))
+})
+
+test('If Tier 10, circle color is gold(control by CSS Class)', async t => {
+	const id = 'example'
+	const date = new Date()
+	t.regex(
+		await svg({
+			id,
+			tier: 10,
+			start_date: new Date(
+				Date.UTC(date.getFullYear() - 1, date.getMonth() - 1, date.getDate())
+			),
+			expiry_date: new Date(
+				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
+			),
+			name: 'example',
+			messages: [],
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
+		}),
+		/<circle class="tier gold"/
+	)
+})
+
+test('If Tier 20, circle color is silver(control by CSS Class)', async t => {
+	const id = 'example'
+	const date = new Date()
+	t.regex(
+		await svg({
+			id,
+			tier: 20,
+			start_date: new Date(
+				Date.UTC(date.getFullYear() - 1, date.getMonth() - 1, date.getDate())
+			),
+			expiry_date: new Date(
+				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
+			),
+			name: 'example',
+			messages: [],
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
+		}),
+		/<circle class="tier silver"/
+	)
+})
+
+test('If Tier 30, circle color is bronze(control by CSS Class)', async t => {
+	const id = 'example'
+	const date = new Date()
+	t.regex(
+		await svg({
+			id,
+			tier: 30,
+			start_date: new Date(
+				Date.UTC(date.getFullYear() - 1, date.getMonth() - 1, date.getDate())
+			),
+			expiry_date: new Date(
+				Date.UTC(date.getFullYear() + 1, date.getMonth() - 1, date.getDate())
+			),
+			name: 'example',
+			messages: [],
+			link: 'https://devtoken.rocks/',
+			image: {
+				url: 'https://asset.devtoken.rocks/og.png',
+				width: 1200,
+				height: 630
+			}
+		}),
+		/<circle class="tier bronze"/
+	)
 })

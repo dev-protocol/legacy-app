@@ -11,6 +11,7 @@ import { badge } from './route/badge'
 import { cacheControl, CacheControl } from './lib/cache-control'
 import { setHeader } from './lib/set-header'
 import { confirm } from './route/confirm'
+import { sponsor } from './route/sponsor'
 
 export interface Result {
 	readonly body?: string | Error | false
@@ -36,6 +37,8 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			? await api(pathname, request)
 			: route === 'oss'
 			? await oss(pathname, request)
+			: route === 'sponsor'
+			? await sponsor(pathname, request)
 			: route === 'badge'
 			? await badge(pathname, res)
 			: route === 'confirm'

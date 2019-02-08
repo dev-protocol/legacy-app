@@ -4,7 +4,7 @@ import { html as raw } from '../../lib/html'
 import { head } from '../../template/head'
 import { config } from '../../config'
 import { style } from '../../lib/style'
-import { ampAnalytics } from '../../template/amp-analytics'
+import { ampAnalytics } from '../../template/amp/amp-analytics'
 import { header } from '../../template/header'
 import { ampComponent } from '../../lib/amp-component'
 import { sampleCode } from '../../template/sample-code'
@@ -20,18 +20,18 @@ export const howToUseMarkdownBadge = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: 'How To Use Markdown Badge',
 				description: 'How To Use Markdown Badge',
 				url: {
 					host: config.domain,
 					path: request.url
 				},
-				injection: await ampComponent('amp-bind')
+				injection: ampComponent('amp-bind')
 			})
 		}
 		${
-			await style`
+			style`
 				body {
 					background: black;
 					color: white;
@@ -49,17 +49,17 @@ export const howToUseMarkdownBadge = async ({ request }: Opts) => html`
 			`
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
-				${await docHeading({ title: 'How To Use Markdown Badge' })}
+				${docHeading({ title: 'How To Use Markdown Badge' })}
 				${
-					await docContent({
-						content: await raw`
+					docContent({
+						content: raw`
 							<p>Enter the OSS(package) name in the form, copy one of the formats and paste them into your project's <code>README.md</code>.</p>
 						`
 					})
 				}
-				${await sampleCode()}
+				${sampleCode()}
 			</main>
 		</body>
 	</html>

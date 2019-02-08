@@ -1,4 +1,5 @@
 import { amp as html } from '../lib/amp'
+import { html as raw } from '../lib/html'
 import { DistributionTarget, AddressBalance } from 'dev-distribution/src/types'
 import { packageInfo } from '../template/package-widget'
 import { IncomingMessage } from 'http'
@@ -11,8 +12,12 @@ import { large } from '../style/large'
 import { trade } from '../template/trade'
 import { config } from '../config'
 import { head } from '../template/head'
-import { ampAnalytics } from '../template/amp-analytics'
+import { ampAnalytics } from '../template/amp/amp-analytics'
 import { nav } from '../template/nav'
+import { sponsors } from '../template/sponsors'
+import { acceptLanguages } from '../lib/accept-languages'
+import { container } from '../template/container'
+import { whatsSponsors } from '../template/whats-sponsors'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -21,7 +26,6 @@ interface Opts {
 }
 
 const section = 'section'
-
 export const packagePage = async ({
 	package: pkg,
 	account,
@@ -30,14 +34,14 @@ export const packagePage = async ({
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
 		${
-			await head({
+			head({
 				title: `${pkg.package} is using Dev`,
 				description: `${pkg.package} has ${account.balance} DEV.`,
 				url: {
 					host: config.domain,
 					path: request.url
 				},
-				injection: await style`
+				injection: style`
 			body {
 				background: black;
 				color: white;
@@ -69,21 +73,42 @@ export const packagePage = async ({
 			})
 		}
 		<body>
-			${await ampAnalytics()} ${await header()} ${await nav()}
+			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				<section class="${section}__package">
 					${
-						await packageInfo({
+						packageInfo({
 							package: pkg,
 							account
 						})
 					}
 				</section>
-				<section>${await whats()}</section>
-				<section>${await join()}</section>
-				<section>${await trade()}</section>
+				<section>
+					${
+						container(
+							raw`
+								<h2>Sponsors</h2>
+								${sponsors({
+									locales: acceptLanguages(request.headers[
+										'accept-language'
+									] as string)
+								})}
+							`
+						)
+					}
+					${
+						container(
+							raw`
+								${whatsSponsors()}
+							`
+						)
+					}
+				</section>
+				<section>${whats()}</section>
+				<section>${join()}</section>
+				<section>${trade()}</section>
 			</main>
-			${await footer()}
+			${footer()}
 		</body>
 	</html>
 `

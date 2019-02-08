@@ -2,7 +2,7 @@ import { html } from '../lib/html'
 import { container } from './container'
 
 interface Opts {
-	readonly content: string
+	readonly content: string | Promise<string>
 	readonly className?: string
 }
 
