@@ -12,6 +12,7 @@ import { nav } from '../template/nav'
 import { footer } from '../template/footer'
 import { sponsors } from '../template/sponsors'
 import { acceptLanguages } from '../lib/accept-languages'
+import { whatsSponsors } from '../template/whats-sponsors'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -72,6 +73,15 @@ export const sponsor = async ({ request }: Opts) => html`
 										'accept-language'
 									] as string)
 								})}
+							</section>
+						`
+					})
+				}
+				${
+					docContent({
+						content: raw`
+							<section>
+								${whatsSponsors()}
 							</section>
 						`
 					})

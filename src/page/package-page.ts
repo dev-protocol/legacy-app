@@ -17,6 +17,7 @@ import { nav } from '../template/nav'
 import { sponsors } from '../template/sponsors'
 import { acceptLanguages } from '../lib/accept-languages'
 import { container } from '../template/container'
+import { whatsSponsors } from '../template/whats-sponsors'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -92,6 +93,13 @@ export const packagePage = async ({
 										'accept-language'
 									] as string)
 								})}
+							`
+						)
+					}
+					${
+						container(
+							raw`
+								${whatsSponsors()}
 							`
 						)
 					}

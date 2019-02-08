@@ -23,6 +23,7 @@ export const button = async ({
 			background: #607D8B;
 			text-decoration: none;
 			text-align: center;
+			font-weight: 700;
 		}
 	`
 	}

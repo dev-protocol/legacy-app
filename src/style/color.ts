@@ -5,4 +5,6 @@ export const gradientDev =
 
 export const lightWhite = '#ffffff1f'
 
+export const gold = 'gold'
+export const silver = 'silver'
 export const bronze = '#a5472a'
