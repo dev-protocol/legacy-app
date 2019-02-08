@@ -23,6 +23,11 @@ test('Valid AMP HTML', async t => {
 	t.is(result.status, 'PASS')
 })
 
+test('Request valid routes', async t => {
+	t.is((await get<string>(`${url}/confirm`, 'http')).statusCode, 200)
+	t.is((await get<string>(`${url}/confirm/?c=example`, 'http')).statusCode, 200)
+})
+
 test('Request invalid routes returns 404', async t => {
 	t.is((await get<string>(`${url}/confirm/x`, 'http')).statusCode, 404)
 })
