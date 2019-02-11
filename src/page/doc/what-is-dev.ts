@@ -212,7 +212,7 @@ export const whatIsDev = async ({ request }: Opts) => html`
 									</div>
 									<div role="rowgroup">
 										<div role="row">
-											<div role="gridcell">Initial total sapply</div>
+											<div role="gridcell">Initial total supply</div>
 											<div role="gridcell">10,000,000</div>
 										</div>
 										<div role="row">
