@@ -117,6 +117,9 @@ export const start = async ({ request }: Opts) => html`
 							font-weight: bolder;
 							color: ${orange};
 						}
+						& p {
+							margin: 0;
+						}
 					}
 				}
 				.${classNames.badge} {
