@@ -24,6 +24,7 @@ const classNames = {
 	downloads: 'downloads',
 	features: 'features',
 	exchange: 'exchange',
+	community: 'community',
 	button: 'button'
 }
 
@@ -251,6 +252,24 @@ export const root = async ({ request }: Opts) => html`
 					justify-items: baseline;
 				}
 			}
+			.${classNames.community} {
+				align-items: center;
+				${large(`
+					grid-template-columns: 1fr 50%;
+				`)}
+				& h2 {
+					margin: 0;
+					text-align: center;
+				}
+				& &__button {
+					&--spectrum {
+						background-image: linear-gradient(120deg, #3a18e6, #7c15ff);
+					}
+					&--discord {
+						background-color: #7289DA;
+					}
+				}
+			}
 		`
 			})
 		}
@@ -337,6 +356,27 @@ export const root = async ({ request }: Opts) => html`
 						<p>Most easiest & fairly way to monetize open source projects.</p>
 						<p>Find influential open source projects.</p>
 						<p>Sponsors accelerate OSS support.</p>
+					</div>
+				</section>
+				<section class="${classNames.community}">
+					<h2>Join our communities</h2>
+					<div class="${classNames.content}">
+						${
+							button({
+								link: 'https://spectrum.chat/devtoken',
+								content: 'Spectrum',
+								target: '_blank',
+								className: `${classNames.community}__button--spectrum`
+							})
+						}
+						${
+							button({
+								link: 'https://discord.gg/VwJp4KM',
+								content: 'Discord',
+								target: '_blank',
+								className: `${classNames.community}__button--discord`
+							})
+						}
 					</div>
 				</section>
 				<section class="${classNames.exchange}">

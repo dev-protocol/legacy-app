@@ -26,8 +26,13 @@ const navs: ReadonlyArray<Link> = [
 		someOrigin: false
 	},
 	{
-		label: 'Chat',
+		label: 'Spectrum',
 		link: 'https://spectrum.chat/devtoken',
+		someOrigin: false
+	},
+	{
+		label: 'Discord',
+		link: 'https://discord.gg/VwJp4KM',
 		someOrigin: false
 	},
 	{
