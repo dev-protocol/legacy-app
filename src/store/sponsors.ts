@@ -1,10 +1,14 @@
 import { siosTechnology } from './sponsor/sios-technology'
 import { example } from './sponsor/example'
 
-interface SponsorImage {
+interface SponsorVisualControl {
+	readonly maxWidth?: number
+}
+export interface SponsorImage {
 	readonly url: string
 	readonly width: number
 	readonly height: number
+	readonly visualControl?: SponsorVisualControl
 }
 export type MessageLocale = 'en' | 'ja'
 export interface SponsorMessage {

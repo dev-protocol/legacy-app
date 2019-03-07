@@ -2,7 +2,11 @@ import { html } from '../lib/html'
 import { style } from '../lib/style'
 import { asyncMap } from '../lib/async-map'
 import { sortBy } from 'lodash'
-import { sponsors as spons, SponsorMessages } from '../store/sponsors'
+import {
+	sponsors as spons,
+	SponsorMessages,
+	SponsorImage
+} from '../store/sponsors'
 import * as escapeHTML from 'escape-html'
 import { Marked } from 'marked-ts'
 import { verifier } from '../lib/verifier'
@@ -33,6 +37,10 @@ const classified = (tiers =>
 		tier,
 		items: valid.filter(v => v.tier === tier)
 	})))(new Set(valid.map(({ tier }) => tier)))
+const visualDirective = (image: SponsorImage) =>
+	image.visualControl
+		? `style="max-width: ${image.visualControl.maxWidth}px"`
+		: ''
 
 export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 	(async find => html`
@@ -61,9 +69,9 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 				}
 				&__list {
 					display: grid;
-					grid-gap: 1rem;
+					grid-gap: 5rem;
 					${large(`
-						grid-gap: 3rem;
+						grid-gap: 9rem;
 					`)}
 					&--silver {
 						grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -116,7 +124,10 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 											sortBy(items, 'start_date').map(
 												async ({ image, messages, link, name }) => html`
 													<div class="${className}__item">
-														<div class="${className}__image">
+														<div
+															class="${className}__image"
+															${visualDirective(image)}
+														>
 															${
 																ampImage({
 																	alt: escapeHTML(name),
