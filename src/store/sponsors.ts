@@ -1,6 +1,7 @@
 import { example } from './sponsor/example'
 import { siosTechnology } from './sponsor/sios-technology'
 import { neutrino } from './sponsor/neutrino'
+import { microsoft } from './sponsor/microsoft'
 
 interface SponsorVisualControl {
 	readonly maxWidth?: number
@@ -31,6 +32,6 @@ export interface Sponsor {
 }
 export type Sponsors = ReadonlyArray<Sponsor>
 
-const s: Sponsors = [siosTechnology, neutrino]
+const s: Sponsors = [siosTechnology, neutrino, microsoft]
 
 export const sponsors: Sponsors = [...s, ...[example]]
