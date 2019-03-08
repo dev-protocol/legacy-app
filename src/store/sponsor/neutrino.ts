@@ -23,7 +23,8 @@ export const neutrino: Sponsor = {
 		width: 1280,
 		height: 384,
 		visualControl: {
-			maxWidth: 430
+			maxWidth: 430,
+			margin: '50px 0'
 		}
 	}
 }

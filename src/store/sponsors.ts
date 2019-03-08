@@ -5,6 +5,7 @@ import { microsoft } from './sponsor/microsoft'
 
 interface SponsorVisualControl {
 	readonly maxWidth?: number
+	readonly margin?: string
 }
 export interface SponsorImage {
 	readonly url: string

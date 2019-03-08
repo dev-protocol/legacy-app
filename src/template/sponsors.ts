@@ -39,7 +39,15 @@ const classified = (tiers =>
 	})))(new Set(valid.map(({ tier }) => tier)))
 const visualDirective = (image: SponsorImage) =>
 	image.visualControl
-		? `style="max-width: ${image.visualControl.maxWidth}px"`
+		? `style="${
+				image.visualControl.maxWidth
+					? `max-width: ${image.visualControl.maxWidth}px;`
+					: ''
+		  }${
+				image.visualControl.margin
+					? `margin: ${image.visualControl.margin}`
+					: ''
+		  }"`
 		: ''
 
 export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
