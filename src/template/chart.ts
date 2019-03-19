@@ -1,6 +1,6 @@
 import { ampImage } from './amp/amp-image'
 
-export const chart = () =>
+export const chart = async () =>
 	ampImage({
 		alt: 'Downloads chart',
 		src: '//asset.devtoken.rocks/lp/chart/2019-02.png',

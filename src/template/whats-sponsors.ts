@@ -84,8 +84,8 @@ export const whatsSponsors = async ({
 		<div class="${className}__tiers">
 			${
 				asyncMap(
-					tiers.map(tier =>
-						(label => html`
+					tiers.map(async tier =>
+						(async label => html`
 							<div class="${className}__tier ${className}__tier--${label}">
 								<span>${label}</span>
 							</div>
