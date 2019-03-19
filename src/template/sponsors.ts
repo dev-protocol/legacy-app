@@ -82,18 +82,15 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 						grid-gap: 9rem;
 					`)}
 					&--silver {
-						grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-						${large(`
-							grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
-						`)}
+						grid-template-columns: repeat(2, 1fr);
 						.${className}__message {
 							font-size: 0.8rem;
 						}
 					}
 					&--bronze {
-						grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+						grid-template-columns: repeat(2, 1fr);
 						${large(`
-							grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+							grid-template-columns: repeat(3, 1fr);
 						`)}
 						.${className}__message {
 							font-size: 0.6rem;
