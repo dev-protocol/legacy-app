@@ -96,6 +96,30 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 							font-size: 0.6rem;
 						}
 					}
+					&--supporters {
+						grid-gap: 2rem;
+						grid-template-columns: repeat(4, 1fr);
+						${large(`
+							grid-template-columns: repeat(8, 1fr);
+						`)}
+						.${className}__image {
+							position:relative;
+							amp-img {
+								border-radius: 50%;
+							}
+							&::after {
+								content: '';
+								display: block;
+								padding-top: 100%;
+							}
+						}
+						.${className}__link {
+							font-size: 0.5rem;
+						}
+					}
+				}
+				&__link {
+					word-break: break-all;
 				}
 				&__item {
 					display: grid;
@@ -133,15 +157,21 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 															class="${className}__image"
 															${visualDirective(s.image)}
 														>
-															${
-																ampImage({
-																	alt: escapeHTML(s.name),
-																	src: s.image.url,
-																	width: s.image.width,
-																	height: s.image.height,
-																	layout: 'responsive'
-																})
-															}
+															<a
+																href="${s.link}"
+																target="_blank"
+																rel="noopener"
+															>
+																${
+																	ampImage({
+																		alt: escapeHTML(s.name),
+																		src: s.image.url,
+																		width: s.image.width,
+																		height: s.image.height,
+																		layout: s.tier < 50 ? 'responsive' : 'fill'
+																	})
+																}
+															</a>
 														</div>
 														${
 															'messages' in s

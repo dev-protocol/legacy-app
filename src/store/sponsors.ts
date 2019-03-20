@@ -3,6 +3,7 @@ import { siosTechnology } from './sponsor/sios-technology'
 import { neutrino } from './sponsor/neutrino'
 import { microsoft } from './sponsor/microsoft'
 import { cryptobowl } from './sponsor/cryptobowl'
+import { narinarita1980 } from './sponsor/narinarita1980'
 
 interface SponsorVisualControl {
 	readonly maxWidth?: number
@@ -37,6 +38,12 @@ export interface Sponsor extends Supporter<Exclude<SponsorTier, 50>> {
 }
 export type Sponsors = ReadonlyArray<Sponsor | PersonalSponsor>
 
-const s: Sponsors = [siosTechnology, neutrino, microsoft, cryptobowl]
+const s: Sponsors = [
+	siosTechnology,
+	neutrino,
+	microsoft,
+	cryptobowl,
+	narinarita1980
+]
 
 export const sponsors: Sponsors = [...s, ...[example]]
