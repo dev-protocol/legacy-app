@@ -42,6 +42,7 @@ export const whatsSponsors = async ({
 					border-radius: 50%;
 					text-transform: capitalize;
 					font-weight: 700;
+					margin-bottom: 2rem;
 					&::after {
 						content: '';
 						display: block;
@@ -94,6 +95,7 @@ export const whatsSponsors = async ({
 				)
 			}
 		</div>
+		<p>and <strong>Supporters</strong>.</p>
 		<div>
 			${
 				button({
