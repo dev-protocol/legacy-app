@@ -127,35 +127,44 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 									${
 										asyncMap(
 											sortBy(items, 'start_date').map(
-												async ({ image, messages, link, name }) => html`
+												async s => html`
 													<div class="${className}__item">
 														<div
 															class="${className}__image"
-															${visualDirective(image)}
+															${visualDirective(s.image)}
 														>
 															${
 																ampImage({
-																	alt: escapeHTML(name),
-																	src: image.url,
-																	width: image.width,
-																	height: image.height,
+																	alt: escapeHTML(s.name),
+																	src: s.image.url,
+																	width: s.image.width,
+																	height: s.image.height,
 																	layout: 'responsive'
 																})
 															}
 														</div>
-														<div class="${className}__message">
-															${
-																Marked.parse(
-																	(find(messages) || selectFirst(messages)).text
-																)
-															}
-														</div>
+														${
+															'messages' in s
+																? html`
+																		<div class="${className}__message">
+																			${
+																				Marked.parse(
+																					(
+																						find(s.messages) ||
+																						selectFirst(s.messages)
+																					).text
+																				)
+																			}
+																		</div>
+																  `
+																: ''
+														}
 														<a
 															class="${className}__link"
-															href="${link}"
+															href="${s.link}"
 															target="_blank"
 															rel="noopener"
-															>${name}</a
+															>${s.name}</a
 														>
 													</div>
 												`

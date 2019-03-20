@@ -5,7 +5,7 @@ import test from 'ava'
 import micro from 'micro'
 import { app } from '../app'
 import { get } from '../lib/get'
-import { sponsors } from '../store/sponsors'
+import { sponsors, Sponsor } from '../store/sponsors'
 import { svg } from '../page/badge/certification/sponsor/svg'
 import { svg as emptySVG } from '../template/empty'
 
@@ -47,7 +47,7 @@ test('Request invalid routes returns 404', async t => {
 })
 
 test('Get certification badge', async t => {
-	const expected = await svg(sponsors[sponsors.length - 1])
+	const expected = await svg(sponsors[sponsors.length - 1] as Sponsor)
 	const res = await get(`${url}/badge/certification/sponsor/example`, 'http')
 	t.is(res.body, expected)
 })

@@ -34,9 +34,13 @@ test('When "en-US" is the highest priority in the "Accept-Language" header, the 
 	const res = await get<string>(`${url}/sponsor`, 'http', {
 		headers: { 'Accept-Language': 'en-US,en;q=0.9,ja-JP;q=0.8,ja;q=0.7' }
 	})
-	const en = (sponsors.find(({ messages }) =>
-		messages.some(mes => mes.locale === 'en')
-	) as Sponsor).messages.find(({ locale }) => locale === 'en') as SponsorMessage
+	const en = (sponsors
+		.filter((s): s is Sponsor => 'messages' in s)
+		.find(({ messages }) =>
+			messages.some(mes => mes.locale === 'en')
+		) as Sponsor).messages.find(
+		({ locale }) => locale === 'en'
+	) as SponsorMessage
 	t.true(
 		res.body.includes(
 			await html`
@@ -50,9 +54,13 @@ test('When "ja-JP" is the highest priority in the "Accept-Language" header, the 
 	const res = await get<string>(`${url}/sponsor`, 'http', {
 		headers: { 'Accept-Language': 'ja-JP,ja;q=0.9,en-US;q=0.8,en;q=0.7' }
 	})
-	const ja = (sponsors.find(({ messages }) =>
-		messages.some(mes => mes.locale === 'ja')
-	) as Sponsor).messages.find(({ locale }) => locale === 'ja') as SponsorMessage
+	const ja = (sponsors
+		.filter((s): s is Sponsor => 'messages' in s)
+		.find(({ messages }) =>
+			messages.some(mes => mes.locale === 'ja')
+		) as Sponsor).messages.find(
+		({ locale }) => locale === 'ja'
+	) as SponsorMessage
 	t.true(
 		res.body.includes(
 			await html`
@@ -68,9 +76,11 @@ test('When not found matches "Accept-Language" header and sponsor message locale
 			'Accept-Language': 'fr-CH,fr;q=0.9,de;q=0.8,*;q=0.7'
 		}
 	})
-	const first = (sponsors.find(({ messages }) =>
-		messages.every(({ locale }) => locale === 'en' || locale === 'ja')
-	) as Sponsor).messages[0]
+	const first = (sponsors
+		.filter((s): s is Sponsor => 'messages' in s)
+		.find(({ messages }) =>
+			messages.every(({ locale }) => locale === 'en' || locale === 'ja')
+		) as Sponsor).messages[0]
 	t.true(
 		res.body.includes(
 			await html`

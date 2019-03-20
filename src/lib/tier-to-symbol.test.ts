@@ -15,6 +15,10 @@ test('Tier 30 is bronze', t => {
 	t.is(tierToSymbol(30), 'bronze')
 })
 
+test('Tier 50 is supporter', t => {
+	t.is(tierToSymbol(50), 'supporter')
+})
+
 test('undefined tier', t => {
 	t.is(tierToSymbol(9999 as SponsorTier), undefined)
 })

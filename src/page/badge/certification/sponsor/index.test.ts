@@ -1,7 +1,7 @@
 // tslint:disable:no-expression-statement
 import test from 'ava'
 import { sponsor } from '.'
-import { Sponsors } from '../../../../store/sponsors'
+import { Sponsors, Sponsor } from '../../../../store/sponsors'
 import { svg } from './svg'
 
 test('Returns false if not exist sponsor ID', async t => {
@@ -86,7 +86,7 @@ test('When all the conditions are satisfied, the SVG badge is returned', async t
 			}
 		}
 	]
-	t.is(await sponsor({ id }, sponsors), await svg(sponsors[0]))
+	t.is(await sponsor({ id }, sponsors), await svg(sponsors[0] as Sponsor))
 })
 
 test('If Tier 10, circle color is gold(control by CSS Class)', async t => {
