@@ -21,7 +21,7 @@ export const trade = async ({ className = 'trade' }: Opts = {}) =>
 			container(
 				html`
 			<div class='${className}'>
-				<a class='${className}__link' href=//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH target=_blank rel=noopener>Buy or Sell order with EtherDelta.</a>
+				<a class='${className}__link' href=//uniswap.exchange/swap target=_blank rel=noopener>Buy or Sell order with Uniswap.</a>
 			</div>
 		`
 			)

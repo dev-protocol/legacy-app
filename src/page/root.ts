@@ -381,20 +381,8 @@ export const root = async ({ request }: Opts) => html`
 				</section>
 				<section class="${classNames.exchange}">
 					<h2>Exchange</h2>
-					<a
-						href="//etherdelta.com/#0x98626e2c9231f03504273d55f397409defd4a093-ETH"
-						target="_blank"
-						rel="noopener"
-					>
-						${
-							ampImage({
-								alt: 'EtherDelta',
-								src: '//asset.devtoken.rocks/etherdelta.svg',
-								width: 2500,
-								height: 2232,
-								layout: 'responsive'
-							})
-						} <span>EtherDelta</span>
+					<a href="//uniswap.exchange/swap" target="_blank" rel="noopener">
+						🦄 Uniswap
 					</a>
 				</section>
 			</main>

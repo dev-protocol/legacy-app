@@ -126,7 +126,7 @@ export const whatIsDev = async ({ request }: Opts) => html`
 								<p>"Dev" is an ERC20 token for open source software (OSS) sustainability.</p>
 								<p>After fairly evaluating OSS's influence, we will distribute a token proportionate to that value.</p>
 								<p>We will transform the development of OSS — viewed as having a sustainability problem due to the difficulty of monetization — into something sustainable.</p>
-								<p>Anyone can buy and sell tokens on EtherDelta.</p>
+								<p>Anyone can buy and sell tokens on Uniswap.</p>
 								${button({
 									link: '//medium.com/devtoken/dev-tokens-for-oss-a63e55c60e6b',
 									target: '_blank',
