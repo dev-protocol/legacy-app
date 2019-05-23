@@ -1,5 +1,4 @@
-// tslint:disable:no-expression-statement
-// tslint:disable:type-literal-delimiter
+// tslint:disable:no-expression-statement type-literal-delimiter no-unsafe-any
 // tslint:disable-next-line:no-require-imports
 import listen = require('test-listen')
 import test from 'ava'

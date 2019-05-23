@@ -1,5 +1,4 @@
-// tslint:disable:no-expression-statement
-// tslint:disable:no-object-mutation
+// tslint:disable:no-expression-statement no-object-mutation no-unsafe-any
 import test from 'ava'
 import { get as _get } from 'request'
 import { get } from './get'
@@ -14,12 +13,13 @@ test('When passed first args only, get JSON API', async t => {
 		new Promise<any>(resolve =>
 			_get(
 				{ uri: 'https://jsonplaceholder.typicode.com/todos/1', json: true },
-				(_, { headers, statusCode }, body) =>
+				(_, { headers, statusCode }, body) => {
 					resolve({
 						body,
 						headers,
 						statusCode
 					})
+				}
 			)
 		),
 		get('//jsonplaceholder.typicode.com/todos/1')
@@ -35,12 +35,13 @@ test('When passed first and second args, get JSON API using second args as proto
 			_get(
 				// tslint:disable-next-line:no-http-string
 				{ uri: 'http://jsonplaceholder.typicode.com/todos/1', json: true },
-				(_, { headers, statusCode }, body) =>
+				(_, { headers, statusCode }, body) => {
 					resolve({
 						body,
 						headers,
 						statusCode
 					})
+				}
 			)
 		),
 		get('//jsonplaceholder.typicode.com/todos/1', 'http')
@@ -56,12 +57,13 @@ test('When passed full args, get request using third args as options of "request
 			_get(
 				// tslint:disable-next-line:no-http-string
 				{ uri: 'http://example.com', json: false },
-				(_, { headers, statusCode }, body) =>
+				(_, { headers, statusCode }, body) => {
 					resolve({
 						body,
 						headers,
 						statusCode
 					})
+				}
 			)
 		),
 		get('//example.com', 'http', {

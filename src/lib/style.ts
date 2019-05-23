@@ -6,7 +6,9 @@ import { html } from './html'
 const processor = process({
 	// tslint:disable-next-line:readonly-array
 	plugins: [
+		// tslint:disable-next-line:no-unsafe-any
 		nested(),
+		// tslint:disable-next-line:no-unsafe-any
 		preset({
 			stage: 0,
 			browsers: 'last 2 versions',

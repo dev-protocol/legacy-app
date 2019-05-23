@@ -5,7 +5,7 @@ import { html } from './html'
 import { collapseWhitespace } from './collapse-whitespace'
 
 const style = process({
-	// tslint:disable-next-line:readonly-array
+	// tslint:disable-next-line:readonly-array no-unsafe-any
 	plugins: [cssnano()]
 })
 
@@ -16,7 +16,8 @@ const beforeHead = (htm: string, content: string) =>
 
 export const amp = new Proxy(html, {
 	apply: async (target, thisArg, args) => {
-		const doc = await target.apply(thisArg, args)
+		// tslint:disable-next-line:no-unsafe-any
+		const doc: string = await target.apply(thisArg, args)
 		const { styles, content } = cutOutStyle(doc)
 		const addedBoilerplate = beforeHead(content, boilerplate)
 		const addedAmpScript = beforeHead(

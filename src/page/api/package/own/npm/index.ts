@@ -18,7 +18,8 @@ const ls = async (
 	token?: string | ReadonlyArray<string>
 ): Promise<LsPackagesResults | Error> =>
 	typeof username === 'string' && typeof token === 'string'
-		? lsPackages(username, { token }).catch(err => err)
+		? // tslint:disable-next-line:no-unsafe-any
+		  lsPackages(username, { token }).catch((err: Error) => err)
 		: new Error('invalid request')
 
 const handlers = {

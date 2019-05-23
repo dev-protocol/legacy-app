@@ -12,10 +12,10 @@ export interface CacheControl {
 const directive = <T>(
 	key: string,
 	value: T,
-	schema: (k: string, v: T) => string | null = (k, v) => `${k}=${v}`
-) => (value === undefined ? null : schema(key, value))
+	schema: (k: string, v: T) => string | undefined = (k, v) => `${k}=${v}`
+) => (value === undefined ? value : schema(key, value))
 
-const booleanSchema = (k: string, v: boolean) => (v ? k : null)
+const booleanSchema = (k: string, v: boolean) => (v ? k : undefined)
 
 export const cacheControl = ({
 	public: pub,
@@ -27,7 +27,7 @@ export const cacheControl = ({
 	staleWhileRevalidate,
 	mustRevalidate
 }: CacheControl) => {
-	const values: ReadonlyArray<string | null> = [
+	const values: ReadonlyArray<string | undefined> = [
 		directive('public', pub, booleanSchema),
 		directive('private', pri, booleanSchema),
 		directive('no-store', noStore, booleanSchema),
