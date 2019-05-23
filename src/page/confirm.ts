@@ -13,15 +13,14 @@ interface Opts {
 export const confirm = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			await head({
-				title: 'Confirm owner',
-				description: '',
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: await style`
+		${await head({
+			title: 'Confirm owner',
+			description: '',
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: await style`
 			body {
 				background: black;
 				color: white;
@@ -47,8 +46,7 @@ export const confirm = async ({ request }: Opts) => html`
 				max-width: 120px;
 			}
 		`
-			})
-		}
+		})}
 		<body>
 			${await ampAnalytics()}
 			<main>

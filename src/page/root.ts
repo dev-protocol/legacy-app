@@ -31,17 +31,16 @@ const classNames = {
 export const root = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: '',
-				description:
-					'Dev is an ERC20 token for open source sustainability. Dev will monetize open source.',
-				image: '/lp/code-as-life.png',
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: style`
+		${head({
+			title: '',
+			description:
+				'Dev is an ERC20 token for open source sustainability. Dev will monetize open source.',
+			image: '/lp/code-as-life.png',
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: style`
 			body {
 				background: black;
 				color: white;
@@ -271,8 +270,7 @@ export const root = async ({ request }: Opts) => html`
 				}
 			}
 		`
-			})
-		}
+		})}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
@@ -285,24 +283,20 @@ export const root = async ({ request }: Opts) => html`
 							Anyone can start without changing licenses, codes, and support.
 						</p>
 						<p>Just publish your open source to npm.</p>
-						${
-							button({
-								link: '/doc/start',
-								content: 'Start Now',
-								className: classNames.button
-							})
-						}
+						${button({
+							link: '/doc/start',
+							content: 'Start Now',
+							className: classNames.button
+						})}
 					</div>
 					<figure>
-						${
-							ampImage({
-								alt: 'image',
-								src: '//asset.devtoken.rocks/lp/cover.png',
-								width: 2000,
-								height: 1177,
-								layout: 'responsive'
-							})
-						}
+						${ampImage({
+							alt: 'image',
+							src: '//asset.devtoken.rocks/lp/cover.png',
+							width: 2000,
+							height: 1177,
+							layout: 'responsive'
+						})}
 					</figure>
 				</section>
 				<section class="${classNames.howItWorks}">
@@ -341,13 +335,11 @@ export const root = async ({ request }: Opts) => html`
 							<span class="${classNames.downloads}__strong">428 million</span>
 							average downloaded every month.
 						</p>
-						${
-							button({
-								link: '/oss',
-								content: 'Learn More',
-								className: classNames.button
-							})
-						}
+						${button({
+							link: '/oss',
+							content: 'Learn More',
+							className: classNames.button
+						})}
 					</div>
 				</section>
 				<section class="${classNames.features}">
@@ -361,22 +353,18 @@ export const root = async ({ request }: Opts) => html`
 				<section class="${classNames.community}">
 					<h2>Join our communities</h2>
 					<div class="${classNames.content}">
-						${
-							button({
-								link: 'https://spectrum.chat/devtoken',
-								content: 'Spectrum',
-								target: '_blank',
-								className: `${classNames.community}__button--spectrum`
-							})
-						}
-						${
-							button({
-								link: 'https://discord.gg/VwJp4KM',
-								content: 'Discord',
-								target: '_blank',
-								className: `${classNames.community}__button--discord`
-							})
-						}
+						${button({
+							link: 'https://spectrum.chat/devtoken',
+							content: 'Spectrum',
+							target: '_blank',
+							className: `${classNames.community}__button--spectrum`
+						})}
+						${button({
+							link: 'https://discord.gg/VwJp4KM',
+							content: 'Discord',
+							target: '_blank',
+							className: `${classNames.community}__button--discord`
+						})}
 					</div>
 				</section>
 				<section class="${classNames.exchange}">

@@ -14,8 +14,7 @@ export const button = async ({
 	target,
 	className = 'button'
 }: Opts) => html`
-	${
-		await style`
+	${await style`
 		.${className} {
 			display: inline-block;
 			padding: 1rem 2rem;
@@ -25,8 +24,7 @@ export const button = async ({
 			text-align: center;
 			font-weight: 700;
 		}
-	`
-	}
+	`}
 	<a class="${className}" href="${link}" ${target ? `target="${target}"` : ''}
 		>${content}</a
 	>

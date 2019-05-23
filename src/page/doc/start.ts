@@ -27,15 +27,13 @@ const badge = async () => html`
 		<p>Please add a markdown badge to your README.md.</p>
 		<div class="${classNames.badge}__how">
 			<p>You can use the badge, such as the following.</p>
-			${
-				ampImage({
-					alt: 'Dev',
-					src: '//asset.devtoken.rocks/doc/markdown-badge.svg',
-					width: 88.63,
-					height: 20,
-					layout: 'fixed'
-				})
-			}
+			${ampImage({
+				alt: 'Dev',
+				src: '//asset.devtoken.rocks/doc/markdown-badge.svg',
+				width: 88.63,
+				height: 20,
+				layout: 'fixed'
+			})}
 			<p>
 				💡
 				<a href="/doc/how-to-use-markdown-badge">How to use markdown badge</a>.
@@ -57,21 +55,18 @@ const placeholder = ampImage({
 export const start = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: 'Start Dev',
-				description: 'Start Dev',
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: html`
-					${ampComponent('amp-iframe')} ${ampComponent('amp-accordion')}
-				`
-			})
-		}
-		${
-			style`
+		${head({
+			title: 'Start Dev',
+			description: 'Start Dev',
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: html`
+				${ampComponent('amp-iframe')} ${ampComponent('amp-accordion')}
+			`
+		})}
+		${style`
 				body {
 					background: black;
 					color: white;
@@ -131,15 +126,13 @@ export const start = async ({ request }: Opts) => html`
 						border-radius: 5px;
 					}
 				}
-			`
-		}
+			`}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				${docHeading({ title: 'Register Your OSS and Start Dev' })}
-				${
-					docContent({
-						content: raw`
+				${docContent({
+					content: raw`
 							<amp-accordion>
 								<section expanded>
 									<h2 class="${
@@ -200,8 +193,7 @@ export const start = async ({ request }: Opts) => html`
 								</section>
 							</amp-accordion>
 						`
-					})
-				}
+				})}
 			</main>
 		</body>
 	</html>

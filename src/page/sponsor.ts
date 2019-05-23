@@ -25,18 +25,15 @@ const classNames = {
 export const sponsor = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: 'Sponsor',
-				description: '',
-				url: {
-					host: config.domain,
-					path: request.url
-				}
-			})
-		}
-		${
-			style`
+		${head({
+			title: 'Sponsor',
+			description: '',
+			url: {
+				host: config.domain,
+				path: request.url
+			}
+		})}
+		${style`
 				body {
 					background: black;
 					color: white;
@@ -58,15 +55,13 @@ export const sponsor = async ({ request }: Opts) => html`
 				}
 				.${classNames.sponsors} {
 				}
-			`
-		}
+			`}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				${docHeading({ title: 'Sponsors' })}
-				${
-					docContent({
-						content: raw`
+				${docContent({
+					content: raw`
 							<section class="${classNames.sponsors}">
 								${sponsors({
 									locales: acceptLanguages(request.headers[
@@ -75,17 +70,14 @@ export const sponsor = async ({ request }: Opts) => html`
 								})}
 							</section>
 						`
-					})
-				}
-				${
-					docContent({
-						content: raw`
+				})}
+				${docContent({
+					content: raw`
 							<section>
 								${whatsSponsors()}
 							</section>
 						`
-					})
-				}
+				})}
 			</main>
 			${footer()}
 		</body>

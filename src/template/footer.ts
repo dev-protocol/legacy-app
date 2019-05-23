@@ -55,8 +55,7 @@ const navs: ReadonlyArray<Link> = [
 
 export const footer = async ({ className = 'footer' }: Opts = {}) =>
 	html`
-		${
-			await style`
+		${await style`
 			.${className} {
 				border-top: .5px solid ${lightWhite};
 				font-size: 0.9rem;
@@ -94,47 +93,40 @@ export const footer = async ({ className = 'footer' }: Opts = {}) =>
 					font-weight: bolder;
 				}
 			}
-		`
-		}
+		`}
 		<footer class="${className}">
-			${
-				container(
-					await html`
-						<div class="${className}__wrap">
-							<div class="${className}__brand">
-								<p><a href="//devtoken.rocks/alpha/en">${imageLogo()}</a></p>
-								<p>Tokens for OSS sustainability</p>
-							</div>
-							<nav>
-								<ul>
-									${
-										asyncMap(
-											navs.map(
-												async nav => html`
-													<li>
-														<a
-															href="${nav.link}"
-															target="${nav.someOrigin ? '_self' : '_blank'}"
-														>
-															${nav.label}
-														</a>
-													</li>
-												`
-											)
-										)
-									}
-								</ul>
-							</nav>
-							${
-								button({
-									link: 'mailto:investor@frame00.com',
-									content: 'For investor',
-									className: forInvestor
-								})
-							}
+			${container(
+				await html`
+					<div class="${className}__wrap">
+						<div class="${className}__brand">
+							<p><a href="//devtoken.rocks/alpha/en">${imageLogo()}</a></p>
+							<p>Tokens for OSS sustainability</p>
 						</div>
-					`
-				)
-			}
+						<nav>
+							<ul>
+								${asyncMap(
+									navs.map(
+										async nav => html`
+											<li>
+												<a
+													href="${nav.link}"
+													target="${nav.someOrigin ? '_self' : '_blank'}"
+												>
+													${nav.label}
+												</a>
+											</li>
+										`
+									)
+								)}
+							</ul>
+						</nav>
+						${button({
+							link: 'mailto:investor@frame00.com',
+							content: 'For investor',
+							className: forInvestor
+						})}
+					</div>
+				`
+			)}
 		</footer>
 	`

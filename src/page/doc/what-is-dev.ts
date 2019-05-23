@@ -32,20 +32,17 @@ const classNames = {
 export const whatIsDev = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: 'What is Dev?',
-				description:
-					'"Dev" is an ERC20 token for open source software (OSS) sustainability.',
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: ampComponent('amp-iframe')
-			})
-		}
-		${
-			style`
+		${head({
+			title: 'What is Dev?',
+			description:
+				'"Dev" is an ERC20 token for open source software (OSS) sustainability.',
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: ampComponent('amp-iframe')
+		})}
+		${style`
 				body {
 					background: black;
 					color: white;
@@ -113,15 +110,13 @@ export const whatIsDev = async ({ request }: Opts) => html`
 				.${classNames.linkBlog} {
 					justify-self: center;
 				}
-			`
-		}
+			`}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				${docHeading({ title: 'What is Dev?' })}
-				${
-					docContent({
-						content: raw`
+				${docContent({
+					content: raw`
 							<section>
 								<p>"Dev" is an ERC20 token for open source software (OSS) sustainability.</p>
 								<p>After fairly evaluating OSS's influence, we will distribute a token proportionate to that value.</p>
@@ -164,11 +159,9 @@ export const whatIsDev = async ({ request }: Opts) => html`
 								</div>
 							</section>
 						`
-					})
-				}
-				${
-					docContent({
-						content: raw`
+				})}
+				${docContent({
+					content: raw`
 							<section>
 								<h2>How it works</h2>
 								${ampImage({
@@ -180,11 +173,9 @@ export const whatIsDev = async ({ request }: Opts) => html`
 								})}
 							</section>
 						`
-					})
-				}
-				${
-					docContent({
-						content: raw`
+				})}
+				${docContent({
+					content: raw`
 							<section>
 								<h2>What does Dev resolve?</h2>
 								<p>Ethereum and Bitcoin were also developed as OSS.</p>
@@ -196,11 +187,9 @@ export const whatIsDev = async ({ request }: Opts) => html`
 								<p>We believe that, if we can boost the standards of OSS's sustainable development, we can also boost the speed of societal progress.</p>
 							</section>
 						`
-					})
-				}
-				${
-					docContent({
-						content: raw`
+				})}
+				${docContent({
+					content: raw`
 							<section>
 								<h2>Token details</h2>
 								<div role="grid" class="${classNames.table.token}">
@@ -250,8 +239,7 @@ export const whatIsDev = async ({ request }: Opts) => html`
 								</div>
 							</section>
 						`
-					})
-				}
+				})}
 			</main>
 			${footer()}
 		</body>

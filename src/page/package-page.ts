@@ -33,15 +33,14 @@ export const packagePage = async ({
 }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: `${pkg.package} is using Dev`,
-				description: `${pkg.package} has ${account.balance} DEV.`,
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: style`
+		${head({
+			title: `${pkg.package} is using Dev`,
+			description: `${pkg.package} has ${account.balance} DEV.`,
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: style`
 			body {
 				background: black;
 				color: white;
@@ -70,23 +69,19 @@ export const packagePage = async ({
 				}
 			}
 		`
-			})
-		}
+		})}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				<section class="${section}__package">
-					${
-						packageInfo({
-							package: pkg,
-							account
-						})
-					}
+					${packageInfo({
+						package: pkg,
+						account
+					})}
 				</section>
 				<section>
-					${
-						container(
-							raw`
+					${container(
+						raw`
 								<h2>Sponsors</h2>
 								${sponsors({
 									locales: acceptLanguages(request.headers[
@@ -94,15 +89,12 @@ export const packagePage = async ({
 									] as string)
 								})}
 							`
-						)
-					}
-					${
-						container(
-							raw`
+					)}
+					${container(
+						raw`
 								${whatsSponsors()}
 							`
-						)
-					}
+					)}
 				</section>
 				<section>${whats()}</section>
 				<section>${join()}</section>

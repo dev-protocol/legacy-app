@@ -10,8 +10,7 @@ interface Opts {
 
 export const osss = async ({ className = 'oss-list' }: Opts = {}) =>
 	(async pkgs => html`
-		${
-			await style`
+		${await style`
 				.${className} {
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
@@ -20,19 +19,16 @@ export const osss = async ({ className = 'oss-list' }: Opts = {}) =>
 						text-decoration: none;
 					}
 				}
-			`
-		}
+			`}
 		<div class="${className}">
-			${
-				await asyncMap(
-					sortBy(pkgs.body, o => o.package.replace('@', '')).map(
-						async pkg => html`
-							<a class="${className}__pkg" href="/package/${pkg.package}"
-								>${pkg.package}</a
-							>
-						`
-					)
+			${await asyncMap(
+				sortBy(pkgs.body, o => o.package.replace('@', '')).map(
+					async pkg => html`
+						<a class="${className}__pkg" href="/package/${pkg.package}"
+							>${pkg.package}</a
+						>
+					`
 				)
-			}
+			)}
 		</div>
 	`)(await fetchPackages())

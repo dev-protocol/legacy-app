@@ -8,15 +8,12 @@ interface Opts {
 
 export const whats = async ({ className = 'whats' }: Opts = {}) =>
 	html`
-		${
-			style`
+		${style`
 			.${className} {
 			}
-		`
-		}
-		${
-			container(
-				html`
+		`}
+		${container(
+			html`
 			<div class='${className}'>
 				<h2>What’s Dev(Token)?</h2>
 				<p>"Dev" is an ERC20 token for open source software (OSS) sustainability.</p>
@@ -32,6 +29,5 @@ export const whats = async ({ className = 'whats' }: Opts = {}) =>
 				<p><small>Currently, Dev is an alpha version, and the distribution-to-contributors feature is yet not released.</small></p>
 			</div>
 		`
-			)
-		}
+		)}
 	`

@@ -10,18 +10,14 @@ interface Opts {
 export const docHeading = async (
 	{ title, className = 'doc-heading' }: Opts = { title }
 ) => html`
-	${
-		await style`
+	${await style`
 			.${className} {
 				text-align: center;
 			}
-	`
-	}
-	${
-		await container(
-			await html`
-				<div class="${className}"><h1>${title}</h1></div>
-			`
-		)
-	}
+	`}
+	${await container(
+		await html`
+			<div class="${className}"><h1>${title}</h1></div>
+		`
+	)}
 `

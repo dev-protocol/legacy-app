@@ -19,19 +19,16 @@ interface Opts {
 export const howToUseMarkdownBadge = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: 'How To Use Markdown Badge',
-				description: 'How To Use Markdown Badge',
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: ampComponent('amp-bind')
-			})
-		}
-		${
-			style`
+		${head({
+			title: 'How To Use Markdown Badge',
+			description: 'How To Use Markdown Badge',
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: ampComponent('amp-bind')
+		})}
+		${style`
 				body {
 					background: black;
 					color: white;
@@ -46,19 +43,16 @@ export const howToUseMarkdownBadge = async ({ request }: Opts) => html`
 				p {
 					margin: 0;
 				}
-			`
-		}
+			`}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				${docHeading({ title: 'How To Use Markdown Badge' })}
-				${
-					docContent({
-						content: raw`
+				${docContent({
+					content: raw`
 							<p>Enter the OSS(package) name in the form, copy one of the formats and paste them into your project's <code>README.md</code>.</p>
 						`
-					})
-				}
+				})}
 				${sampleCode()}
 			</main>
 		</body>

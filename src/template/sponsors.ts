@@ -52,8 +52,7 @@ const visualDirective = (image: SponsorImage) =>
 
 export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 	(async find => html`
-		${
-			style`
+		${style`
 			.${className} {
 				&__tiers {
 					display: grid;
@@ -132,80 +131,63 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 					max-width: 320px;
 				}
 			}
-			`
-		}
+			`}
 		<div class="${className}">
 			<div class="${className}__tiers">
-				${
-					asyncMap(
-						sortBy(classified, 'tier').map(
-							async ({ tier, items }) => html`
-								<h3 class="${className}__tier--${tierToSymbol(tier)}">
-									${tierToSymbol(tier)}
-								</h3>
-								<div
-									class="${className}__list ${className}__list--${
-										tierToSymbol(tier)
-									}"
-								>
-									${
-										asyncMap(
-											sortBy(items, 'start_date').map(
-												async s => html`
-													<div class="${className}__item">
-														<div
-															class="${className}__image"
-															${visualDirective(s.image)}
-														>
-															<a
-																href="${s.link}"
-																target="_blank"
-																rel="noopener"
-															>
-																${
-																	ampImage({
-																		alt: escapeHTML(s.name),
-																		src: s.image.url,
-																		width: s.image.width,
-																		height: s.image.height,
-																		layout: s.tier < 50 ? 'responsive' : 'fill'
-																	})
-																}
-															</a>
-														</div>
-														${
-															'messages' in s
-																? html`
-																		<div class="${className}__message">
-																			${
-																				Marked.parse(
-																					(
-																						find(s.messages) ||
-																						selectFirst(s.messages)
-																					).text
-																				)
-																			}
-																		</div>
-																  `
-																: ''
-														}
-														<a
-															class="${className}__link"
-															href="${s.link}"
-															target="_blank"
-															rel="noopener"
-															>${s.name}</a
-														>
-													</div>
-												`
-											)
-										)
-									}
-								</div>
-							`
-						)
+				${asyncMap(
+					sortBy(classified, 'tier').map(
+						async ({ tier, items }) => html`
+							<h3 class="${className}__tier--${tierToSymbol(tier)}">
+								${tierToSymbol(tier)}
+							</h3>
+							<div
+								class="${className}__list ${className}__list--${tierToSymbol(
+									tier
+								)}"
+							>
+								${asyncMap(
+									sortBy(items, 'start_date').map(
+										async s => html`
+											<div class="${className}__item">
+												<div
+													class="${className}__image"
+													${visualDirective(s.image)}
+												>
+													<a href="${s.link}" target="_blank" rel="noopener">
+														${ampImage({
+															alt: escapeHTML(s.name),
+															src: s.image.url,
+															width: s.image.width,
+															height: s.image.height,
+															layout: s.tier < 50 ? 'responsive' : 'fill'
+														})}
+													</a>
+												</div>
+												${'messages' in s
+													? html`
+															<div class="${className}__message">
+																${Marked.parse(
+																	(find(s.messages) || selectFirst(s.messages))
+																		.text
+																)}
+															</div>
+													  `
+													: ''}
+												<a
+													class="${className}__link"
+													href="${s.link}"
+													target="_blank"
+													rel="noopener"
+													>${s.name}</a
+												>
+											</div>
+										`
+									)
+								)}
+							</div>
+						`
 					)
-				}
+				)}
 			</div>
 		</div>
 	`)(finder(locales))

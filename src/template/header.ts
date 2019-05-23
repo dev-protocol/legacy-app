@@ -14,8 +14,7 @@ export const toolbarTarget = 'toolbarTargetNav'
 
 export const header = async ({ className = 'header' }: Opts = {}) =>
 	html`
-		${
-			style`
+		${style`
 			.${className} {
 				display: grid;
 				grid-auto-flow: column;
@@ -58,8 +57,7 @@ export const header = async ({ className = 'header' }: Opts = {}) =>
 					`)}
 				}
 			}
-		`
-		}
+		`}
 
 		<header class="${className}">
 			<a class="${className}__brand" href="/">${imageLogo()}</a>

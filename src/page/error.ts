@@ -21,15 +21,14 @@ export const error = async ({
 }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: message,
-				description: message,
-				url: {
-					host: config.domain,
-					path: request.url
-				},
-				injection: style`
+		${head({
+			title: message,
+			description: message,
+			url: {
+				host: config.domain,
+				path: request.url
+			},
+			injection: style`
 			body {
 				background: black;
 				color: white;
@@ -51,8 +50,7 @@ export const error = async ({
 				margin: 0;
 			}
 		`
-			})
-		}
+		})}
 		<body>
 			${ampAnalytics()}
 			<main>

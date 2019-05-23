@@ -28,18 +28,15 @@ const classNames = {
 export const oss = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
-		${
-			head({
-				title: 'OSSs',
-				description: 'Many OSSs are participating',
-				url: {
-					host: config.domain,
-					path: request.url
-				}
-			})
-		}
-		${
-			style`
+		${head({
+			title: 'OSSs',
+			description: 'Many OSSs are participating',
+			url: {
+				host: config.domain,
+				path: request.url
+			}
+		})}
+		${style`
 				body {
 					background: black;
 					color: white;
@@ -74,25 +71,21 @@ export const oss = async ({ request }: Opts) => html`
 						background-image: ${gradientDev};
 					}
 				}
-			`
-		}
+			`}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				${docHeading({ title: 'Many OSSs are participating' })}
-				${
-					docContent({
-						content: raw`
+				${docContent({
+					content: raw`
 							<section class="${classNames.downloads}">
 								<h2>Downloads chart</h2>
 								${chart()}
 							</section>
 						`
-					})
-				}
-				${
-					docContent({
-						content: raw`
+				})}
+				${docContent({
+					content: raw`
 							<section class="${classNames.osss}">
 								<h2>OSSs</h2>
 								${osss()}
@@ -104,8 +97,7 @@ export const oss = async ({ request }: Opts) => html`
 
 							</section>
 						`
-					})
-				}
+				})}
 			</main>
 			${footer()}
 		</body>

@@ -5,8 +5,7 @@ import { large } from '../style/large'
 const className = 'container'
 
 export const container = async (content: string | Promise<string>) => html`
-	${
-		style`
+	${style`
 		.${className} {
 			max-width: 900px;
 			margin: auto;
@@ -15,7 +14,6 @@ export const container = async (content: string | Promise<string>) => html`
 				padding: 5rem;
 			`)}
 		}
-	`
-	}
+	`}
 	<div class="${className}">${content}</div>
 `

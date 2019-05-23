@@ -8,22 +8,18 @@ interface Opts {
 
 export const trade = async ({ className = 'trade' }: Opts = {}) =>
 	html`
-		${
-			style`
+		${style`
 			.${className} {
 				display: grid;
 				grid-auto-flow: column;
 				justify-content: center;
 			}
-		`
-		}
-		${
-			container(
-				html`
+		`}
+		${container(
+			html`
 			<div class='${className}'>
 				<a class='${className}__link' href=//uniswap.exchange/swap target=_blank rel=noopener>Buy or Sell order with Uniswap.</a>
 			</div>
 		`
-			)
-		}
+		)}
 	`

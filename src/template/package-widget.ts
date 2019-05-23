@@ -18,8 +18,7 @@ export const packageInfo = async ({
 	className = 'package-info'
 }: Opts) =>
 	html`
-		${
-			style`
+		${style`
 			.${className} {
 				display: grid;
 				grid-gap: 1rem;
@@ -67,44 +66,39 @@ export const packageInfo = async ({
 					}
 				}
 			}
-		`
-		}
-		${
-			container(
-				html`
-					<div class="${className}">
-						<div class="${className}__tokens">
-							<h1 class="${className}__heading">
-								${pkg.package} is using Dev.
-							</h1>
-							<p>${pkg.package} welcomes donation by the Dev!</p>
-							<dl class="${className}__definition-list">
-								<dt>Balance</dt>
-								<dd><code>${account.balance} DEV</code></dd>
-								<dt>Address</dt>
-								<dd><code>${account.address}</code></dd>
-							</dl>
-						</div>
-						<div class="${className}__address">
-							${
-								ampImage({
-									alt: `QR Code of ${pkg.package} address`,
-									src: `${await toDataURL(pkg.address, {
-										width: 500,
-										rendererOpts: {
-											quality: 1
-										}
-									})}`,
-									width: 1,
-									height: 1,
-									layout: 'responsive',
-									attributes: [`class="${className}__qr"`]
-								})
-							}
-							<p><small>Copy addresses with QR</small></p>
-						</div>
+		`}
+		${container(
+			html`
+				<div class="${className}">
+					<div class="${className}__tokens">
+						<h1 class="${className}__heading">
+							${pkg.package} is using Dev.
+						</h1>
+						<p>${pkg.package} welcomes donation by the Dev!</p>
+						<dl class="${className}__definition-list">
+							<dt>Balance</dt>
+							<dd><code>${account.balance} DEV</code></dd>
+							<dt>Address</dt>
+							<dd><code>${account.address}</code></dd>
+						</dl>
 					</div>
-				`
-			)
-		}
+					<div class="${className}__address">
+						${ampImage({
+							alt: `QR Code of ${pkg.package} address`,
+							src: `${await toDataURL(pkg.address, {
+								width: 500,
+								rendererOpts: {
+									quality: 1
+								}
+							})}`,
+							width: 1,
+							height: 1,
+							layout: 'responsive',
+							attributes: [`class="${className}__qr"`]
+						})}
+						<p><small>Copy addresses with QR</small></p>
+					</div>
+				</div>
+			`
+		)}
 	`

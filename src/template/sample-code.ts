@@ -14,8 +14,7 @@ const placeholder = html`
 export const sampleCode = async ({
 	className = 'sample-code'
 }: Opts = {}) => html`
-	${
-		await style`
+	${await style`
 			.${className} {
 				display: grid;
 				grid-gap: 2rem;
@@ -36,47 +35,40 @@ export const sampleCode = async ({
 					color: aqua;
 				}
 			}
-	`
-	}
-	${
-		await container(
-			await html`
-				<div class="${className}">
-					<input
-						placeholder="Enter a your OSS(package) name"
-						on="input-throttled:AMP.setState({name: event.value})"
-					/>
-					<div class="${className}__code">
-						<p>GitHub Flavored Markdown</p>
-						<code>
-							[![<span [text]="name">{package}</span> Dev
-							Token](https://badge.devtoken.rocks/<span [text]="name"
-								>{package}</span
-							>)](https://devtoken.rocks/package/<span [text]="name"
-								>{package}</span
-							>)
-						</code>
-					</div>
-					<div class="${className}__code">
-						<p>HTML</p>
-						<code>
-							${
-								escape(
-									await html`
-										<a href="https://devtoken.rocks/package/-"
-											>${
-												`<img src="https://badge.devtoken.rocks/-" alt="- Dev Token"/>`
-											}</a
-										>
-									`
-								)
-									.replace(/-/g, await placeholder)
-									.replace(/[\n\t]/g, '')
-							}
-						</code>
-					</div>
+	`}
+	${await container(
+		await html`
+			<div class="${className}">
+				<input
+					placeholder="Enter a your OSS(package) name"
+					on="input-throttled:AMP.setState({name: event.value})"
+				/>
+				<div class="${className}__code">
+					<p>GitHub Flavored Markdown</p>
+					<code>
+						[![<span [text]="name">{package}</span> Dev
+						Token](https://badge.devtoken.rocks/<span [text]="name"
+							>{package}</span
+						>)](https://devtoken.rocks/package/<span [text]="name"
+							>{package}</span
+						>)
+					</code>
 				</div>
-			`
-		)
-	}
+				<div class="${className}__code">
+					<p>HTML</p>
+					<code>
+						${escape(
+							await html`
+								<a href="https://devtoken.rocks/package/-"
+									>${`<img src="https://badge.devtoken.rocks/-" alt="- Dev Token"/>`}</a
+								>
+							`
+						)
+							.replace(/-/g, await placeholder)
+							.replace(/[\n\t]/g, '')}
+					</code>
+				</div>
+			</div>
+		`
+	)}
 `
