@@ -12,6 +12,7 @@ import { cacheControl, CacheControl } from './lib/cache-control'
 import { setHeader } from './lib/set-header'
 import { confirm } from './route/confirm'
 import { sponsor } from './route/sponsor'
+import { challenge } from './route/challenge'
 
 export interface Result {
 	readonly body?: string | Error | false
@@ -43,6 +44,8 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 			? await badge(pathname, res)
 			: route === 'confirm'
 			? await confirm(pathname, request)
+			: route === 'challenge'
+			? await challenge(pathname, request)
 			: route === ''
 			? await root(pathname, request)
 			: { status: 404 }
