@@ -149,8 +149,11 @@ export const challenge = async ({ request }: Opts) => html`
 				grid-gap: 1rem;
 				border: 2px solid;
 				${large(`
-					grid-template: auto/auto 1fr;
+					grid-template: 1fr/1fr auto;
 				`)}
+				dt {
+					font-weight: 700;
+				}
 			}
 			.${classNames.links} {
 				&__buttons {

@@ -27,7 +27,7 @@ export const sponsorsLogos = async ({
 				align-items: center;
 				grid-gap: 1rem;
 				${large(`
-					grid-template-columns: repeat(4, 0.25fr);
+					grid-template-columns: repeat(3, 1fr);
 				`)}
 				&__item {
 					display: grid;
@@ -49,7 +49,7 @@ export const sponsorsLogos = async ({
 					}
 					&--name {
 						&_${siosTechnology.id} {
-							max-width: 100px;
+							max-width: 150px;
 						}
 						&_${cryptobowl.id} {
 							max-width: 200px;
