@@ -34,6 +34,23 @@ const title = {
 	challenge: 'Challenge'
 }
 
+const random = (max: number, min = 0) =>
+	Math.floor(Math.random() * (max + 1 - min)) + min
+
+const frames = (steps: number, f: (i: number) => string, count = 0): string =>
+	`${count * (100 / steps)}% {
+		${f(count)}
+	}
+	${steps > count ? frames(steps, f, count + 1) : ''}`
+
+const content = (str: string) => `
+	content: '${str}';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+`
 export const challenge = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
@@ -122,24 +139,75 @@ export const challenge = async ({ request }: Opts) => html`
 				&__heading {
 					display: grid;
 					font-size: 3rem;
-					font-family: 'Montserrat Alternates', sans-serif;
 					${large(`
 						font-size: 9rem;
 					`)}
-					background: linear-gradient(120deg, #000, #000 35%, #040035e8 70%, #a6004512 90%, #000);
-					background-size: 200% auto;
-					background-clip: text;
-					-webkit-text-fill-color: transparent;
-					animation: gradient 3s linear infinite;
-					@keyframes gradient {
-						to {
-							background-position: 200% center;
-						}
-					}
 				}
 				&__title {
 					&--${title.dev} {
+						animation: glitch-skew 1s infinite linear alternate-reverse;
 						font-size: 0.6em;
+						font-family: 'Montserrat Alternates', sans-serif;
+						&::before{
+							${content(title.dev)}
+							left: 2px;
+							text-shadow: -2px 0 #ff00c1;
+							animation: glitchA 5s infinite linear alternate-reverse;
+							${large(`
+								animation-duration: 10s;
+							`)}
+						}
+						&::after {
+							${content(title.dev)}
+							left: -2px;
+							text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+							animation: glitchB 1s infinite linear alternate-reverse;
+							${large(`
+								animation-duration: 2s;
+							`)}
+						}
+					}
+					&--${title.challenge} {
+						animation: glitch-skew 1s infinite linear alternate-reverse;
+						&::before{
+							${content(title.challenge)}
+							left: 2px;
+							animation: glitchA 5s infinite linear alternate-reverse;
+							${large(`
+								animation-duration: 10s;
+							`)}
+						}
+						&::after {
+							${content(title.challenge)}
+							left: -2px;
+							animation: glitchB 1s infinite linear alternate-reverse;
+							${large(`
+								animation-duration: 2s;
+							`)}
+						}
+						@keyframes glitchA {
+							${frames(
+								20,
+								() =>
+									`
+								clip: rect(${random(200)}px, 9999px, ${random(200)}px, 0);
+								transform: skew(${random(100) / 100}deg);
+							`
+							)}
+						}
+						@keyframes glitchB {
+							${frames(
+								20,
+								() =>
+									`
+								clip: rect(${random(200)}px, 9999px, ${random(200)}px, 0);
+								transform: skew(${random(100) / 100}deg);
+							`
+							)}
+						}
+						@keyframes glitch-skew {
+							${frames(10, () => `transform: skew(${(random(10) - 5) / 3}deg);`)}
+						}
 					}
 				}
 			}
@@ -211,7 +279,7 @@ export const challenge = async ({ request }: Opts) => html`
 					poster="//asset.devtoken.rocks/challenge/background.jpg"
 				>
 					<source
-						src="//asset.devtoken.rocks/challenge/background.mp4"
+						src="//asset.devtoken.rocks/challenge/background-glitch-slow.mp4"
 						type="video/mp4"
 					/>
 					<div fallback>
