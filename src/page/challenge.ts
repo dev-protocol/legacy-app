@@ -20,6 +20,7 @@ interface Opts {
 }
 
 const classNames = {
+	header: 'header',
 	video: 'video',
 	main: 'main',
 	hero: 'hero',
@@ -56,7 +57,9 @@ export const challenge = async ({ request }: Opts) => html`
 	<html ⚡ lang="en">
 		${head({
 			title: 'Dev Challenge',
-			description: '',
+			description:
+				'The Developer Reward Program For Protocol "Dev" For Open Source Sustainability.',
+			image: '/challenge/og.png',
 			url: {
 				host: config.domain,
 				path: request.url
@@ -75,6 +78,10 @@ export const challenge = async ({ request }: Opts) => html`
 				color: white;
 				font-family: 'Montserrat Alternates', sans-serif;
 			}
+			.${classNames.header} {
+				position: relative;
+				z-index: 1;
+			}
 			.${classNames.video} {
 				position: absolute;
 				width: 100%;
@@ -89,13 +96,12 @@ export const challenge = async ({ request }: Opts) => html`
 				}
 				&::after {
 					content: '';
-					background-color: #00000038;
+					background-color: #0000004d;
 					position: absolute;
 					top: 0;
 					left: 0;
 					right: 0;
 					bottom: 0;
-					background-size: 2px;
 				}
 			}
 			.${classNames.main} {
@@ -279,7 +285,7 @@ export const challenge = async ({ request }: Opts) => html`
 					poster="//asset.devtoken.rocks/challenge/background.jpg"
 				>
 					<source
-						src="//asset.devtoken.rocks/challenge/background-glitch-slow.mp4"
+						src="//asset.devtoken.rocks/challenge/background.mp4"
 						type="video/mp4"
 					/>
 					<div fallback>
@@ -287,7 +293,7 @@ export const challenge = async ({ request }: Opts) => html`
 					</div>
 				</amp-video>
 			</div>
-			${ampAnalytics()} ${header()} ${nav()}
+			${ampAnalytics()} ${header({ className: classNames.header })} ${nav()}
 			<main class="${classNames.main}">
 				${container(raw`
 					<article>
@@ -312,11 +318,11 @@ export const challenge = async ({ request }: Opts) => html`
 							<dl class="${classNames.term}">
 								<dt>Begin</dt>
 								<dd>
-									<time>2019-06-30 01:00:00 GMT+0900 (JST)</time>
+									<time>2019-07-01 10:00:00 GMT+0900 (JST)</time>
 								</dd>
 								<dt>End</dt>
 								<dd>
-									<time>2019-06-30 01:00:00 GMT+0900 (JST)</time>
+									<time>2019-12-30 10:00:00 GMT+0900 (JST)</time>
 								</dd>
 							</dl>
 						</section>
