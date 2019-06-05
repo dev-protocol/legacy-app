@@ -318,13 +318,14 @@ export const challenge = async ({ request }: Opts) => html`
 							<dl class="${classNames.term}">
 								<dt>Begin</dt>
 								<dd>
-									<time>2019-07-01 10:00:00 GMT+0900 (JST)</time>
+									<time>2019-07-01T00:00:00Z</time>
 								</dd>
 								<dt>End</dt>
 								<dd>
-									<time>2019-12-30 10:00:00 GMT+0900 (JST)</time>
+									<time>2019-12-19T00:00:00Z</time>
 								</dd>
 							</dl>
+							<p><small>This term may end early. For more information, see <a href="https://github.com/dev-protocol/repository-token/blob/master/DEV_CHALLENGE.md">GitHub</a>.</small></p>
 						</section>
 						<section class="${classNames.links}">
 							<h2>Links</h2>
