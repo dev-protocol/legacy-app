@@ -27,7 +27,8 @@ const classNames = {
 	term: 'term',
 	links: 'links',
 	coming: 'coming',
-	sponsors: 'sponsors'
+	sponsors: 'sponsors',
+	information: 'information'
 }
 
 const title = {
@@ -124,6 +125,9 @@ export const challenge = async ({ request }: Opts) => html`
 			}
 			.${classNames.hero} {
 				position: absolute;
+				display: grid;
+				grid-gap: 1rem;
+				padding: 0 1rem;
 				width: 100%;
 				top: 0;
 				left: 0;
@@ -131,6 +135,7 @@ export const challenge = async ({ request }: Opts) => html`
 				justify-content: center;
 				align-content: center;
 				height: 50vh;
+				box-sizing: border-box;
 				${large(`
 					height: 100vh;
 				`)}
@@ -148,6 +153,10 @@ export const challenge = async ({ request }: Opts) => html`
 					${large(`
 						font-size: 9rem;
 					`)}
+				}
+				&__amount {
+					display: inline-block;
+					font-size: 2rem;
 				}
 				&__title {
 					&--${title.dev} {
@@ -263,6 +272,12 @@ export const challenge = async ({ request }: Opts) => html`
 					`)}
 				}
 			}
+			.${classNames.information} {
+				padding: 0;
+				a {
+					font-weight: 600;
+				}
+			}
 			a {
 				color: white;
 			}
@@ -308,10 +323,21 @@ export const challenge = async ({ request }: Opts) => html`
 									${title.challenge}
 								</span>
 							</h1>
+							<p>You can get tokens equivalent to the total prize money <span class="${
+								classNames.hero
+							}__amount">1 million JPY</span>.</p>
 						</header>
 						<section class="${classNames.coming}">
 							<p>The developer reward program for protocol "Dev" for open source sustainability.</p>
 							<p class="${classNames.coming}__large">Coming Soon</p>
+						</section>
+						<section>
+							<h2>Information</h2>
+							<ul class="${classNames.information}">
+								<li>
+									Whitepaper meetups in Tokyo: <a href="https://neutrino.connpass.com/event/132789/">24 June@Neutrino</a>, <a href="https://hashhub.connpass.com/event/134196/">27 June@HashHub</a>
+								</li>
+							</ul>
 						</section>
 						<section>
 							<h2>Term</h2>
