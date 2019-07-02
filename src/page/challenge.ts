@@ -259,9 +259,6 @@ export const challenge = async ({ request }: Opts) => html`
 				text-align: center;
 				display: grid;
 				grid-gap: 1rem;
-				&__large {
-					font-size: 2rem;
-				}
 			}
 			.${classNames.sponsors} {
 				& &__list {
@@ -329,7 +326,6 @@ export const challenge = async ({ request }: Opts) => html`
 						</header>
 						<section class="${classNames.coming}">
 							<p>The developer reward program for protocol "Dev" for open source sustainability.</p>
-							<p class="${classNames.coming}__large">Coming Soon</p>
 						</section>
 						<section>
 							<h2>Information</h2>
