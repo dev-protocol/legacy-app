@@ -3,7 +3,7 @@
 	"alias": "devtoken.rocks",
 	"builds": [
 		{ "src": "build/src/index.js", "use": "@now/node" },
-		{ "src": "public", "use": "@now/static" }
+		{ "src": "public/**/*", "use": "@now/static" }
 	],
 	"routes": [
 		{
