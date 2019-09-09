@@ -166,7 +166,7 @@ export const whatIsDev = async ({ request }: Opts) => html`
 								<h2>How it works</h2>
 								${ampImage({
 									alt: 'Dev',
-									src: '//asset.devtoken.rocks/doc/dev-schema--white.png',
+									src: '/public/doc/dev-schema--white.png',
 									width: 3971,
 									height: 3013,
 									layout: 'responsive'

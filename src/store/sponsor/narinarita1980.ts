@@ -9,7 +9,7 @@ export const narinarita1980: PersonalSponsor = {
 	name: 'narinarita1980',
 	link: 'https://twitter.com/narinarita1980',
 	image: {
-		url: 'https://asset.devtoken.rocks/sponsor/narinarita1980.jpg',
+		url: '/public/sponsor/narinarita1980.jpg',
 		width: 400,
 		height: 400
 	}

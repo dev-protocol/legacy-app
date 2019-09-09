@@ -19,7 +19,7 @@ export const cryptobowl: Sponsor = {
 	],
 	link: 'https://cryptobowl.net/',
 	image: {
-		url: 'https://asset.devtoken.rocks/sponsor/cryptobowl.png',
+		url: '/public/sponsor/cryptobowl.png',
 		width: 500,
 		height: 98
 	}

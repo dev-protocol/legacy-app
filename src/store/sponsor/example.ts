@@ -19,7 +19,7 @@ export const example: Sponsor = {
 	],
 	link: 'https://devtoken.rocks/',
 	image: {
-		url: 'https://asset.devtoken.rocks/og.png',
+		url: '/public/og.png',
 		width: 1200,
 		height: 630
 	},

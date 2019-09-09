@@ -27,7 +27,7 @@ test('Returns false if before the sponsorship start date', async t => {
 			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
-				url: 'https://asset.devtoken.rocks/og.png',
+				url: '/public/og.png',
 				width: 1200,
 				height: 630
 			}
@@ -54,7 +54,7 @@ test('Returns false if after the sponsorship expiry date', async t => {
 			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
-				url: 'https://asset.devtoken.rocks/og.png',
+				url: '/public/og.png',
 				width: 1200,
 				height: 630
 			}
@@ -80,7 +80,7 @@ test('When all the conditions are satisfied, the SVG badge is returned', async t
 			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
-				url: 'https://asset.devtoken.rocks/og.png',
+				url: '/public/og.png',
 				width: 1200,
 				height: 630
 			}
@@ -106,7 +106,7 @@ test('If Tier 10, circle color is gold(control by CSS Class)', async t => {
 			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
-				url: 'https://asset.devtoken.rocks/og.png',
+				url: '/public/og.png',
 				width: 1200,
 				height: 630
 			}
@@ -132,7 +132,7 @@ test('If Tier 20, circle color is silver(control by CSS Class)', async t => {
 			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
-				url: 'https://asset.devtoken.rocks/og.png',
+				url: '/public/og.png',
 				width: 1200,
 				height: 630
 			}
@@ -158,7 +158,7 @@ test('If Tier 30, circle color is bronze(control by CSS Class)', async t => {
 			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
-				url: 'https://asset.devtoken.rocks/og.png',
+				url: '/public/og.png',
 				width: 1200,
 				height: 630
 			}

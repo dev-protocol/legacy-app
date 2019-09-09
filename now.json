@@ -1,7 +1,10 @@
 {
 	"version": 2,
 	"alias": "devtoken.rocks",
-	"builds": [{ "src": "build/src/index.js", "use": "@now/node" }],
+	"builds": [
+		{ "src": "build/src/index.js", "use": "@now/node" },
+		{ "src": "public", "use": "@now/static" }
+	],
 	"routes": [
 		{
 			"src": "/alpha/.*",
@@ -9,6 +12,10 @@
 			"headers": {
 				"Location": "/"
 			}
+		},
+		{
+			"src": "/public/(.*)",
+			"dest": "/public/$1"
 		},
 		{
 			"src": ".*",

@@ -19,7 +19,7 @@ export const neutrino: Sponsor = {
 	],
 	link: 'https://www.neutrino.global/',
 	image: {
-		url: 'https://asset.devtoken.rocks/sponsor/neutrino.png',
+		url: '/public/sponsor/neutrino.png',
 		width: 1280,
 		height: 384,
 		visualControl: {

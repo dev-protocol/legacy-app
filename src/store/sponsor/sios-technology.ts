@@ -19,7 +19,7 @@ export const siosTechnology: Sponsor = {
 	],
 	link: 'https://tech-lab.sios.jp/pr/sponsor-dev2019',
 	image: {
-		url: 'https://asset.devtoken.rocks/sponsor/sios_logo_white.png',
+		url: '/public/sponsor/sios_logo_white.png',
 		width: 660,
 		height: 682
 	}

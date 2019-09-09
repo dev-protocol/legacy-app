@@ -15,7 +15,7 @@ export const microsoft: Sponsor = {
 	],
 	link: 'https://azure.microsoft.com/ja-jp/overview/choose-azure-opensource/',
 	image: {
-		url: 'https://asset.devtoken.rocks/sponsor/Microsoft-logo_rgb_wht.png',
+		url: '/public/sponsor/Microsoft-logo_rgb_wht.png',
 		width: 1280,
 		height: 573,
 		visualControl: {

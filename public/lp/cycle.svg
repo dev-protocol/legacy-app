@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500">
+    <defs>
+        <style>
+            .line{
+                fill: none;
+                stroke: #fff;
+                stroke-miterlimit: 10;
+                stroke-dasharray: 12 12;
+                animation: line 0.5s linear 0s infinite;
+            }
+            @keyframes line {
+                0% {
+                    stroke-dashoffset: 24;
+                }
+                100% {
+                    stroke-dashoffset: 0;
+                }
+            }
+        </style>
+    </defs>
+    <circle class="line" cx="250" cy="250" r="250"/>
+</svg>

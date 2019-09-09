@@ -209,7 +209,7 @@ export const root = async ({ request }: Opts) => html`
 						display: block;
 						margin: 1rem;
 						height: 60px;
-						background-image: url(//asset.devtoken.rocks/lp/arrow.svg);
+						background-image: url(/public/lp/arrow.svg);
 						background-position: center;
 						background-repeat: no-repeat;
 					}
@@ -219,7 +219,7 @@ export const root = async ({ request }: Opts) => html`
 					text-align: center;
 					padding: 6rem 0;
 					grid-template-columns: repeat(2, 1fr);
-					background-image: url(//asset.devtoken.rocks/lp/cycle.svg);
+					background-image: url(/public/lp/cycle.svg);
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: contain;
@@ -292,7 +292,7 @@ export const root = async ({ request }: Opts) => html`
 					<figure>
 						${ampImage({
 							alt: 'image',
-							src: '//asset.devtoken.rocks/lp/cover.png',
+							src: '/public/lp/cover.png',
 							width: 2000,
 							height: 1177,
 							layout: 'responsive'

@@ -294,10 +294,10 @@ export const challenge = async ({ request }: Opts) => html`
 					width="1920"
 					height="1080"
 					layout="fill"
-					poster="//asset.devtoken.rocks/challenge/background.jpg"
+					poster="/public/challenge/background.jpg"
 				>
 					<source
-						src="//asset.devtoken.rocks/challenge/background.mp4"
+						src="/public/challenge/background.mp4"
 						type="video/mp4"
 					/>
 					<div fallback>

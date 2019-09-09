@@ -29,7 +29,7 @@ const badge = async () => html`
 			<p>You can use the badge, such as the following.</p>
 			${ampImage({
 				alt: 'Dev',
-				src: '//asset.devtoken.rocks/doc/markdown-badge.svg',
+				src: '/public/doc/markdown-badge.svg',
 				width: 88.63,
 				height: 20,
 				layout: 'fixed'
