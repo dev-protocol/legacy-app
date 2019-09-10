@@ -13,7 +13,6 @@ import { footer } from '../template/footer'
 import { osss } from '../template/osss'
 import { button } from '../template/button'
 import { gradientDev } from '../style/color'
-import { chart } from '../template/chart'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -76,14 +75,6 @@ export const oss = async ({ request }: Opts) => html`
 			${ampAnalytics()} ${header()} ${nav()}
 			<main>
 				${docHeading({ title: 'Many OSSs are participating' })}
-				${docContent({
-					content: raw`
-							<section class="${classNames.downloads}">
-								<h2>Downloads chart</h2>
-								${chart()}
-							</section>
-						`
-				})}
 				${docContent({
 					content: raw`
 							<section class="${classNames.osss}">

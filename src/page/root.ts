@@ -11,7 +11,6 @@ import { large } from '../style/large'
 import { orange, gradientDev } from '../style/color'
 import { nav } from '../template/nav'
 import { ampImage } from '../template/amp/amp-image'
-import { chart } from '../template/chart'
 
 interface Opts {
 	readonly request: IncomingMessage
@@ -133,9 +132,6 @@ export const root = async ({ request }: Opts) => html`
 			}
 			.${classNames.downloads} {
 				justify-content: center;
-				${large(`
-					grid-template-columns: 1fr 50%;
-				`)}
 				&__strong {
 					font-weight: bolder;
 					color: ${orange};
@@ -152,10 +148,6 @@ export const root = async ({ request }: Opts) => html`
 				grid-gap: 5rem;
 				justify-content: center;
 				justify-items: center;
-				${large(`
-					grid-gap: 10rem;
-					padding: 10rem 0;
-				`)}
 				h2 {
 					margin: 0;
 				}
@@ -165,12 +157,7 @@ export const root = async ({ request }: Opts) => html`
 					grid-auto-flow: column;
 					align-items: center;
 					text-decoration: none;
-					amp-img {
-						width: 100px;
-					}
-					span {
-						font-size: 2rem;
-					}
+					font-size: 2rem;
 				}
 			}
 			.${classNames.howItWorks} {
@@ -327,12 +314,11 @@ export const root = async ({ request }: Opts) => html`
 					</div>
 				</section>
 				<section class="${classNames.downloads}">
-					<figure>${chart()}</figure>
 					<div class="${classNames.content}">
 						<h2>OSS Downloads</h2>
 						<p>
 							OSS registered to Dev is
-							<span class="${classNames.downloads}__strong">428 million</span>
+							<span class="${classNames.downloads}__strong">6.5 billion</span>
 							average downloaded every month.
 						</p>
 						${button({

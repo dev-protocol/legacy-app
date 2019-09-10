@@ -15,6 +15,7 @@ export const osss = async ({ className = 'oss-list' }: Opts = {}) =>
 					display: grid;
 					grid-template-columns: repeat(2, 1fr);
 					grid-gap: 3rem;
+					word-break: break-all;
 					& &__pkg {
 						text-decoration: none;
 					}
