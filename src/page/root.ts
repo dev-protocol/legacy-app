@@ -24,7 +24,8 @@ const classNames = {
 	features: 'features',
 	exchange: 'exchange',
 	community: 'community',
-	button: 'button'
+	button: 'button',
+	team: 'team'
 }
 
 export const root = async ({ request }: Opts) => html`
@@ -50,6 +51,7 @@ export const root = async ({ request }: Opts) => html`
 			}
 			h1,
 			h2,
+			h3,
 			p {
 				margin: 0;
 			}
@@ -65,6 +67,7 @@ export const root = async ({ request }: Opts) => html`
 				grid-gap: 2rem;
 				justify-content: stretch;
 				justify-items: center;
+				margin-bottom: 4rem;
 				${large(`
 					grid-gap: 5rem;
 				`)}
@@ -256,6 +259,28 @@ export const root = async ({ request }: Opts) => html`
 					}
 				}
 			}
+			.${classNames.team} {
+				text-align: center;
+				& .content {
+					justify-items: center;
+				}
+				&__persons {
+					display: grid;
+					grid-gap: 3rem;
+					padding: 0 2rem;
+					${large(`
+						grid-auto-flow: column;
+						grid-template-columns: repeat(3, 1fr);
+					`)}
+				}
+				&__person {
+					display: grid;
+					grid-gap: 1rem;
+				}
+				&__job {
+
+				}
+			}
 		`
 		})}
 		<body>
@@ -358,6 +383,25 @@ export const root = async ({ request }: Opts) => html`
 					<a href="//uniswap.exchange/swap" target="_blank" rel="noopener">
 						🦄 Uniswap
 					</a>
+				</section>
+				<section class="${classNames.team}">
+					<div>
+						<h2>Team</h2>
+						<div class="${classNames.team}__persons">
+							<div class="${classNames.team}__person">
+								<h3>Mayumi Hara</h3>
+								<p class="${classNames.team}__job">CEO</p>
+							</div>
+							<div class="${classNames.team}__person">
+								<h3>aggre</h3>
+								<p class="${classNames.team}__job">CTO</p>
+							</div>
+							<div class="${classNames.team}__person">
+								<h3>Mariko Miyamoto</h3>
+								<p class="${classNames.team}__job">COO</p>
+							</div>
+						</div>
+					</div>
 				</section>
 			</main>
 			${footer()}
