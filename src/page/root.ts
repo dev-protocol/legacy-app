@@ -20,8 +20,6 @@ const classNames = {
 	content: 'content',
 	heading: 'heading',
 	howItWorks: 'how-it-works',
-	downloads: 'downloads',
-	features: 'features',
 	exchange: 'exchange',
 	community: 'community',
 	button: 'button',
@@ -136,19 +134,6 @@ export const root = async ({ request }: Opts) => html`
 					`)}
 				}
 			}
-			.${classNames.downloads} {
-				justify-content: center;
-				&__strong {
-					font-weight: bolder;
-					color: ${orange};
-				}
-				figure {
-					padding: 2rem;
-					${large(`
-						padding: 5rem;
-					`)}
-				}
-			}
 			.${classNames.exchange} {
 				align-items: center;
 				grid-gap: 5rem;
@@ -220,28 +205,6 @@ export const root = async ({ request }: Opts) => html`
 						background: black;
 						padding: 0.5rem;
 					}
-				}
-			}
-			.${classNames.features} {
-				justify-content: center;
-				p {
-					font-size: 1.2rem;
-					${large(`
-						font-size: 1.6rem;
-					`)}
-					&::before {
-						content: '';
-						display: inline-block;
-						width: 0.6em;
-						height: 0.6em;
-						background: #E91E63;
-						border-radius: 50%;
-						margin-right: 1rem;
-					}
-				}
-				& .${classNames.content} {
-					max-width: inherit;
-					justify-items: baseline;
 				}
 			}
 			.${classNames.community} {
@@ -347,29 +310,6 @@ export const root = async ({ request }: Opts) => html`
 								>.
 							</p>
 						</div>
-					</div>
-				</section>
-				<section class="${classNames.downloads}">
-					<div class="${classNames.content}">
-						<h2>OSS Downloads</h2>
-						<p>
-							OSS registered to Dev is
-							<span class="${classNames.downloads}__strong">6.5 billion</span>
-							average downloaded every month.
-						</p>
-						${button({
-							link: '/oss',
-							content: 'Learn More',
-							className: classNames.button
-						})}
-					</div>
-				</section>
-				<section class="${classNames.features}">
-					<div class="${classNames.content}">
-						<h2>Features</h2>
-						<p>Most easiest & fairly way to monetize open source projects.</p>
-						<p>Find influential open source projects.</p>
-						<p>Sponsors accelerate OSS support.</p>
 					</div>
 				</section>
 				<section class="${classNames.community}">
