@@ -42,7 +42,7 @@ export const head = async ({
 		<link
 			rel="icon"
 			href="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: '/favicon.ico'
 			})}"
 		/>
@@ -51,7 +51,7 @@ export const head = async ({
 			type="image/png"
 			sizes="32x32"
 			href="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: '/favicon-32x32.png'
 			})}"
 		/>
@@ -60,7 +60,7 @@ export const head = async ({
 			type="image/png"
 			sizes="16x16"
 			href="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: '/favicon-16x16.png'
 			})}"
 		/>
@@ -68,21 +68,21 @@ export const head = async ({
 			rel="apple-touch-icon"
 			sizes="180x180"
 			href="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: '/apple-touch-icon.png'
 			})}"
 		/>
 		<link
 			rel="manifest"
 			href="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: '/site.webmanifest'
 			})}"
 		/>
 		<link
 			rel="mask-icon"
 			href="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: '/safari-pinned-tab.svg'
 			})}"
 			color="#000000"
@@ -100,14 +100,14 @@ export const head = async ({
 		<meta
 			property="og:image"
 			content="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: image ? image : '/og.png'
 			})}"
 		/>
 		<meta
 			name="twitter:image"
 			content="${absolutePath({
-				host: 'asset.devtoken.rocks',
+				host: '/public',
 				path: image ? image : '/og.png'
 			})}"
 		/>
