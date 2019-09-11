@@ -209,8 +209,11 @@ export const root = async ({ request }: Opts) => html`
 			}
 			.${classNames.community} {
 				align-items: center;
+				grid-gap: 2rem;
+				justify-content: center;
+				justify-items: center;
 				${large(`
-					grid-template-columns: 1fr 50%;
+					grid-gap: 5rem;
 				`)}
 				& h2 {
 					margin: 0;
