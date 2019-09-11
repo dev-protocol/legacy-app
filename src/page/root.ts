@@ -28,6 +28,9 @@ const classNames = {
 	team: 'team'
 }
 
+const avatar = (src: string, alt: string) => ampImage({src, alt, width: 1, height:1, layout: 'responsive'})
+const iconTwitter = () => ampImage({src: '/public/lp/icon/twitter.svg', alt: 'Twitter', width: 1, height:1, layout: 'responsive'})
+
 export const root = async ({ request }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
@@ -275,10 +278,18 @@ export const root = async ({ request }: Opts) => html`
 				}
 				&__person {
 					display: grid;
-					grid-gap: 1rem;
+					grid-gap: 0.8rem;
+					justify-items: center;
+					align-content: baseline;
 				}
-				&__job {
-
+				a {
+					width: 50px;
+				}
+				figure {
+					width: 90px;
+					position: relative;
+					border-radius: 50%;
+					overflow: hidden;
 				}
 			}
 		`
@@ -390,14 +401,29 @@ export const root = async ({ request }: Opts) => html`
 						<div class="${classNames.team}__persons">
 							<div class="${classNames.team}__person">
 								<h3>Mayumi Hara</h3>
+								<figure>
+									${avatar('/public/lp/avatar/mayumi.jpg', 'Mayumi Hara')}
+								</figure>
 								<p class="${classNames.team}__job">CEO</p>
+								<a href="//twitter.com/yume_mayu" target="_blank">
+									${iconTwitter()}
+								</a>
 							</div>
 							<div class="${classNames.team}__person">
 								<h3>aggre</h3>
+								<figure>
+									${avatar('/public/lp/avatar/aggre.jpg', 'aggre')}
+								</figure>
 								<p class="${classNames.team}__job">CTO</p>
+								<a href="//twitter.com/aggre_" target="_blank">
+									${iconTwitter()}
+								</a>
 							</div>
 							<div class="${classNames.team}__person">
 								<h3>Mariko Miyamoto</h3>
+								<figure>
+									${avatar('/public/lp/avatar/mariko.png', 'mariko')}
+								</figure>
 								<p class="${classNames.team}__job">COO</p>
 							</div>
 						</div>
