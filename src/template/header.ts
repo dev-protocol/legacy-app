@@ -5,6 +5,7 @@ import { large } from '../style/large'
 import { navId } from './nav'
 import { button } from '../style/reset'
 import { lightWhite } from '../style/color'
+import { notifyNewVersion } from './notify-new-version'
 
 interface Opts {
 	readonly className?: string
@@ -58,7 +59,7 @@ export const header = async ({ className = 'header' }: Opts = {}) =>
 				}
 			}
 		`}
-
+		${notifyNewVersion()}
 		<header class="${className}">
 			<a class="${className}__brand" href="/">${imageLogo()}</a>
 			<div id="${toolbarTarget}"></div>
