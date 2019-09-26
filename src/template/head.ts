@@ -37,10 +37,7 @@ export const head = async ({
 			rel="stylesheet"
 		/>
 		<title>${escapeHTML(`${title ? `${title} - ` : ''}${defaultTitle}`)}</title>
-		<link
-			rel="icon"
-			href="/public/favicon.ico"
-		/>
+		<link rel="icon" href="/public/favicon.ico" />
 		<link
 			rel="icon"
 			type="image/png"
@@ -58,10 +55,7 @@ export const head = async ({
 			sizes="180x180"
 			href="/public/apple-touch-icon.png"
 		/>
-		<link
-			rel="manifest"
-			href="/public/site.webmanifest"
-		/>
+		<link rel="manifest" href="/public/site.webmanifest" />
 		<link
 			rel="mask-icon"
 			href="/public/safari-pinned-tab.svg"
@@ -77,14 +71,8 @@ export const head = async ({
 		<meta property="og:description" content="${escapeHTML(description)}" />
 		<meta name="twitter:title" content="${escapeHTML(title || defaultTitle)}" />
 		<meta name="twitter:description" content="${escapeHTML(description)}" />
-		<meta
-			property="og:image"
-			content="${image ? image : '/public/og.png'}"
-		/>
-		<meta
-			name="twitter:image"
-			content="${image ? image : '/public/og.png'}"
-		/>
+		<meta property="og:image" content="${image ? image : '/public/og.png'}" />
+		<meta name="twitter:image" content="${image ? image : '/public/og.png'}" />
 		<meta name="twitter:card" content="summary_large_image" />
 		<meta name="twitter:site" content="@devtoken_rocks" />
 		${await ampComponent('amp-sidebar')} ${await ampComponent('amp-analytics')}

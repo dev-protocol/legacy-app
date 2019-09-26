@@ -26,8 +26,16 @@ const classNames = {
 	team: 'team'
 }
 
-const avatar = (src: string, alt: string) => ampImage({src, alt, width: 1, height:1, layout: 'responsive'})
-const iconTwitter = () => ampImage({src: '/public/lp/icon/twitter.svg', alt: 'Twitter', width: 1, height:1, layout: 'responsive'})
+const avatar = (src: string, alt: string) =>
+	ampImage({ src, alt, width: 1, height: 1, layout: 'responsive' })
+const iconTwitter = () =>
+	ampImage({
+		src: '/public/lp/icon/twitter.svg',
+		alt: 'Twitter',
+		width: 1,
+		height: 1,
+		layout: 'responsive'
+	})
 
 export const root = async ({ request }: Opts) => html`
 	<!DOCTYPE html>

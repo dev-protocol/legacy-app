@@ -296,10 +296,7 @@ export const challenge = async ({ request }: Opts) => html`
 					layout="fill"
 					poster="/public/challenge/background.jpg"
 				>
-					<source
-						src="/public/challenge/background.mp4"
-						type="video/mp4"
-					/>
+					<source src="/public/challenge/background.mp4" type="video/mp4" />
 					<div fallback>
 						<p>This browser does not support the video element.</p>
 					</div>

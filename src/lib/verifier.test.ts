@@ -26,7 +26,7 @@ test('Returns undefined if before the sponsorship start date', async t => {
 			messages: [],
 			link: 'https://devtoken.rocks/',
 			image: {
-			url: '/public/og.png',
+				url: '/public/og.png',
 				width: 1200,
 				height: 630
 			}
