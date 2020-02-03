@@ -1,6 +1,6 @@
 {
 	"version": 2,
-	"alias": "devtoken.rocks",
+	"alias": "n.devprtcl.com",
 	"builds": [
 		{ "src": "build/src/index.js", "use": "@now/node" },
 		{ "src": "public/**/*", "use": "@now/static" }

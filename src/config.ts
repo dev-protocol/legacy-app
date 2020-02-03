@@ -1,3 +1,3 @@
 export const config = {
-	domain: 'devtoken.rocks'
+	domain: 'n.devprtcl.com'
 }

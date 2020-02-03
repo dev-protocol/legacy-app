@@ -3,16 +3,9 @@ import { IncomingMessage, ServerResponse } from 'http'
 import { parse } from 'url'
 import { error } from './page/error'
 import { packageR } from './route/package-r'
-import { doc } from './route/doc'
-import { api } from './route/api'
-import { root } from './route/root'
 import { oss } from './route/oss'
-import { badge } from './route/badge'
 import { cacheControl, CacheControl } from './lib/cache-control'
 import { setHeader } from './lib/set-header'
-import { confirm } from './route/confirm'
-import { sponsor } from './route/sponsor'
-import { challenge } from './route/challenge'
 
 export interface Result {
 	readonly body?: string | Error | false
@@ -32,22 +25,8 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	}: Result =
 		route === 'package'
 			? await packageR(pathname, request)
-			: route === 'doc'
-			? await doc(pathname, request)
-			: route === 'api'
-			? await api(pathname, request)
 			: route === 'oss'
 			? await oss(pathname, request)
-			: route === 'sponsor'
-			? await sponsor(pathname, request)
-			: route === 'badge'
-			? await badge(pathname, res)
-			: route === 'confirm'
-			? await confirm(pathname, request)
-			: route === 'challenge'
-			? await challenge(pathname, request)
-			: route === ''
-			? await root(pathname, request)
 			: { status: 404 }
 	const body = originalBody ? originalBody : await error({ status, request })
 	return send(setHeader(res, cacheControl(cache)), status, body)
