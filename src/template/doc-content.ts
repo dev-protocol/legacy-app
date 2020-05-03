@@ -7,7 +7,7 @@ interface Opts {
 }
 
 export const docContent = async (
-	{ content, className = 'doc-content' }: Opts = { content }
+	{ content, className = 'doc-content' }: Opts
 ) => html`
 	${await container(await html` <div class="${className}">${content}</div> `)}
 `

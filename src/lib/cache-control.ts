@@ -27,7 +27,7 @@ export const cacheControl = ({
 	staleWhileRevalidate,
 	mustRevalidate,
 }: CacheControl) => {
-	const values: ReadonlyArray<string | undefined> = [
+	const values: ReadonlyArray<string | boolean | number | undefined> = [
 		directive('public', pub, booleanSchema),
 		directive('private', pri, booleanSchema),
 		directive('no-store', noStore, booleanSchema),

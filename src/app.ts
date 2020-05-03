@@ -17,16 +17,16 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const { url = '' } = request
 	const parsed = parse(url)
 	const { pathname = '' } = parsed
-	const [, route] = pathname.split('/')
+	const [, route] = pathname!.split('/')
 	const {
 		status,
 		body: originalBody = false,
 		cache = { public: true, sMaxage: 86400 },
 	}: Result =
 		route === 'package'
-			? await packageR(pathname, request)
+			? await packageR(pathname!, request)
 			: route === 'oss'
-			? await oss(pathname, request)
+			? await oss(pathname!, request)
 			: { status: 404 }
 	const body = originalBody ? originalBody : await error({ status, request })
 	return send(setHeader(res, cacheControl(cache)), status, body)

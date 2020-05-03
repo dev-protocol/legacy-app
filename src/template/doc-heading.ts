@@ -8,7 +8,7 @@ interface Opts {
 }
 
 export const docHeading = async (
-	{ title, className = 'doc-heading' }: Opts = { title }
+	{ title, className = 'doc-heading' }: Opts
 ) => html`
 	${await style`
 			.${className} {

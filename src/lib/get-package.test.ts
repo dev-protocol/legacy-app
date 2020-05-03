@@ -31,6 +31,6 @@ test('Get a package information of Dev', async (t) => {
 		),
 		getPackage('chalk'),
 	])
-	const expected = all.find((p) => p.package === 'chalk')
+	const expected = all!.find((p) => p.package === 'chalk')
 	t.deepEqual(expected, result)
 })
