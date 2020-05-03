@@ -11,6 +11,6 @@ export const narinarita1980: PersonalSponsor = {
 	image: {
 		url: '/public/sponsor/narinarita1980.jpg',
 		width: 400,
-		height: 400
-	}
+		height: 400,
+	},
 }

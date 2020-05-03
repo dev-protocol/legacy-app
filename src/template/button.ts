@@ -12,7 +12,7 @@ export const button = async ({
 	content,
 	link,
 	target,
-	className = 'button'
+	className = 'button',
 }: Opts) => html`
 	${await style`
 		.${className} {

@@ -16,7 +16,7 @@ export const ampImage = async ({
 	width,
 	height,
 	layout,
-	attributes
+	attributes,
 }: Opts) => html`
 	<amp-img
 		alt="${alt}"
@@ -25,14 +25,7 @@ export const ampImage = async ({
 		height="${height}"
 		layout="${layout}"
 		${attributes
-			? asyncMap(
-					attributes.map(
-						async attr =>
-							html`
-								${attr}
-							`
-					)
-			  )
+			? asyncMap(attributes.map(async (attr) => html` ${attr} `))
 			: ''}
 	>
 	</amp-img>

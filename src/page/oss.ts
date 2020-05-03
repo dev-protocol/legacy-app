@@ -21,7 +21,7 @@ interface Opts {
 const classNames = {
 	downloads: 'downloads',
 	osss: 'osss',
-	button: 'button'
+	button: 'button',
 }
 
 export const oss = async ({ request }: Opts) => html`
@@ -32,8 +32,8 @@ export const oss = async ({ request }: Opts) => html`
 			description: 'Many OSSs are participating',
 			url: {
 				host: config.domain,
-				path: request.url
-			}
+				path: request.url,
+			},
 		})}
 		${style`
 				body {
@@ -83,11 +83,11 @@ export const oss = async ({ request }: Opts) => html`
 								${button({
 									link: '/doc/start',
 									content: 'Add Your OSS(s)',
-									className: classNames.button
+									className: classNames.button,
 								})}
 
 							</section>
-						`
+						`,
 				})}
 			</main>
 			${footer()}

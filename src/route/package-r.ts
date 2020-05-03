@@ -20,9 +20,9 @@ export const packageR = async (
 	return body
 		? {
 				body,
-				status: 200
+				status: 200,
 		  }
 		: {
-				status: 404
+				status: 404,
 		  }
 }

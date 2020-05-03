@@ -23,34 +23,34 @@ const navs: ReadonlyArray<Link> = [
 	{
 		label: 'Twitter',
 		link: 'https://twitter.com/devtoken_rocks',
-		someOrigin: false
+		someOrigin: false,
 	},
 	{
 		label: 'Spectrum',
 		link: 'https://spectrum.chat/devtoken',
-		someOrigin: false
+		someOrigin: false,
 	},
 	{
 		label: 'Discord',
 		link: 'https://discord.gg/VwJp4KM',
-		someOrigin: false
+		someOrigin: false,
 	},
 	{
 		label: 'Blog',
 		link: 'https://medium.com/devtoken',
-		someOrigin: false
+		someOrigin: false,
 	},
 	{
 		label: 'Media Kit',
 		link:
 			'https://www.dropbox.com/sh/t7d9u5li054tu4d/AABuD8_CTalbwzbCr2luqWo0a?dl=0',
-		someOrigin: false
+		someOrigin: false,
 	},
 	{
 		label: 'FRAME00, INC.',
 		link: 'https://corp.frame00.com',
-		someOrigin: false
-	}
+		someOrigin: false,
+	},
 ]
 
 export const footer = async ({ className = 'footer' }: Opts = {}) =>
@@ -106,7 +106,7 @@ export const footer = async ({ className = 'footer' }: Opts = {}) =>
 							<ul>
 								${asyncMap(
 									navs.map(
-										async nav => html`
+										async (nav) => html`
 											<li>
 												<a
 													href="${nav.link}"
@@ -123,7 +123,7 @@ export const footer = async ({ className = 'footer' }: Opts = {}) =>
 						${button({
 							link: 'mailto:investor@frame00.com',
 							content: 'For investor',
-							className: forInvestor
+							className: forInvestor,
 						})}
 					</div>
 				`

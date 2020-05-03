@@ -12,13 +12,13 @@ export const get = async <T>(
 	proto = 'https',
 	opts: CoreOptions = { json: true }
 ) =>
-	new Promise<Response<T>>(resolve =>
+	new Promise<Response<T>>((resolve) =>
 		_get(`${proto}:${url}`, opts, (_, { headers, statusCode }, body: T) =>
 			// tslint:disable:no-void-expression
 			resolve({
 				body,
 				headers,
-				statusCode
+				statusCode,
 			})
 		)
 	)

@@ -7,12 +7,10 @@ interface Opts {
 	readonly className?: string
 }
 
-const placeholder = html`
-	<span [text]="name">{package}</span>
-`
+const placeholder = html` <span [text]="name">{package}</span> `
 
 export const sampleCode = async ({
-	className = 'sample-code'
+	className = 'sample-code',
 }: Opts = {}) => html`
 	${await style`
 			.${className} {

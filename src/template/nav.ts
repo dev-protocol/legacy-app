@@ -98,7 +98,7 @@ export const nav = async ({ className = 'nav' }: Opts = {}) =>
 						${button({
 							link: '/doc/start',
 							content: 'Start Now',
-							className: `${className}__start`
+							className: `${className}__start`,
 						})}
 					</li>
 				</ul>

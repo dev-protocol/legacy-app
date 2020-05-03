@@ -15,10 +15,10 @@ interface Opts {
 }
 
 const verify = verifier(new Date(), spons)
-const valid = spons.filter(s => verify(s.id) && !s.unlisted)
+const valid = spons.filter((s) => verify(s.id) && !s.unlisted)
 
 export const sponsorsLogos = async ({
-	className = 'sponsors-logos'
+	className = 'sponsors-logos',
 }: Opts = {}) => html`
 	${style`
 			.${className} {
@@ -72,7 +72,7 @@ export const sponsorsLogos = async ({
 									src: image.url,
 									width: image.width,
 									height: image.height,
-									layout: 'responsive'
+									layout: 'responsive',
 								})}
 							</a>
 						</div>

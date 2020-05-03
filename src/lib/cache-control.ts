@@ -25,7 +25,7 @@ export const cacheControl = ({
 	maxAge,
 	sMaxage,
 	staleWhileRevalidate,
-	mustRevalidate
+	mustRevalidate,
 }: CacheControl) => {
 	const values: ReadonlyArray<string | undefined> = [
 		directive('public', pub, booleanSchema),
@@ -35,9 +35,9 @@ export const cacheControl = ({
 		directive('max-age', maxAge),
 		directive('s-maxage', sMaxage),
 		directive('stale-while-revalidate', staleWhileRevalidate),
-		directive('must-revalidate', mustRevalidate, booleanSchema)
+		directive('must-revalidate', mustRevalidate, booleanSchema),
 	]
 	return {
-		'cache-control': values.filter(v => typeof v === 'string').join(', ')
+		'cache-control': values.filter((v) => typeof v === 'string').join(', '),
 	}
 }

@@ -2,7 +2,7 @@
 import test from 'ava'
 import { collapseWhitespace } from './collapse-whitespace'
 
-test('Remove unnecessary whitespace from HTML', t => {
+test('Remove unnecessary whitespace from HTML', (t) => {
 	const result = collapseWhitespace(`
 
 		 <html> <head><title>The title</title></head>

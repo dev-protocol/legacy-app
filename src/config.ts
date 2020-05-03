@@ -1,3 +1,3 @@
 export const config = {
-	domain: 'n.devprtcl.com'
+	domain: 'n.devprtcl.com',
 }

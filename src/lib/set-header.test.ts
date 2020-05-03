@@ -9,8 +9,9 @@ import { get } from 'request'
 let url = ''
 const server = micro(async (_, res) => {
 	const response = setHeader(res, {
-		'add-property': 'test'
+		'add-property': 'test',
 	})
+	// tslint:disable-next-line: no-try
 	try {
 		await send(response, 200, '')
 	} catch (error) {
@@ -22,11 +23,11 @@ test.before(async () => {
 	url = await listen(server)
 })
 
-test('Set the specified value in the response header', async t => {
-	const { headers: result } = await new Promise(async resolve =>
+test('Set the specified value in the response header', async (t) => {
+	const { headers: result } = await new Promise(async (resolve) =>
 		get(
 			{
-				url
+				url,
 			},
 			(_, { headers }) => {
 				resolve({ headers })

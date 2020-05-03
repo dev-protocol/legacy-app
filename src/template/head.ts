@@ -23,7 +23,7 @@ export const head = async ({
 	description,
 	url,
 	injection = '',
-	image
+	image,
 }: Opts) => html`
 	<head>
 		<meta charset="utf-8" />

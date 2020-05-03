@@ -3,7 +3,7 @@ import test from 'ava'
 import { ampComponent } from './amp-component'
 import { collapseWhitespace } from './collapse-whitespace'
 
-test('Return script tag to import AMP component', async t => {
+test('Return script tag to import AMP component', async (t) => {
 	const amp = await ampComponent('amp-iframe')
 	t.is(
 		collapseWhitespace(amp),

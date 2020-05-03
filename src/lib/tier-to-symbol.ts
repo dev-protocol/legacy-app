@@ -4,7 +4,7 @@ const tiers = new Map([
 	[10, 'gold'],
 	[20, 'silver'],
 	[30, 'bronze'],
-	[50, 'supporters']
+	[50, 'supporters'],
 ])
 
 export const tierToSymbol = (tier: SponsorTier) =>

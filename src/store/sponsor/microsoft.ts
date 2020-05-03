@@ -10,8 +10,8 @@ export const microsoft: Sponsor = {
 	messages: [
 		{
 			locale: 'en',
-			text: `Microsoft enables digital transformation for the era of an intelligent cloud and an intelligent edge. Its mission is to empower every person and every organization on the planet to achieve more.`
-		}
+			text: `Microsoft enables digital transformation for the era of an intelligent cloud and an intelligent edge. Its mission is to empower every person and every organization on the planet to achieve more.`,
+		},
 	],
 	link: 'https://azure.microsoft.com/ja-jp/overview/choose-azure-opensource/',
 	image: {
@@ -19,7 +19,7 @@ export const microsoft: Sponsor = {
 		width: 1280,
 		height: 573,
 		visualControl: {
-			maxWidth: 500
-		}
-	}
+			maxWidth: 500,
+		},
+	},
 }

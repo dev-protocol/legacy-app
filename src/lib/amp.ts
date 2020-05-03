@@ -6,7 +6,7 @@ import { collapseWhitespace } from './collapse-whitespace'
 
 const style = process({
 	// tslint:disable-next-line:readonly-array no-unsafe-any
-	plugins: [cssnano()]
+	plugins: [cssnano()],
 })
 
 const boilerplate =
@@ -27,5 +27,5 @@ export const amp = new Proxy(html, {
 		const ampCustom = `<style amp-custom>${await style`${styles}`}</style>`
 		const resolvedContents = beforeHead(addedAmpScript, ampCustom)
 		return collapseWhitespace(resolvedContents)
-	}
+	},
 })

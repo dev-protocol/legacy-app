@@ -16,7 +16,7 @@ type Tiers = ReadonlyArray<SponsorTier>
 const tiers: Tiers = [10, 20, 30]
 
 export const whatsSponsors = async ({
-	className = 'whats-sponsors'
+	className = 'whats-sponsors',
 }: Opts = {}) => html`
 	${style`
 			.${className} {
@@ -82,8 +82,8 @@ export const whatsSponsors = async ({
 		</div>
 		<div class="${className}__tiers">
 			${asyncMap(
-				tiers.map(async tier =>
-					(async label => html`
+				tiers.map(async (tier) =>
+					(async (label) => html`
 						<div class="${className}__tier ${className}__tier--${label}">
 							<span>${label}</span>
 						</div>
@@ -97,7 +97,7 @@ export const whatsSponsors = async ({
 				className: `${className}__get-in-touch`,
 				link:
 					'mailto:hi@devtoken.rocks?subject=Sponsorship&body=<English or 日本語>',
-				content: 'Get in touch with us'
+				content: 'Get in touch with us',
 			})}
 		</div>
 	</div>

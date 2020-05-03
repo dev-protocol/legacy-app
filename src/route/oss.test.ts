@@ -16,14 +16,14 @@ test.before(async () => {
 	url = url.replace(/https?:/, '')
 })
 
-test('Valid AMP HTML', async t => {
+test('Valid AMP HTML', async (t) => {
 	const res = await get<string>(`${url}/oss`, 'http')
 	const validator = await amphtmlValidator.getInstance()
 	const result = validator.validateString(res.body)
 	t.is(result.status, 'PASS')
 })
 
-test('Request invalid routes returns 404', async t => {
+test('Request invalid routes returns 404', async (t) => {
 	t.is((await get<string>(`${url}/oss/x`, 'http')).statusCode, 404)
 })
 

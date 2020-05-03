@@ -29,7 +29,7 @@ const section = 'section'
 export const packagePage = async ({
 	package: pkg,
 	account,
-	request
+	request,
 }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
@@ -38,7 +38,7 @@ export const packagePage = async ({
 			description: `${pkg.package} has ${account.balance} DEV.`,
 			url: {
 				host: config.domain,
-				path: request.url
+				path: request.url,
 			},
 			injection: style`
 			body {
@@ -68,7 +68,7 @@ export const packagePage = async ({
 					`)}
 				}
 			}
-		`
+		`,
 		})}
 		<body>
 			${ampAnalytics()} ${header()} ${nav()}
@@ -76,7 +76,7 @@ export const packagePage = async ({
 				<section class="${section}__package">
 					${packageInfo({
 						package: pkg,
-						account
+						account,
 					})}
 				</section>
 				<section>
@@ -84,9 +84,9 @@ export const packagePage = async ({
 						raw`
 								<h2>Sponsors</h2>
 								${sponsors({
-									locales: acceptLanguages(request.headers[
-										'accept-language'
-									] as string)
+									locales: acceptLanguages(
+										request.headers['accept-language'] as string
+									),
 								})}
 							`
 					)}

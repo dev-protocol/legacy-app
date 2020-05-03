@@ -10,12 +10,12 @@ export const neutrino: Sponsor = {
 	messages: [
 		{
 			locale: 'en',
-			text: `Neutrino aims to provide an inspiring, collaborative, and productive developer friendly environment to build the blockchain projects of the future. Let's take part in a growing blockchain community.`
+			text: `Neutrino aims to provide an inspiring, collaborative, and productive developer friendly environment to build the blockchain projects of the future. Let's take part in a growing blockchain community.`,
 		},
 		{
 			locale: 'ja',
-			text: `Neutrinoは未来のブロックチェーンプロジェクトを輩出するためのコワーキングスペースであり、コラボレーションを創出する開発者中心の環境を提供しています。Neutrinoコミュニティで共に学び合い、イノベーションをドライブしましょう。`
-		}
+			text: `Neutrinoは未来のブロックチェーンプロジェクトを輩出するためのコワーキングスペースであり、コラボレーションを創出する開発者中心の環境を提供しています。Neutrinoコミュニティで共に学び合い、イノベーションをドライブしましょう。`,
+		},
 	],
 	link: 'https://www.neutrino.global/',
 	image: {
@@ -24,7 +24,7 @@ export const neutrino: Sponsor = {
 		height: 384,
 		visualControl: {
 			maxWidth: 430,
-			margin: '50px 0'
-		}
-	}
+			margin: '50px 0',
+		},
+	},
 }

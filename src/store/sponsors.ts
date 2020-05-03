@@ -43,7 +43,7 @@ const s: Sponsors = [
 	neutrino,
 	microsoft,
 	cryptobowl,
-	narinarita1980
+	narinarita1980,
 ]
 
 export const sponsors: Sponsors = [...s, ...[example]]

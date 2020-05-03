@@ -3,7 +3,7 @@ import test from 'ava'
 import { collapseWhitespace } from './collapse-whitespace'
 import { style } from './style'
 
-test('Return preprocessed style tag in PostCSS ', async t => {
+test('Return preprocessed style tag in PostCSS ', async (t) => {
 	const tag = await style`
 		body {
 			color: blue;

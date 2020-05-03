@@ -10,17 +10,17 @@ export const cryptobowl: Sponsor = {
 	messages: [
 		{
 			locale: 'en',
-			text: `CryptoBowl is matching service that specializes in blockchain project. We connect Ordering company and development company / freelance.`
+			text: `CryptoBowl is matching service that specializes in blockchain project. We connect Ordering company and development company / freelance.`,
 		},
 		{
 			locale: 'ja',
-			text: `"CryptoBowlはブロックチェーン案件を専門に扱う、発注企業と開発企業 /フリーランスのマッチングサービスです。"`
-		}
+			text: `"CryptoBowlはブロックチェーン案件を専門に扱う、発注企業と開発企業 /フリーランスのマッチングサービスです。"`,
+		},
 	],
 	link: 'https://cryptobowl.net/',
 	image: {
 		url: '/public/sponsor/cryptobowl.png',
 		width: 500,
-		height: 98
-	}
+		height: 98,
+	},
 }

@@ -17,7 +17,7 @@ const defaultMessage = 'page not found'
 export const error = async ({
 	request,
 	status,
-	message = defaultMessage
+	message = defaultMessage,
 }: Opts) => html`
 	<!DOCTYPE html>
 	<html ⚡ lang="en">
@@ -26,7 +26,7 @@ export const error = async ({
 			description: message,
 			url: {
 				host: config.domain,
-				path: request.url
+				path: request.url,
 			},
 			injection: style`
 			body {
@@ -49,7 +49,7 @@ export const error = async ({
 			p {
 				margin: 0;
 			}
-		`
+		`,
 		})}
 		<body>
 			${ampAnalytics()}

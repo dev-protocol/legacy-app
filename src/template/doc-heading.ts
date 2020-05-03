@@ -16,8 +16,6 @@ export const docHeading = async (
 			}
 	`}
 	${await container(
-		await html`
-			<div class="${className}"><h1>${title}</h1></div>
-		`
+		await html` <div class="${className}"><h1>${title}</h1></div> `
 	)}
 `

@@ -2,14 +2,14 @@ import { html } from '../../lib/html'
 
 const opts = {
 	vars: {
-		account: 'UA-67415117-12'
+		account: 'UA-67415117-12',
 	},
 	triggers: {
 		trackPageview: {
 			on: 'visible',
-			request: 'pageview'
-		}
-	}
+			request: 'pageview',
+		},
+	},
 }
 
 export const ampAnalytics = async () => html`

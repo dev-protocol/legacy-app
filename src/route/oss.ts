@@ -6,7 +6,7 @@ export const oss = async (pathname: string, request: IncomingMessage) => {
 	return body
 		? {
 				body,
-				status: 200
+				status: 200,
 		  }
 		: { status: 404 }
 }

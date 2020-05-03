@@ -12,14 +12,14 @@ const processor = process({
 		preset({
 			stage: 0,
 			browsers: 'last 2 versions',
-			autoprefixer: { grid: true }
-		})
-	]
+			autoprefixer: { grid: true },
+		}),
+	],
 })
 
 export const style = directive(
 	processor,
-	async css =>
+	async (css) =>
 		html`
 			<style>
 				${css}

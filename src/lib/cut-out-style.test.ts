@@ -4,7 +4,7 @@ import { collapseWhitespace } from './collapse-whitespace'
 import { cutOutStyle } from './cut-out-style'
 import { html } from './html'
 
-test('Detach style tags from text', async t => {
+test('Detach style tags from text', async (t) => {
 	const result = cutOutStyle(
 		await html`
 			<!DOCTYPE html>

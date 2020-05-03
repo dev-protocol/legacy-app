@@ -9,7 +9,7 @@ interface Opts {
 }
 
 export const osss = async ({ className = 'oss-list' }: Opts = {}) =>
-	(async pkgs => html`
+	(async (pkgs) => html`
 		${await style`
 				.${className} {
 					display: grid;
@@ -23,8 +23,8 @@ export const osss = async ({ className = 'oss-list' }: Opts = {}) =>
 			`}
 		<div class="${className}">
 			${await asyncMap(
-				sortBy(pkgs.body, o => o.package.replace('@', '')).map(
-					async pkg => html`
+				sortBy(pkgs.body, (o) => o.package.replace('@', '')).map(
+					async (pkg) => html`
 						<a class="${className}__pkg" href="/package/${pkg.package}"
 							>${pkg.package}</a
 						>

@@ -8,7 +8,7 @@ interface Opts {
 }
 
 export const notifyNewVersion = async ({
-	className = 'notice-new-version'
+	className = 'notice-new-version',
 }: Opts = {}) =>
 	html`
 		${style`

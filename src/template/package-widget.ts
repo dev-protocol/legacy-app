@@ -15,7 +15,7 @@ interface Opts {
 export const packageInfo = async ({
 	package: pkg,
 	account,
-	className = 'package-info'
+	className = 'package-info',
 }: Opts) =>
 	html`
 		${style`
@@ -88,13 +88,13 @@ export const packageInfo = async ({
 							src: `${await toDataURL(pkg.address, {
 								width: 500,
 								rendererOpts: {
-									quality: 1
-								}
+									quality: 1,
+								},
 							})}`,
 							width: 1,
 							height: 1,
 							layout: 'responsive',
-							attributes: [`class="${className}__qr"`]
+							attributes: [`class="${className}__qr"`],
 						})}
 						<p><small>Copy addresses with QR</small></p>
 					</div>

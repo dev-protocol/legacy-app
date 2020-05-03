@@ -3,7 +3,7 @@ import test from 'ava'
 import { collapseWhitespace } from './collapse-whitespace'
 import { html } from './html'
 
-test('Create HTML strings with a template literals ', async t => {
+test('Create HTML strings with a template literals ', async (t) => {
 	const htm = await html`
 		<h1>The title</h1>
 		<p>The content</p>
@@ -17,7 +17,7 @@ test('Create HTML strings with a template literals ', async t => {
 	)
 })
 
-test('Template including asynchronous part', async t => {
+test('Template including asynchronous part', async (t) => {
 	const htm = await html`
 		<h1>The title</h1>
 		<p>${Promise.resolve('The content')}</p>
@@ -31,7 +31,7 @@ test('Template including asynchronous part', async t => {
 	)
 })
 
-test('Template including function part', async t => {
+test('Template including function part', async (t) => {
 	const fn = () => 'The content'
 	const htm = await html`
 		<h1>The title</h1>
@@ -46,7 +46,7 @@ test('Template including function part', async t => {
 	)
 })
 
-test('Template including asynchronous function part', async t => {
+test('Template including asynchronous function part', async (t) => {
 	const fn = async () => 'The content'
 	const htm = await html`
 		<h1>The title</h1>

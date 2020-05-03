@@ -8,5 +8,5 @@ export const fetchPackages = async () =>
 
 export const getPackage = async (packageName?: string) => {
 	const pkgs = await fetchPackages()
-	return pkgs.body.find(p => p.package === packageName)
+	return pkgs.body.find((p) => p.package === packageName)
 }

@@ -3,12 +3,12 @@ import test from 'ava'
 import { Sponsors, sponsors as sponsorsStore } from '../store/sponsors'
 import { verifier } from './verifier'
 
-test('Returns undefined if not exist sponsor ID', async t => {
+test('Returns undefined if not exist sponsor ID', async (t) => {
 	const id = '_____'
 	t.is(verifier(new Date(), sponsorsStore)(id), undefined)
 })
 
-test('Returns undefined if before the sponsorship start date', async t => {
+test('Returns undefined if before the sponsorship start date', async (t) => {
 	const id = 'example'
 	const date = new Date()
 	date.setDate(date.getDate() + 1)
@@ -28,14 +28,14 @@ test('Returns undefined if before the sponsorship start date', async t => {
 			image: {
 				url: '/public/og.png',
 				width: 1200,
-				height: 630
-			}
-		}
+				height: 630,
+			},
+		},
 	]
 	t.is(verifier(new Date(), sponsors)(id), undefined)
 })
 
-test('Returns undefined if after the sponsorship expiry date', async t => {
+test('Returns undefined if after the sponsorship expiry date', async (t) => {
 	const id = 'example'
 	const date = new Date()
 	date.setDate(date.getDate() - 1)
@@ -55,14 +55,14 @@ test('Returns undefined if after the sponsorship expiry date', async t => {
 			image: {
 				url: '/public/og.png',
 				width: 1200,
-				height: 630
-			}
-		}
+				height: 630,
+			},
+		},
 	]
 	t.is(verifier(new Date(), sponsors)(id), undefined)
 })
 
-test('When all the conditions are satisfied, the SVG badge is returned', async t => {
+test('When all the conditions are satisfied, the SVG badge is returned', async (t) => {
 	const id = 'example'
 	const date = new Date()
 	const sponsors: Sponsors = [
@@ -81,9 +81,9 @@ test('When all the conditions are satisfied, the SVG badge is returned', async t
 			image: {
 				url: '/public/og.png',
 				width: 1200,
-				height: 630
-			}
-		}
+				height: 630,
+			},
+		},
 	]
 	t.is(verifier(new Date(), sponsors)(id), sponsors[0])
 })

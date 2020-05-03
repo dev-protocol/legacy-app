@@ -21,7 +21,7 @@ export const app = async (request: IncomingMessage, res: ServerResponse) => {
 	const {
 		status,
 		body: originalBody = false,
-		cache = { public: true, sMaxage: 86400 }
+		cache = { public: true, sMaxage: 86400 },
 	}: Result =
 		route === 'package'
 			? await packageR(pathname, request)

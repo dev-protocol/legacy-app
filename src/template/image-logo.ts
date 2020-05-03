@@ -6,5 +6,5 @@ export const imageLogo = async () =>
 		src: '/public/logo--white.svg',
 		width: 408,
 		height: 228,
-		layout: 'responsive'
+		layout: 'responsive',
 	})

@@ -5,7 +5,7 @@ import { sortBy } from 'lodash'
 import {
 	sponsors as spons,
 	SponsorMessages,
-	SponsorImage
+	SponsorImage,
 } from '../store/sponsors'
 import * as escapeHTML from 'escape-html'
 import { Marked } from 'marked-ts'
@@ -21,21 +21,21 @@ interface Opts {
 }
 
 const verify = verifier(new Date(), spons)
-const valid = spons.filter(s => verify(s.id) && !s.unlisted)
+const valid = spons.filter((s) => verify(s.id) && !s.unlisted)
 const finder = (locales: ReadonlyArray<string>) => (
 	messages: SponsorMessages
 ) =>
-	(validLocale =>
+	((validLocale) =>
 		validLocale
 			? messages.find(({ locale }) => locale === validLocale)
 			: undefined)(
-		locales.find(loc => messages.some(({ locale }) => loc === locale))
+		locales.find((loc) => messages.some(({ locale }) => loc === locale))
 	)
 const selectFirst = (messages: SponsorMessages) => messages[0]
-const classified = (tiers =>
-	Array.from(tiers).map(tier => ({
+const classified = ((tiers) =>
+	Array.from(tiers).map((tier) => ({
 		tier,
-		items: valid.filter(v => v.tier === tier)
+		items: valid.filter((v) => v.tier === tier),
 	})))(new Set(valid.map(({ tier }) => tier)))
 const visualDirective = (image: SponsorImage) =>
 	image.visualControl
@@ -51,7 +51,7 @@ const visualDirective = (image: SponsorImage) =>
 		: ''
 
 export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
-	(async find => html`
+	(async (find) => html`
 		${style`
 			.${className} {
 				&__tiers {
@@ -147,7 +147,7 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 							>
 								${asyncMap(
 									sortBy(items, 'start_date').map(
-										async s => html`
+										async (s) => html`
 											<div class="${className}__item">
 												<div
 													class="${className}__image"
@@ -159,7 +159,7 @@ export const sponsors = async ({ className = 'sponsors', locales }: Opts) =>
 															src: s.image.url,
 															width: s.image.width,
 															height: s.image.height,
-															layout: s.tier < 50 ? 'responsive' : 'fill'
+															layout: s.tier < 50 ? 'responsive' : 'fill',
 														})}
 													</a>
 												</div>

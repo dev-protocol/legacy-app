@@ -19,29 +19,29 @@ test.before(async () => {
 	url = url.replace(/https?:/, '')
 })
 
-test('Request package information', async t => {
+test('Request package information', async (t) => {
 	const pkg = await getPackage('chalk')
 	const [dev, res] = await Promise.all([
 		getBalanceDev((pkg as DistributionTarget).address),
-		get<string>(`${url}/package/chalk`, 'http')
+		get<string>(`${url}/package/chalk`, 'http'),
 	])
 	t.is(res.statusCode, 200)
 	t.truthy(res.body.includes(`${dev.address}`))
 	t.truthy(res.body.includes(`${dev.balance} DEV`))
 })
 
-test('Valid AMP HTML', async t => {
+test('Valid AMP HTML', async (t) => {
 	const res = await get<string>(`${url}/package/chalk`, 'http')
 	const validator = await amphtmlValidator.getInstance()
 	const result = validator.validateString(res.body)
 	t.is(result.status, 'PASS')
 })
 
-test('Request package names that do not exist, returns 404', async t => {
+test('Request package names that do not exist, returns 404', async (t) => {
 	t.is((await get<string>(`${url}/package/x`, 'http')).statusCode, 404)
 })
 
-test('Request invalid routes returns 404', async t => {
+test('Request invalid routes returns 404', async (t) => {
 	t.is((await get<string>(`${url}/package`, 'http')).statusCode, 404)
 })
 
