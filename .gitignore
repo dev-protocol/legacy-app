@@ -63,3 +63,5 @@ typings/
 # tsc build output
 build
 *.js
+
+.now
