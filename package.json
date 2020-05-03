@@ -1,6 +1,6 @@
 {
-	"name": "dev-app",
-	"version": "1.0.0",
+	"name": "legacy-app",
+	"private": true,
 	"description": "",
 	"main": "build/src/index.js",
 	"scripts": {
@@ -14,14 +14,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/frame00/dev-app.git"
+		"url": "git+https://github.com/dev-protocol/legacy-app.git"
 	},
 	"author": "",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/frame00/dev-app/issues"
+		"url": "https://github.com/dev-protocol/legacy-app/issues"
 	},
-	"homepage": "https://github.com/frame00/dev-app#readme",
+	"homepage": "https://github.com/dev-protocol/legacy-app#readme",
 	"dependencies": {
 		"accept-language-parser": "^1.5.0",
 		"cssnano": "^4.1.10",
