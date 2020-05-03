@@ -1,6 +1,10 @@
 {
 	"version": 2,
+	"github": {
+		"enabled": false
+	},
 	"builds": [
+		{ "src": "build/src/index.js", "use": "@now/node" },
 		{ "src": "public/**/*", "use": "@now/static" }
 	],
 	"routes": [
