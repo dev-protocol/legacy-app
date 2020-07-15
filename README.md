@@ -2,8 +2,6 @@
 
 This repository manages the resources of `devtoken.rocks`.
 
-[![Build Status](https://travis-ci.org/frame00/dev-app.svg?branch=master)](https://travis-ci.org/frame00/dev-app)
-
 # Getting Started
 
 How to install:
